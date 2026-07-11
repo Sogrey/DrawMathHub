@@ -182,7 +182,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, toRef } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { Play, StepForward, Loader2, ChevronRight, Clapperboard } from '@lucide/vue'
 import type { VideoPlayMode, InteractiveVideoManifest, VideoAvailability } from '@/types/video'
 import { VIDEO_PENDING_TITLE, VIDEO_PENDING_MESSAGE } from '@/types/video'
