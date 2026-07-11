@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Chinoiserie 中国风色系 — 唯一配色来源（CSS 变量）
+   #C9563A #EAD6B8 #777A86 #292C30 #684131
+   ============================================================ */
+@layer base {
+  :root {
+    /* 主色 */
+    --color-primary: 201 86 58;          /* #C9563A */
+    --color-primary-light: 212 119 95; /* #D4775F */
+    --color-primary-dark: 104 65 49;   /* #684131 */
+
+    /* 文字 */
+    --color-cream: 234 214 184;        /* #EAD6B8 */
+    --color-gray: 119 122 134;         /* #777A86 */
+    --color-brown: 104 65 49;          /* #684131 */
+    --color-text: 234 214 184;
+    --color-text-secondary: 201 188 166; /* #C9BCA6 */
+    --color-text-tertiary: 119 122 134;
+    --color-text-faint: 90 93 101;
+
+    /* 页面 & 边框 */
+    --color-bg: 41 44 48;              /* #292C30 */
+    --color-border: 234 214 184;       /* 配合 opacity 使用 */
+
+    /* 卡片 RGB（供 Tailwind opacity 修饰符） */
+    --color-card: 35 33 30;
+    --color-card-secondary: 30 28 26;
+    --color-card-hover: 48 44 40;
+
+    /* 深色磨砂玻璃（参考 cncolor.art，不用白色半透明） */
+    --glass-card-bg: rgba(26, 24, 22, 0.72);
+    --glass-card-secondary-bg: rgba(20, 19, 17, 0.65);
+    --glass-card-hover-bg: rgba(48, 44, 40, 0.78);
+    --glass-nav-bg: rgba(26, 24, 22, 0.88);
+
+    /* 辅助色 */
+    --color-purple: 138 126 154;
+    --color-yellow: 196 168 130;
+    --color-pink: 184 122 110;
+    --color-success: 106 159 140;
+    --color-success-text: 168 212 196;
+    --color-danger: 201 86 58;
+    --color-danger-text: 240 168 152;
+    --color-warning: 196 168 130;
+    --color-warning-text: 234 214 184;
+
+    /* 阴影（全局统一，避免 Tailwind 默认纯黑违和） */
+    --shadow-color: 0 0 0;
+    --shadow-card: 0 4px 24px rgb(var(--shadow-color) / 0.42), 0 1px 0 rgb(var(--color-border) / 0.05);
+    --shadow-card-hover: 0 8px 32px rgb(var(--shadow-color) / 0.52), 0 1px 0 rgb(var(--color-border) / 0.08);
+    --shadow-nav: 0 2px 16px rgb(var(--shadow-color) / 0.38);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: var(--glass-card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-card-secondary {
+    background-color: var(--glass-card-secondary-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .glass-card-hover {
+    background-color: var(--glass-card-hover-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-nav {
+    background-color: var(--glass-nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+}
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+#app {
+  min-height: 100vh;
+  background-color: transparent;
+  color: inherit;
+}
+
+/* 强制覆盖 Tailwind 旧缓存色值 */
+@layer utilities {
+  .bg-background {
+    background-color: rgb(var(--color-bg) / 1) !important;
+  }
+  .text-text {
+    color: rgb(var(--color-text) / 1) !important;
+  }
+  .text-textSecondary {
+    color: rgb(var(--color-text-secondary) / 1) !important;
+  }
+  .text-textTertiary {
+    color: rgb(var(--color-text-tertiary) / 1) !important;
+  }
+  .border-border {
+    border-color: rgb(var(--color-border) / 0.15) !important;
+  }
+  .shadow-elevation,
+  .shadow-elevation-hover,
+  .shadow-elevation-nav {
+    --tw-shadow-color: rgb(var(--shadow-color) / 0.42);
+  }
+  .shadow-elevation-hover {
+    --tw-shadow-color: rgb(var(--shadow-color) / 0.52);
+  }
+  .shadow-elevation-nav {
+    --tw-shadow-color: rgb(var(--shadow-color) / 0.38);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 86, 58, 0.5);
+}

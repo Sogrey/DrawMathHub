@@ -1,0 +1,36 @@
+# 依赖与构建
+node_modules/
+dist/
+dist-ssr/
+
+# 环境变量本地覆盖
+*.local
+.env.local
+.env.*.local
+
+# 临时目录
+tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+.venv/
+venv/
+
+# Manim 渲染缓存
+media/
+**/media/
+
+# 日志与系统文件
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# datas：仅保留汇总数据
+/datas/**
+!/datas/draw_math_all_lessons.json

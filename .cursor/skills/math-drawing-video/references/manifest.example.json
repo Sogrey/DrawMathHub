@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "problemId": "{problemUuid}",
+  "exampleId": "{exampleUuid}",
+  "fullVideo": "/videos/{problemUuid}/{exampleUuid}/full.mp4",
+  "segments": [
+    {
+      "id": "{segmentUuid}",
+      "role": "cover",
+      "label": "封面",
+      "file": "segments/cover.mp4",
+      "hint": "片头标题",
+      "startTime": 0.0,
+      "endTime": 6.0
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "题型讲解与特征",
+      "startTime": 6.0,
+      "endTime": 21.5
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "题目展示与图解基础"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "图解解题第1步"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "图解解题第2步"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "图解解题第3步（步数因题而异）"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "图解解题第4步"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：分析、列式与规范作答"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "关键点拨（仅底部字幕）"
+    },
+    {
+      "id": "{segmentUuid}",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾"
+    }
+  ]
+}
