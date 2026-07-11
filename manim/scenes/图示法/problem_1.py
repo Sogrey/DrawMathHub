@@ -113,7 +113,7 @@ class Problem1Scene(MathLessonScene):
                 else:
                     self.play(Create(part), run_time=0.8)
             self.safe_subtitle(
-                "1个圆圈代表1人；之间未知人数可以用横向省略号表示",
+                "1个圆圈代表1人；之间未知人数可以用省略号表示",
                 wait=3,
             )
             self.wait(1)
