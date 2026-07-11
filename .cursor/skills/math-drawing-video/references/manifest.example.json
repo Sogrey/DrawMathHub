@@ -2,7 +2,7 @@
   "version": 2,
   "problemId": "{problemUuid}",
   "exampleId": "{exampleUuid}",
-  "fullVideo": "/videos/{problemUuid}/{exampleUuid}/full.mp4",
+  "fullVideo": "full.mp4",
   "segments": [
     {
       "id": "{segmentUuid}",

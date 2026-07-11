@@ -14,7 +14,7 @@ export function getManifestUrl(problemUuid: string, exampleUuid: string): string
 }
 
 export function resolveSegmentUrl(basePath: string, segment: VideoSegment): string {
-  if (segment.file.startsWith('/')) return segment.file
+  if (segment.file.startsWith('/')) return publicUrl(segment.file)
   return `${basePath}/${segment.file}`
 }
 
@@ -24,7 +24,7 @@ export function resolveFullVideoUrl(
 ): string {
   if (manifest.fullVideo) {
     return manifest.fullVideo.startsWith('/')
-      ? manifest.fullVideo
+      ? publicUrl(manifest.fullVideo)
       : `${basePath}/${manifest.fullVideo}`
   }
   return `${basePath}/full.mp4`

@@ -81,7 +81,7 @@ class SegmentRecorder:
 
     @property
     def full_video_public_path(self) -> str:
-        return f"/videos/{self.problem_uuid}/{self.example_uuid}/{FULL_VIDEO_FILENAME}"
+        return FULL_VIDEO_FILENAME
 
     @property
     def full_video_file(self) -> Path:
