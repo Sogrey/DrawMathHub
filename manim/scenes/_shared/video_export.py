@@ -179,8 +179,7 @@ def load_example_uuids(lesson_number: int, example_index: int = 0) -> tuple[str,
 
 def standard_segment_plan() -> list[dict[str, str]]:
     return [
-        {"role": "cover", "label": "封面", "desc": "片头标题 show_title"},
-        {"role": "intro", "label": "题型讲解", "desc": "题型讲解与特征"},
+        {"role": "intro", "label": "题型讲解", "desc": "片头标题 show_title + 题型讲解与特征"},
         {"role": "question", "label": "题目", "desc": "题目展示与图解基础"},
         {"role": "draw", "label": "1…n", "desc": "图解解题分步（仅画图段用数字序号）"},
         {"role": "written", "label": "作答", "desc": "书面答题：分析、列式、规范作答"},

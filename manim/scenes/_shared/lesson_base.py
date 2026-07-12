@@ -266,6 +266,76 @@ class MathLessonScene(SafeScene):
             "circle_r": circle_r,
         }
 
+    def make_numbered_feature_row(
+        self,
+        num: str,
+        main_text: str,
+        sub_text: str,
+        *,
+        circle_r: float = 0.30,
+        main_size: int = 28,
+        sub_size: int = 22,
+        max_text_width: float | None = None,
+    ) -> VGroup:
+        """序号圆 + 主句/副句 特征行。"""
+        num_circle = Circle(
+            radius=circle_r, color=TEAL_D, fill_opacity=0.8, fill_color=TEAL_D,
+        )
+        num_label = Text(num, font_size=26, color=WHITE, font=self.DEFAULT_FONT)
+        num_label.move_to(num_circle.get_center())
+        num_group = VGroup(num_circle, num_label)
+        main_t = self.safe_text(main_text, font_size=main_size, color=WHITE)
+        sub_t = self.safe_text(sub_text, font_size=sub_size, color=GREY_B)
+        right_group = VGroup(main_t, sub_t).arrange(DOWN, buff=0.10, aligned_edge=LEFT)
+        if max_text_width is not None:
+            self.fit_to_width(right_group, max_text_width)
+        return VGroup(num_group, right_group).arrange(RIGHT, buff=0.35, aligned_edge=UP)
+
+    def layout_numbered_features(
+        self,
+        items: list[tuple[str, str, str]],
+        *,
+        top_y: float,
+        row_step: float = 1.08,
+        two_column_min: int = 4,
+        left_margin: float = 0.8,
+        col_inner_gap: float = 0.45,
+    ) -> list[VGroup]:
+        """
+        特征列表：≤3 条单列左对齐；≥4 条左右两列（左列 ceil(n/2)）。
+        top_y 为第一条特征行的中心纵坐标。
+        """
+        use_two_cols = len(items) >= two_column_min
+        col_text_w = (self.safe_right - self.safe_left) / 2 - 1.1 if use_two_cols else None
+        rows = [
+            self.make_numbered_feature_row(
+                num, main, sub, max_text_width=col_text_w,
+            )
+            for num, main, sub in items
+        ]
+
+        left_x = self.safe_left + left_margin
+        if not use_two_cols:
+            for i, row in enumerate(rows):
+                row.move_to(np.array([0, top_y - i * row_step, 0]))
+                row.align_to(np.array([left_x, 0, 0]), LEFT)
+                self.clamp_content(row)
+            return rows
+
+        mid = (len(items) + 1) // 2
+        col_center = (self.safe_left + self.safe_right) / 2
+        right_x = col_center + col_inner_gap
+
+        for i in range(mid):
+            rows[i].move_to(np.array([0, top_y - i * row_step, 0]))
+            rows[i].align_to(np.array([left_x, 0, 0]), LEFT)
+            self.clamp_content(rows[i])
+        for j, idx in enumerate(range(mid, len(items))):
+            rows[idx].move_to(np.array([0, top_y - j * row_step, 0]))
+            rows[idx].align_to(np.array([right_x, 0, 0]), LEFT)
+            self.clamp_content(rows[idx])
+        return rows
+
     def play_keypoints_only(
         self,
         key_points: str,

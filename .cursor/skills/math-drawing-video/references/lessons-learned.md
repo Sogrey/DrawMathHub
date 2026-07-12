@@ -98,7 +98,7 @@ self.play_keypoints_only(
 
 ### 5.2 导航 label
 
-- 非画图段：2～4 字语义名（封面、题型讲解、题目、作答、点拨、结尾）
+- 非画图段：2～4 字语义名（题型讲解、题目、作答、点拨、结尾）
 - 画图段：仅数字 `1`、`2`…
 
 ### 5.3 分步学习切换不自动播第一段
@@ -113,14 +113,124 @@ self.play_keypoints_only(
 public/videos/{problemUuid}/{exampleUuid}/
 ├── full.mp4
 ├── manifest.json
-└── segments/cover.mp4, 01.mp4 …
+└── segments/01.mp4 …
 ```
 
 路由/进度仍用 `lessonNumber`；视频路径用 JSON 中的 `id` / `mainProblem.id`。
 
+### 5.5 manifest 中 `fullVideo` 勿用站点根绝对路径
+
+**现象**：GitHub Pages 部署在子路径（如 `/DrawMathHub/`）时，`full.mp4` 404，但 `segments/*.mp4` 正常。
+
+**原因**：
+
+- `manifest.fullVideo` 若写成 `/videos/.../full.mp4`，浏览器请求 `https://<user>.github.io/videos/...`（缺子路径）
+- `segments` 用相对路径 `segments/01.mp4`，拼接 `basePath` 后正确
+
+**正确做法**：
+
+- Manim 导出写相对路径：`"fullVideo": "full.mp4"`（`video_export.py` 已改）
+- 前端 `resolveFullVideoUrl` / `resolveSegmentUrl` 对以 `/` 开头的路径统一走 `publicUrl()` 补 base
+- 本地与 Pages 的 base 来源：`.env` `VITE_BASE_PATH` → `vite.config` `base` → `getAppBase()`
+
+### 5.6 封面与题型讲解合并为一段
+
+原先 `cover` + `intro` 两段内容少、切换拖沓，已合并为单段 `intro`（`segments/01.mp4`）。
+
+```python
+with self.segment("intro", "题型讲解", "segments/01.mp4", "片头标题与题型讲解"):
+    self.show_title(...)
+    self.init_layout_after_title(prob_h=1.0)
+    # 概念 + 特征同屏 …
+```
+
+- manifest 少一段，分步导航首段即「题型讲解」
+- 存量视频可用 ffmpeg 从 `full.mp4` 按新 `startTime/endTime` 重切，不必重渲 Manim（改布局后仍需重渲）
+
 ---
 
-## 六、制作节奏建议
+## 六、题型讲解段一屏布局（intro）
+
+### 6.1 概念 + 特征合并一屏，用上下分栏
+
+「什么是 XX？」与「XX 的特征」内容都较少，分两屏切换显得空。推荐**同屏上下两块**：
+
+```
+┌─────────────────────────────────────┐
+│ [常驻标题]                           │
+│  ▲ 上：概念定义（小标题 + 1～2 行正文） │
+├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤
+│  ▼ 下：特征列表（小标题 + 序号行）    │
+└─────────────────────────────────────┘
+```
+
+**不推荐左右分栏**：特征行含「序号圆 + 主句 + 副句」，需要横向宽度；左轻右重，窄列副句难读。
+
+### 6.2 下板块须相对上板块动态定位（防重叠）
+
+**错误做法**：用固定 `zone_mid = title_bottom - 2.35` 放分隔线和特征区——上板块正文高度一变就与下板块重叠。
+
+**正确做法**：先排完 `concept_block`，再链式下移：
+
+```python
+divider_y = concept_block.get_bottom()[1] - 0.45
+feature_title.move_to([0, divider_y - 0.60, 0])
+top_y = feature_title.get_bottom()[1] - 0.50
+feature_groups = self.layout_numbered_features(features, top_y=top_y)
+```
+
+间距可调：`0.45`（概念→线）、`0.60`（线→特征标题）、`0.50`（标题→首行）。
+
+### 6.3 特征列表：`layout_numbered_features`
+
+`lesson_base.py` 提供复用 API：
+
+| 条数 | 布局 |
+|------|------|
+| ≤3 | 单列左对齐 |
+| ≥4 | 左右两列，左列 `ceil(n/2)`，文字 `fit_to_width` 适配列宽 |
+
+```python
+features = [
+    ("1", "主句", "副句"),
+    # …
+]
+rows = self.layout_numbered_features(
+    features,
+    top_y=feature_title.get_bottom()[1] - 0.50,
+    row_step=1.12,          # 单列行距
+    two_column_min=4,       # 达到 4 条自动双列
+)
+```
+
+单条构建：`make_numbered_feature_row(num, main, sub)`。
+
+### 6.4 intro 段动画节奏
+
+1. 概念块 `FadeIn` → `wait(2)`
+2. 分隔线 + 特征标题 `FadeIn`
+3. 特征行依次 `FadeIn`（各 `wait(1)`，保留分步感）
+4. `wait(2)` → 整块 `FadeOut` 进入题目段
+
+比「整屏切换」省约 3～4 秒；改布局后须重渲并 `post_render.py` 更新 `segments/01.mp4` 与 manifest 时间轴。
+
+---
+
+## 七、GitHub Pages 部署
+
+| 项 | 说明 |
+|----|------|
+| Workflow | `.github/workflows/deploy.yml`，push `main` 自动构建部署 |
+| 环境变量 | CI 中 `VITE_BASE_PATH=/DrawMathHub/` 与 `.env` 一致 |
+| SPA 回退 | `scripts/gh-pages-postbuild.mjs` 复制 `index.html` → `404.html` |
+| 仓库设置 | Settings → Pages → Source 选 **GitHub Actions** |
+| 访问地址 | `https://<user>.github.io/DrawMathHub/` |
+
+PR 仅跑 build 校验，不部署 artifact。
+
+---
+
+## 八、制作节奏建议
 
 1. 先 `-ql` 快速预览布局与字幕，确认后再 `-qh` 出成片
 2. 每写完一段动画，对照 [prompt.md](prompt.md) 重叠检查清单
@@ -129,11 +239,13 @@ public/videos/{problemUuid}/{exampleUuid}/
 
 ---
 
-## 七、第 1 讲参考文件
+## 九、第 1 讲参考文件
 
 | 文件 | 作用 |
 |------|------|
-| `manim/scenes/图示法/problem_1.py` | 完整 Scene 参考 |
-| `manim/scenes/_shared/lesson_base.py` | `make_between_diagram`、`play_keypoints_only` |
+| `manim/scenes/图示法/problem_1.py` | 完整 Scene 参考（intro 一屏上下布局） |
+| `manim/scenes/_shared/lesson_base.py` | `make_between_diagram`、`layout_numbered_features`、`play_keypoints_only` |
 | `manim/scenes/_shared/safe_video.py` | 安全区、折行、字幕偏移 |
+| `manim/scenes/_shared/video_export.py` | manifest 导出、`fullVideo` 相对路径 |
+| `src/data/videoAssets.ts` | `publicUrl` 拼接、manifest 路径解析 |
 | `public/data/problems/1.json` | 题目元数据与 keyPoints |

@@ -38,6 +38,7 @@ Windows 等价路径：`%USERPROFILE%\.cursor\skills\manim-video-safe\`
 
 编写或审查脚本时确认：
 
+- [ ] 题型讲解段：片头 + 概念 + 特征同屏上下分栏（`layout_numbered_features`）
 - [ ] 片头副标题 `画图解题法 · {methodType}`，与 JSON 一致
 - [ ] `show_title` 后 `init_layout_after_title()`；段内标题 `place_section_title()` + 正文 `place_below_section_title()`
 - [ ] 题目框从 `title_bottom` 动态定位，保留至片尾前（点拨段可复用缩小图）
@@ -58,7 +59,7 @@ public/data/problems/{lessonNumber}.json              →  题目元数据（含
 public/videos/{problemUuid}/{exampleUuid}/
   ├── full.mp4
   ├── manifest.json
-  └── segments/cover.mp4, 01.mp4 … end.mp4
+  └── segments/01.mp4 … end.mp4
 ```
 
 - 路由/进度用 `lessonNumber`（1–60）
@@ -87,10 +88,10 @@ public/videos/{problemUuid}/{exampleUuid}/
 | `SegmentRecorder` | `manim/scenes/_shared/video_export.py` |
 | 参考实现 | `manim/scenes/图示法/problem_1.py` |
 
-**推荐分段**：封面 → 题型讲解 → 题目 → 图解 1…n → 作答 → 点拨 → 结尾
+**推荐分段**：题型讲解（含片头）→ 题目 → 图解 1…n → 作答 → 点拨 → 结尾
 
 **`label` 规则**：
-- 非画图段：2～4 字（封面、题型讲解、题目、作答、点拨、结尾）
+- 非画图段：2～4 字（题型讲解、题目、作答、点拨、结尾）
 - 画图段：仅数字 `1`…`n`
 
 完整版段间 `wait(3)`（`FULL_VIDEO_SEGMENT_GAP`），不计入分段 mp4。
@@ -116,7 +117,7 @@ python ..\_shared\post_render.py --lesson 1 `
 ## 与 Vue 前端对接
 
 - 播放器：`src/components/SolutionVideoPlayer.vue`
-- 路径：`src/data/videoAssets.ts` → `/videos/{problemUuid}/{exampleUuid}/full.mp4`
+- 路径：`src/data/videoAssets.ts` → `publicUrl('videos/...')` 拼接 base（GitHub Pages 子路径部署见 lessons-learned §5.5）
 - 分步模式切换后须 `nextTick` 再加载第一段（已实现于 `useSegmentedVideoPlayer.ts`）
 
 ## 共享模块

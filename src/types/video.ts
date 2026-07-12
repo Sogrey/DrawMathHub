@@ -4,7 +4,7 @@ export const VIDEO_PENDING_MESSAGE = '敬请期待，可以先阅读下方的规
 export interface VideoSegment {
   /** 分段视频 uuid */
   id: string
-  /** 语义角色：cover / intro / draw-1 … */
+  /** 语义角色：intro / question / draw-1 … */
   role?: string
   label: string
   file: string

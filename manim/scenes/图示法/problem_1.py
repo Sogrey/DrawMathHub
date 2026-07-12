@@ -37,52 +37,67 @@ class Problem1Scene(MathLessonScene):
         self.init_video_recorder()
         mp = self.main_problem
 
-        # ── 封面：片头 ──
-        with self.segment("cover", "封面", "segments/cover.mp4", "片头 · 之间问题 · 图示法", gap_after=False):
+        # ── 题型讲解（含片头）──
+        with self.segment("intro", "题型讲解", "segments/01.mp4", "片头标题与题型讲解"):
             self.show_title(data["title"], subtitle=f"画图解题法 · {data['methodType']}")
+            self.init_layout_after_title(prob_h=1.0)
 
-        self.init_layout_after_title(prob_h=1.0)
+            title_bottom = self._title_group.get_bottom()[1]
+            zone_top = title_bottom - 0.45
 
-        # ── 1：题型讲解 + 特征 ──
-        with self.segment("intro", "题型讲解", "segments/01.mp4", "题型讲解与特征"):
-            s1_title = self.place_section_title("什么是之间问题？", font_size=40)
-            s1_body = self.safe_text("排队的时候，如果告诉你两个人分别排第几，", font_size=32, color=WHITE)
-            s1_body2 = self.safe_text("问你他们之间有几个人——这就是之间问题！", font_size=32, color=WHITE)
-            s1_group = VGroup(s1_body, s1_body2).arrange(DOWN, buff=0.3, aligned_edge=LEFT)
-            self.place_below_section_title(s1_group, s1_title, buff=0.55)
-            self.play(FadeIn(s1_title, shift=DOWN * 0.2), run_time=0.6)
-            self.play(FadeIn(s1_body, shift=UP * 0.2), run_time=0.5)
-            self.wait(1)
-            self.play(FadeIn(s1_body2, shift=UP * 0.2), run_time=0.5)
-            self.wait(3)
-            self.play(FadeOut(VGroup(s1_title, s1_group)), run_time=0.5)
+            # ── 上板块：概念定义 ──
+            concept_title = self.safe_text("什么是之间问题？", font_size=36, color=YELLOW)
+            concept_title.move_to(np.array([0, zone_top - 0.35, 0]))
+            self.clamp_content(concept_title)
 
-            s2_title = self.place_section_title("之间问题的三个特征", font_size=38)
-            self.play(FadeIn(s2_title, shift=DOWN * 0.2), run_time=0.6)
+            s1_body = self.safe_text(
+                "排队的时候，如果告诉你两个人分别排第几，", font_size=28, color=WHITE,
+            )
+            s1_body2 = self.safe_text(
+                "问你他们之间有几个人——这就是之间问题！", font_size=28, color=WHITE,
+            )
+            concept_body = VGroup(s1_body, s1_body2).arrange(DOWN, buff=0.22, aligned_edge=LEFT)
+            concept_body.next_to(concept_title, DOWN, buff=0.45)
+            concept_body.move_to(np.array([0, concept_body.get_center()[1], 0]))
+            self.clamp_content(concept_body)
+            concept_block = VGroup(concept_title, concept_body)
+
+            # 分隔线紧贴概念块下方，下板块整体再下移
+            divider_y = concept_block.get_bottom()[1] - 0.45
+            divider = Line(
+                np.array([self.safe_left + 0.5, divider_y, 0]),
+                np.array([self.safe_right - 0.5, divider_y, 0]),
+                stroke_width=1.5,
+                color=GREY_B,
+                stroke_opacity=0.25,
+            )
+
+            # ── 下板块：特征（≤3 单列，≥4 左右两列）──
+            feature_title = self.safe_text("之间问题的三个特征", font_size=34, color=YELLOW)
+            feature_title.move_to(np.array([0, divider_y - 0.60, 0]))
+            self.clamp_content(feature_title)
+
             features = [
                 ("1", "已知两人各排第几", "比如：小明排第3，小红排第8"),
                 ("2", "问的是\"之间\"有几人", "\"之间\"不包括这两个人自己"),
                 ("3", "用画图的方法最直观", "画圈圈表示人，一目了然！"),
             ]
-            feature_groups = []
-            y_start = s2_title.get_bottom()[1] - 0.55
-            for i, (num, main_text, sub_text) in enumerate(features):
-                num_circle = Circle(radius=0.35, color=TEAL_D, fill_opacity=0.8, fill_color=TEAL_D)
-                num_label = Text(num, font_size=28, color=WHITE, font=self.DEFAULT_FONT)
-                num_label.move_to(num_circle.get_center())
-                num_group = VGroup(num_circle, num_label)
-                main_t = self.safe_text(main_text, font_size=30, color=WHITE)
-                sub_t = self.safe_text(sub_text, font_size=24, color=GREY_B)
-                right_group = VGroup(main_t, sub_t).arrange(DOWN, buff=0.12, aligned_edge=LEFT)
-                row = VGroup(num_group, right_group).arrange(RIGHT, buff=0.4, aligned_edge=UP)
-                row.move_to(np.array([0, y_start - i * 1.5, 0]))
-                row.align_to(np.array([self.safe_left + 0.8, 0, 0]), LEFT)
-                self.clamp_content(row)
-                feature_groups.append(row)
-                self.play(FadeIn(row, shift=RIGHT * 0.3), run_time=0.6)
-                self.wait(1.5)
+            feature_groups = self.layout_numbered_features(
+                features,
+                top_y=feature_title.get_bottom()[1] - 0.50,
+                row_step=1.12,
+            )
+
+            intro_all = VGroup(concept_block, divider, feature_title, *feature_groups)
+
+            self.play(FadeIn(concept_block, shift=DOWN * 0.15), run_time=0.8)
             self.wait(2)
-            self.play(FadeOut(VGroup(s2_title, *feature_groups)), run_time=0.5)
+            self.play(FadeIn(divider), FadeIn(feature_title, shift=DOWN * 0.15), run_time=0.6)
+            for row in feature_groups:
+                self.play(FadeIn(row, shift=RIGHT * 0.25), run_time=0.5)
+                self.wait(1)
+            self.wait(2)
+            self.play(FadeOut(intro_all), run_time=0.5)
 
         # ── 2：题目展示（全程保留至书面答题结束）──
         prob_all = None

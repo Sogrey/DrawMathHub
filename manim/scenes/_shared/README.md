@@ -20,8 +20,7 @@ manim/scenes/
 
 | 分段 | 导航 label | 内容 |
 |------|-----------|------|
-| cover | 封面 | `show_title` |
-| intro | 题型讲解 | 题型讲解 + 题型特征 |
+| intro | 题型讲解 | `show_title` + 题型讲解与特征 |
 | question | 题目 | 题目 + 图解基础 |
 | draw-* | 1…n | 图解解题分步（仅画图段用数字） |
 | written | 作答 | 书面答题（分析 + 列式 + 作答） |

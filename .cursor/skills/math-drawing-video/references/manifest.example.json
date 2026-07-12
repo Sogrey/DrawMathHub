@@ -6,20 +6,11 @@
   "segments": [
     {
       "id": "{segmentUuid}",
-      "role": "cover",
-      "label": "封面",
-      "file": "segments/cover.mp4",
-      "hint": "片头标题",
-      "startTime": 0.0,
-      "endTime": 6.0
-    },
-    {
-      "id": "{segmentUuid}",
       "role": "intro",
       "label": "题型讲解",
       "file": "segments/01.mp4",
-      "hint": "题型讲解与特征",
-      "startTime": 6.0,
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
       "endTime": 21.5
     },
     {

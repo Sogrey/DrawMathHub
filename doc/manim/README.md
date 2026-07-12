@@ -41,4 +41,12 @@ python ..\_shared\post_render.py --lesson 1 `
 
 - 题目数据：`public/data/problems/{lessonNumber}.json`
 - 视频播放：`src/components/SolutionVideoPlayer.vue`
-- 路径解析：`src/data/videoAssets.ts`
+- 路径解析：`src/data/videoAssets.ts`（子路径部署须 `publicUrl` 补 base，见经验文档 §5.5）
+
+## 经验归档（近期）
+
+| 主题 | 文档章节 |
+|------|----------|
+| intro 一屏上下布局、特征双列 | [lessons-learned §六](../../.cursor/skills/math-drawing-video/references/lessons-learned.md) |
+| cover+intro 合并、manifest 路径 | [lessons-learned §5.5–5.6](../../.cursor/skills/math-drawing-video/references/lessons-learned.md) |
+| GitHub Pages 部署 | [lessons-learned §七](../../.cursor/skills/math-drawing-video/references/lessons-learned.md) |
