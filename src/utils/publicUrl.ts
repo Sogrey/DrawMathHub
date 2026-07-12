@@ -6,12 +6,13 @@ export function publicUrl(path: string): string {
   return `${getAppBase()}${normalized}`
 }
 
-/** 安全拉取 JSON，避免 404 返回 index.html 时 parse 报错 */
+/** 安全拉取 JSON，避免 404 回退为 index.html 时 parse 报错 */
 export async function fetchJson<T>(url: string, fallback: T): Promise<T> {
   try {
     const response = await fetch(url)
     if (!response.ok) return fallback
     const contentType = response.headers.get('content-type') ?? ''
+    if (contentType.includes('text/html')) return fallback
     if (!contentType.includes('json')) return fallback
     return (await response.json()) as T
   } catch {

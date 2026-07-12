@@ -12,7 +12,7 @@
             <h1 class="text-xl font-bold text-text">{{ problem.title }}</h1>
             <p class="text-textTertiary mt-2 text-body-sm">{{ problem.problemIdentification }}</p>
           </div>
-          <div v-if="progress?.learned" class="text-successText">
+          <div v-if="isLearned" class="text-successText">
             <CheckCircle :size="32" />
           </div>
         </div>
@@ -103,11 +103,16 @@
 
           <div class="flex justify-center">
             <button
-              class="px-8 py-3 rounded-button font-medium bg-success text-successText hover:bg-success/80 transition-colors"
+              class="px-8 py-3 rounded-button font-medium transition-colors"
+              :class="isLearned
+                ? 'bg-success/30 text-successText cursor-default'
+                : 'bg-success text-successText hover:bg-success/80'"
+              :disabled="isLearned"
               @click="markAsLearned"
             >
-              <CheckCircle class="inline-block mr-2" :size="18" />
-              完成学习
+              <CheckCircle v-if="isLearned" class="inline-block mr-2" :size="18" />
+              <Circle v-else class="inline-block mr-2" :size="18" />
+              {{ isLearned ? '已完成学习' : '完成学习' }}
             </button>
           </div>
         </div>
@@ -244,7 +249,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { CheckCircle, Search, BookOpen, Pencil, ArrowLeft, ArrowRight, Loader2, XCircle, Lightbulb, PenTool, FileText, Star } from '@lucide/vue'
+import { CheckCircle, Circle, Search, BookOpen, Pencil, ArrowLeft, ArrowRight, Loader2, XCircle, Lightbulb, PenTool, FileText, Star } from '@lucide/vue'
 import Navigation from '@/components/Navigation.vue'
 import SolutionVideoPlayer from '@/components/SolutionVideoPlayer.vue'
 import PracticeCanvas from '@/components/PracticeCanvas.vue'
@@ -277,16 +282,27 @@ const currentExercise = computed(() => {
 })
 const isLoading = computed(() => problemStore.isLoading)
 
-const progress = computed(() => currentProgress.value)
+/** 仅当进度记录与当前讲次一致时才视为已学，避免切换题目时沿用上一讲状态 */
+const isLearned = computed(() => {
+  if (!problem.value || !currentProgress.value) return false
+  return (
+    currentProgress.value.problemId === problem.value.lessonNumber
+    && currentProgress.value.learned === true
+  )
+})
 
 async function loadProblemProgress() {
-  if (problem.value) {
-    currentProgress.value = await progressStore.getProgress(problem.value.lessonNumber)
+  if (!problem.value) {
+    currentProgress.value = null
+    return
   }
+  currentProgress.value = await progressStore.getProgress(problem.value.lessonNumber)
 }
 
-function selectProblem(problemId: number) {
-  problemStore.selectProblem(problemId)
+async function initPage(lessonId: number) {
+  currentProgress.value = null
+  await problemStore.selectProblem(lessonId)
+  await loadProblemProgress()
 }
 
 function nextExtension() {
@@ -342,11 +358,10 @@ function switchTab(tab: 'learning' | 'extension' | 'practice') {
   }
 }
 
-function markAsLearned() {
-  if (problem.value) {
-    progressStore.markAsLearned(problem.value.lessonNumber)
-    currentProgress.value = { ...currentProgress.value!, learned: true }
-  }
+async function markAsLearned() {
+  if (!problem.value || isLearned.value) return
+  await progressStore.markAsLearned(problem.value.lessonNumber)
+  await loadProblemProgress()
 }
 
 function submitAnswer() {
@@ -368,16 +383,15 @@ function submitAnswer() {
 }
 
 watch(() => route.params.id, (id) => {
-  selectProblem(Number(id))
-  loadProblemProgress()
+  const lessonId = Number(id)
+  if (lessonId) initPage(lessonId)
 })
 
-onMounted(() => {
+onMounted(async () => {
+  await progressStore.loadProgress()
   const id = Number(route.params.id)
   if (id) {
-    selectProblem(id)
+    await initPage(id)
   }
-  progressStore.loadProgress()
-  loadProblemProgress()
 })
 </script>

@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "af265090-65b5-44ba-9aa0-df7ed279ec51",
+  "exampleId": "622aff02-4433-4342-a158-6ee2b150d123",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "051cd3f4-cd27-5e14-8e08-43d52b4cdb93",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.5
+    },
+    {
+      "id": "834d814e-a000-5928-bf25-cbe016db8429",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找出关键信息",
+      "startTime": 19.5,
+      "endTime": 24.3
+    },
+    {
+      "id": "2919c1f7-74e7-576b-b8ef-dd7b8790186c",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "用圆圈表示排队的人",
+      "startTime": 27.3,
+      "endTime": 37.4
+    },
+    {
+      "id": "b974887e-ad2b-5a6a-807c-71f2f95d4c31",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出聪聪的位置",
+      "startTime": 40.4,
+      "endTime": 46.9
+    },
+    {
+      "id": "0d31f254-af43-58a6-99d5-b88f562b15b1",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出前面8人、后面10人",
+      "startTime": 49.9,
+      "endTime": 56.3
+    },
+    {
+      "id": "b65717e3-9c34-5bc3-9e95-cc373f2cfc0f",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "标出全队总人数",
+      "startTime": 59.3,
+      "endTime": 67.6
+    },
+    {
+      "id": "71c2761b-3aa8-52f8-81a2-86d195d32160",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：分析、列式与规范作答",
+      "startTime": 70.6,
+      "endTime": 97.0
+    },
+    {
+      "id": "35125203-b2db-588a-ac0b-053d21f9bd25",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 100.0,
+      "endTime": 108.4
+    },
+    {
+      "id": "dbade660-7deb-56a9-a312-fe446acd0bf9",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 111.4,
+      "endTime": 118.4
+    }
+  ]
+}

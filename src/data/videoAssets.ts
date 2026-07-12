@@ -30,15 +30,21 @@ export function resolveFullVideoUrl(
   return `${basePath}/full.mp4`
 }
 
+function isVideoResponse(contentType: string): boolean {
+  const ct = contentType.toLowerCase()
+  if (!ct || ct.includes('text/html') || ct.includes('json')) return false
+  return ct.includes('video/') || ct.includes('octet-stream') || ct.includes('mp4')
+}
+
+/** 探测 mp4 是否存在；排除 SPA 404 回退返回的 index.html */
 async function resourceExists(url: string): Promise<boolean> {
   try {
-    const res = await fetch(url, { method: 'HEAD' })
-    if (res.ok) return true
-    if (res.status === 405 || res.status === 404) {
-      const getRes = await fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } })
-      return getRes.ok
-    }
-    return false
+    const res = await fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } })
+    if (!res.ok) return false
+    const contentType = res.headers.get('content-type') ?? ''
+    if (isVideoResponse(contentType)) return true
+    // 部分环境 HEAD/Range 不返回准确 type，用 content-range 辅助判断
+    return res.status === 206 && res.headers.get('content-range') !== null
   } catch {
     return false
   }
@@ -84,7 +90,7 @@ export async function probeVideoAvailability(
 
   return {
     status: ready ? 'ready' : 'pending',
-    manifest,
+    manifest: ready ? manifest : null,
     hasFullVideo,
     hasInteractive,
     fullVideoUrl: manifestFullUrl,

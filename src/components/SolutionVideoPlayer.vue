@@ -11,14 +11,16 @@
 
     <!-- 视频尚未制作 -->
     <div
-      v-else-if="availability.status === 'pending'"
+      v-else-if="!isVideoReady"
       class="w-full aspect-video bg-gradient-to-br from-cardSecondary to-card rounded-card border border-border flex flex-col items-center justify-center p-8 text-center"
     >
       <div class="w-16 h-16 rounded-full glass-card-secondary flex items-center justify-center mb-4">
         <Clapperboard class="text-primaryDark" :size="32" />
       </div>
       <p class="text-lg font-bold text-text mb-2">{{ VIDEO_PENDING_TITLE }}</p>
-      <p class="text-body-sm text-textSecondary max-w-sm leading-relaxed">{{ VIDEO_PENDING_MESSAGE }}</p>
+      <p v-if="VIDEO_PENDING_MESSAGE" class="text-body-sm text-textSecondary max-w-sm leading-relaxed">
+        {{ VIDEO_PENDING_MESSAGE }}
+      </p>
     </div>
 
     <!-- 视频已就绪 -->
@@ -234,6 +236,12 @@ const {
 
 const currentSegment = computed(() => segments.value[currentSegmentIndex.value])
 
+const isVideoReady = computed(
+  () =>
+    availability.value.status === 'ready'
+    && (availability.value.hasFullVideo || availability.value.hasInteractive),
+)
+
 function pickDefaultMode(avail: VideoAvailability): VideoPlayMode {
   if (avail.hasFullVideo) return 'full'
   if (avail.hasInteractive) return 'interactive'
@@ -259,7 +267,7 @@ async function probeAndInit() {
   availability.value = result
   manifest.value = result.manifest
 
-  if (result.status !== 'ready') return
+  if (result.status !== 'ready' || (!result.hasFullVideo && !result.hasInteractive)) return
 
   mode.value = pickDefaultMode(result)
 }
