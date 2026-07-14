@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "ad295630-0302-4400-8c40-18da7e69713c",
+  "exampleId": "1bfc8ce6-c246-4582-8dbe-87f42f9c5ce2",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "f345657d-de29-572c-b297-35ab116cc744",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "36b650dc-1cd8-554b-88d5-c1e159d31931",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：7米深井蜗牛爬井",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "642bdef8-31bc-527e-8c48-6b14a0f3b844",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画井并标深度，蜗牛在井底",
+      "startTime": 27.2,
+      "endTime": 34.1
+    },
+    {
+      "id": "e25e248c-624c-5d47-89f6-8ef0b5b1de91",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "示范一天上爬与下滑",
+      "startTime": 37.1,
+      "endTime": 43.4
+    },
+    {
+      "id": "29559c5a-c8c8-5be2-aa91-bd5ec28f94ac",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "前4天每天净爬1米",
+      "startTime": 46.4,
+      "endTime": 57.8
+    },
+    {
+      "id": "4b51c9a2-11df-5fa0-a616-49d2a262fd54",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "第5天到井口不再下滑",
+      "startTime": 60.8,
+      "endTime": 69.4
+    },
+    {
+      "id": "05ebfeca-8fe9-5d93-99cc-2bbee982c7ba",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 72.4,
+      "endTime": 85.5
+    },
+    {
+      "id": "bd9208eb-5162-50f1-83aa-abcf788b54e3",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 88.5,
+      "endTime": 96.8
+    },
+    {
+      "id": "05a61a5b-663a-5201-b138-4b78ca1d9d65",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 99.8,
+      "endTime": 106.8
+    }
+  ]
+}

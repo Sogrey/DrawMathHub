@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "41955185-042c-48ac-b372-80ee65605fc7",
+  "exampleId": "57019352-72da-4987-ad9c-b48eb91bfd3b",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "4e534240-cec2-5749-b69b-c0db18837845",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "ad236ad1-808c-5ae7-bc9f-d0d7f36d937d",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找出关键信息",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "6fe5db8f-7a4a-5ed5-ad45-f5d4eda1f64b",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "列表格整理钱币信息",
+      "startTime": 27.2,
+      "endTime": 34.0
+    },
+    {
+      "id": "529de50f-1dd6-5f52-8464-c737979609e7",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "从20元开始有序列举",
+      "startTime": 37.0,
+      "endTime": 43.9
+    },
+    {
+      "id": "17166ffa-318b-5546-9d2b-59538599005a",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "继续列举其余组合",
+      "startTime": 46.9,
+      "endTime": 53.8
+    },
+    {
+      "id": "3de34ad1-e009-506f-9f10-376d0ad5ec1d",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "合计等于30元的有几种",
+      "startTime": 56.8,
+      "endTime": 64.5
+    },
+    {
+      "id": "48c26009-699c-57a4-9186-b88af396ffde",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列举四种方法",
+      "startTime": 67.5,
+      "endTime": 84.6
+    },
+    {
+      "id": "f43115a7-c716-528c-a035-a343db90727e",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 87.6,
+      "endTime": 95.9
+    },
+    {
+      "id": "25984c37-40d5-5d23-b2ca-13c717cf5fad",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 98.9,
+      "endTime": 105.9
+    }
+  ]
+}

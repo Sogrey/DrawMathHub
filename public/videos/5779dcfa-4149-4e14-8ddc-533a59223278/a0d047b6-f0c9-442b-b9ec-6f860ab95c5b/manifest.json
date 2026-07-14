@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "5779dcfa-4149-4e14-8ddc-533a59223278",
+  "exampleId": "a0d047b6-f0c9-442b-b9ec-6f860ab95c5b",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "d8867928-b432-57c4-a049-5e13af694f69",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "dc127bbd-1720-55e8-af65-bf21d8af71e2",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：菜和饮料各选一个",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "f5407a49-49ca-540e-899c-bd041cb5ff9d",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "标号并排列菜和饮料",
+      "startTime": 27.2,
+      "endTime": 34.4
+    },
+    {
+      "id": "55093019-8c8f-5efc-8625-d04f08b52b58",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "从 A 开始连线",
+      "startTime": 37.4,
+      "endTime": 43.7
+    },
+    {
+      "id": "72bfc538-92a9-54b6-a579-afd7c043c5af",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "其余菜依次连线",
+      "startTime": 46.7,
+      "endTime": 53.7
+    },
+    {
+      "id": "8683dd8e-68a3-529c-b33a-f20ba754b4c5",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "数线条得搭配种数",
+      "startTime": 56.7,
+      "endTime": 64.4
+    },
+    {
+      "id": "be959009-b3e4-5550-9cdc-ff950f3afae0",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 67.4,
+      "endTime": 80.5
+    },
+    {
+      "id": "c50c99ef-5d4f-5dd7-8529-0cdc3f4f00eb",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 83.5,
+      "endTime": 91.8
+    },
+    {
+      "id": "839e3ae9-8717-51e9-958a-5764987f2df2",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 94.8,
+      "endTime": 101.8
+    }
+  ]
+}

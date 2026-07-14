@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "aaee5b87-44e1-48ee-ae69-39d6a81af544",
+  "exampleId": "d0176c59-5449-4234-8b62-2613f0692413",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "3800b934-c248-5b8d-a8e2-9e15509a46b1",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.5
+    },
+    {
+      "id": "109172cb-7b5e-5491-a19a-0a5d940a89a5",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找「和」与倍数",
+      "startTime": 19.5,
+      "endTime": 24.3
+    },
+    {
+      "id": "7fdad1c8-59eb-5482-a4be-a1fe4682c7fa",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画1倍量",
+      "startTime": 27.3,
+      "endTime": 34.9
+    },
+    {
+      "id": "25d66ed8-f3b0-54f5-b924-4ea488590eab",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "画多倍量",
+      "startTime": 37.9,
+      "endTime": 45.0
+    },
+    {
+      "id": "8df904d2-c1a4-53ab-a0ac-735102fe6a8b",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出总和",
+      "startTime": 48.0,
+      "endTime": 54.3
+    },
+    {
+      "id": "96f61b65-d04a-58bb-b63b-334bb7fed5b5",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "看成若干个1倍",
+      "startTime": 57.3,
+      "endTime": 65.9
+    },
+    {
+      "id": "5558b56c-6865-5ccb-8236-a28d75eb780a",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.9,
+      "endTime": 84.9
+    },
+    {
+      "id": "d0b74734-109b-5bc1-896e-85e6b6d0dc2b",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 87.9,
+      "endTime": 96.3
+    },
+    {
+      "id": "d29a97dd-f5bb-5ab2-80b5-7809f1466c44",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 99.3,
+      "endTime": 106.3
+    }
+  ]
+}

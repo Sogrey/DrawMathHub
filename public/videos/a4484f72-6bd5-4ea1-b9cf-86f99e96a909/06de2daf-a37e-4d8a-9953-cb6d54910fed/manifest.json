@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "a4484f72-6bd5-4ea1-b9cf-86f99e96a909",
+  "exampleId": "06de2daf-a37e-4d8a-9953-cb6d54910fed",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "5b69e0f0-186f-5f3e-9d75-fdb932b85fca",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "2eaa9248-7ec6-5b98-b618-3eb2587d49e6",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找出关键信息",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "83447c38-a54f-50d6-98a9-a1db5bb2a4c7",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "观察珠子排列规律",
+      "startTime": 27.2,
+      "endTime": 34.6
+    },
+    {
+      "id": "e364f15b-92db-5c28-9893-af37ea5d225e",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "每5颗为一组",
+      "startTime": 37.6,
+      "endTime": 44.8
+    },
+    {
+      "id": "2203767b-7c09-5599-b25f-db45bb82a04c",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "分组计算组数与余数",
+      "startTime": 47.8,
+      "endTime": 55.4
+    },
+    {
+      "id": "c16038c3-7ef5-51a7-9f36-ccf7e8745b5a",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "余数对应组内第几颗",
+      "startTime": 58.4,
+      "endTime": 67.3
+    },
+    {
+      "id": "575e268e-dd4a-5f1d-971a-25d32801b787",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式与规范作答",
+      "startTime": 70.3,
+      "endTime": 83.5
+    },
+    {
+      "id": "c1b5ccec-ca03-505d-a535-2e586ec181ed",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.5,
+      "endTime": 94.8
+    },
+    {
+      "id": "ca165135-7f8a-5044-b731-e481613ef8df",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.8,
+      "endTime": 104.8
+    }
+  ]
+}

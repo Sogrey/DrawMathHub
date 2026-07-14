@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "c195c916-7023-40bc-aee0-98a464e0aaa5",
+  "exampleId": "291cde91-7143-47fa-945f-8bcac5c50a93",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "6bde1fc6-78da-5d66-9d77-608c1f6e5520",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "bb8f5590-429e-5313-96ae-f7d0efedb548",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：始发与到达时间",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "1047fa97-6650-5520-be8e-fabc0145c85c",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "列竖式并填入时间",
+      "startTime": 27.2,
+      "endTime": 36.7
+    },
+    {
+      "id": "020932dd-1a59-5f8d-b306-3a6d67b225c0",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "从「时」退1，分变成81",
+      "startTime": 39.7,
+      "endTime": 46.4
+    },
+    {
+      "id": "772bae55-8d7c-5630-a66d-9c28249c52f3",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "得1时43分",
+      "startTime": 49.4,
+      "endTime": 57.4
+    },
+    {
+      "id": "5608c17e-0449-5b2d-944e-68f1dc52bd8c",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 60.4,
+      "endTime": 77.4
+    },
+    {
+      "id": "47588c0a-209c-596f-a34c-e739e7ee6ae5",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 80.4,
+      "endTime": 88.7
+    },
+    {
+      "id": "509b3238-f623-5d28-a35a-3736c06c2ba2",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 91.7,
+      "endTime": 98.7
+    }
+  ]
+}

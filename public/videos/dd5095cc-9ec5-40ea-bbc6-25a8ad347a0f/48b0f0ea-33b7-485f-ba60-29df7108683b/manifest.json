@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "dd5095cc-9ec5-40ea-bbc6-25a8ad347a0f",
+  "exampleId": "48b0f0ea-33b7-485f-ba60-29df7108683b",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "061d0257-5b05-5300-9ec7-38206d15e6bd",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.5
+    },
+    {
+      "id": "55bb9c3a-0a0a-5b6a-b6bc-182030e55920",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：单层空心方阵",
+      "startTime": 19.5,
+      "endTime": 24.3
+    },
+    {
+      "id": "53e3d6ca-e828-5166-a046-43811ef8b1b1",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出空心方阵",
+      "startTime": 27.3,
+      "endTime": 36.2
+    },
+    {
+      "id": "904bff7c-d53c-5bd7-aee0-8a7d2c009cfc",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "方法一：四角减重复",
+      "startTime": 39.2,
+      "endTime": 47.7
+    },
+    {
+      "id": "b05edac4-1c40-50ff-8208-c30063620853",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "方法二：每边少算1人",
+      "startTime": 50.7,
+      "endTime": 60.1
+    },
+    {
+      "id": "90ab1d04-ca93-546f-8c56-5df308bf126e",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "两种算法得同解",
+      "startTime": 63.1,
+      "endTime": 71.7
+    },
+    {
+      "id": "0c76638f-738d-53ad-a83e-683207ced618",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 74.7,
+      "endTime": 88.9
+    },
+    {
+      "id": "d353b857-2fa5-50de-8ca2-de67c9a0a306",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 91.9,
+      "endTime": 100.3
+    },
+    {
+      "id": "7fd598b9-65a7-5ffd-a7e5-4e1ee1e2ebb2",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 103.3,
+      "endTime": 110.3
+    }
+  ]
+}

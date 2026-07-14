@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "74994758-29eb-4a66-8200-98edd3f46ab0",
+  "exampleId": "31f5c1b7-9472-4c68-8da7-1e885f6efe82",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "b9558be2-b69d-59b9-aba8-13f42a9a034f",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "983cce0c-6226-59c9-8c4c-cae8c8267244",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找出关键信息",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "1e6e408b-e01f-5d58-94b7-4c9eb653a85f",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "用圆圈表示两人的花",
+      "startTime": 27.2,
+      "endTime": 36.3
+    },
+    {
+      "id": "2600c026-3aa9-5ca2-8eb4-9902c59b0c5d",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出同样多的部分",
+      "startTime": 39.3,
+      "endTime": 45.6
+    },
+    {
+      "id": "822d2a2f-f525-57f2-b7bc-1ab4c9be551d",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出多出的数量",
+      "startTime": 48.6,
+      "endTime": 55.6
+    },
+    {
+      "id": "92936667-75c3-51ea-9a57-2354da7cbe4c",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "多出的一半补给少的",
+      "startTime": 58.6,
+      "endTime": 68.5
+    },
+    {
+      "id": "60969fcb-efa5-52c6-9599-9c9f6937f108",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：分析、列式与规范作答",
+      "startTime": 71.5,
+      "endTime": 91.2
+    },
+    {
+      "id": "2c534d96-1e2a-5668-9a46-39b01dfc1ae0",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 94.2,
+      "endTime": 102.5
+    },
+    {
+      "id": "75a9fc9c-0316-5d05-8c12-c6c396047c3d",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 105.5,
+      "endTime": 112.5
+    }
+  ]
+}

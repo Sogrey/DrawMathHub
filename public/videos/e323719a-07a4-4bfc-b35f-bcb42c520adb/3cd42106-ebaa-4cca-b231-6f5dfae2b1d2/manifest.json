@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "cbf0f3e5-2c17-5802-ae54-de0f02c5449e",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：找出关键信息",
-      "startTime": 19.5,
-      "endTime": 24.3
+      "startTime": 19.4,
+      "endTime": 24.2
     },
     {
       "id": "e8c5767d-cb4e-569e-942e-a62c17ecefed",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "用圆圈表示每个站位",
-      "startTime": 27.3,
-      "endTime": 37.3
+      "startTime": 27.2,
+      "endTime": 37.2
     },
     {
       "id": "ebcf2fc3-7a2c-59f1-9290-747602db0977",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "标出玲玲的位置",
-      "startTime": 40.3,
-      "endTime": 46.7
+      "startTime": 40.2,
+      "endTime": 46.6
     },
     {
       "id": "1e8c6279-5f12-51f3-9d60-c0e87ada593c",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "标出丽丽与之间区域",
-      "startTime": 49.7,
-      "endTime": 56.8
+      "startTime": 49.6,
+      "endTime": 56.7
     },
     {
       "id": "67e2da6f-3d69-5df6-ba28-d3e94ae38411",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "标出「之间」的范围",
-      "startTime": 59.8,
-      "endTime": 68.0
+      "startTime": 59.7,
+      "endTime": 67.9
     },
     {
       "id": "e74f8411-6463-55b7-9019-bb89805c5322",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：分析、列式与规范作答",
-      "startTime": 71.0,
-      "endTime": 104.9
+      "startTime": 70.9,
+      "endTime": 104.8
     },
     {
       "id": "474c713d-9840-5e32-97ea-5e9a96b6f799",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 107.9,
-      "endTime": 116.2
+      "startTime": 107.8,
+      "endTime": 116.1
     },
     {
       "id": "8ab46dfe-6b0a-5a6e-9561-07276be2bb7e",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 119.2,
-      "endTime": 126.2
+      "startTime": 119.1,
+      "endTime": 126.1
     }
   ]
 }

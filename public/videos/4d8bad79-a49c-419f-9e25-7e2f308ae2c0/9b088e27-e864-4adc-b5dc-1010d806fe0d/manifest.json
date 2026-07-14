@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "4d8bad79-a49c-419f-9e25-7e2f308ae2c0",
+  "exampleId": "9b088e27-e864-4adc-b5dc-1010d806fe0d",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "0a245a05-6af3-51df-ac16-b0aa901cf752",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "44c94a22-4cb5-586a-bf4a-67f56c54aa91",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：锯3次每段4米",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "ab52b2c1-35a3-5874-ad4c-79de73f95ec3",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画一根线表示木头",
+      "startTime": 27.2,
+      "endTime": 34.0
+    },
+    {
+      "id": "9ade6014-23c7-566f-9757-0f7251a9a247",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "用虚线标3次锯的位置",
+      "startTime": 37.0,
+      "endTime": 44.0
+    },
+    {
+      "id": "7a263e0b-624d-5833-8d6a-92869890f8a2",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出4段每段4米",
+      "startTime": 47.0,
+      "endTime": 54.9
+    },
+    {
+      "id": "4d3ade6d-f929-502f-b2ff-abcf1135e330",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "段数等于锯的次数加1",
+      "startTime": 57.9,
+      "endTime": 64.5
+    },
+    {
+      "id": "fccdad71-7436-5a61-9a21-35571997eb97",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 67.5,
+      "endTime": 82.5
+    },
+    {
+      "id": "1c61f512-b7bc-569d-bf33-6e1513e3a35f",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.5,
+      "endTime": 93.8
+    },
+    {
+      "id": "64969aa9-883d-5cb5-ba85-0792615aaf7f",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 96.8,
+      "endTime": 103.8
+    }
+  ]
+}

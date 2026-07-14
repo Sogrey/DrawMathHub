@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "ff013244-e57a-4e2a-be15-f115bcfd9d13",
+  "exampleId": "a06d9ba2-ff5c-4e1a-bb01-210af59b1690",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "61b9326a-fbe8-5811-aebe-806f269e129c",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "80891c72-246a-590f-8845-5a6715aa766a",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：找出比较关系",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "92613441-3b34-5d06-a52f-dff10fadb732",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "苹果比香蕉重",
+      "startTime": 27.2,
+      "endTime": 35.0
+    },
+    {
+      "id": "262e56cf-bb1d-5ac9-bb91-21b07d4aeb86",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "梨比香蕉重、比苹果轻",
+      "startTime": 38.0,
+      "endTime": 44.5
+    },
+    {
+      "id": "9872af43-a891-5172-86de-3430caa7f719",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "比较线段得出结论",
+      "startTime": 47.5,
+      "endTime": 55.2
+    },
+    {
+      "id": "6f7f8bb4-9311-5bc6-824d-c2dd71d36d36",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：规范作答",
+      "startTime": 58.2,
+      "endTime": 68.8
+    },
+    {
+      "id": "2cadfab0-f164-587a-b2c6-9e4e0f5eaa9d",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 71.8,
+      "endTime": 80.1
+    },
+    {
+      "id": "b9d382c3-762d-5165-85b1-036962542ebf",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 83.1,
+      "endTime": 90.1
+    }
+  ]
+}

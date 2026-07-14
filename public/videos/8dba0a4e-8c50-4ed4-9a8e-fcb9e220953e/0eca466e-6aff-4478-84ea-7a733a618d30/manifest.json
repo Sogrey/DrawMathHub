@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "8dba0a4e-8c50-4ed4-9a8e-fcb9e220953e",
+  "exampleId": "0eca466e-6aff-4478-84ea-7a733a618d30",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "31012d71-2f78-5ad9-aaf1-bdb6a12d4981",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "a78e541a-4a80-58b9-b5d3-c4e7411b9106",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：橘子换苹果",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "740b0ff0-92f4-5814-adce-45b8b3147b54",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "用图形表示苹果和橘子",
+      "startTime": 27.2,
+      "endTime": 33.8
+    },
+    {
+      "id": "1a2cd864-30df-5916-9dc5-85a343231b92",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "1个苹果连2个橘子",
+      "startTime": 36.8,
+      "endTime": 44.1
+    },
+    {
+      "id": "c4e2708c-2609-53fc-b626-3971d36d5a93",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "画3组表示3个苹果",
+      "startTime": 47.1,
+      "endTime": 56.0
+    },
+    {
+      "id": "729e838a-af9c-542d-85c6-71e43fdeec1b",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "共需6个橘子",
+      "startTime": 59.0,
+      "endTime": 71.1
+    },
+    {
+      "id": "f9ccbaf8-b1c0-5f14-b154-1e4b7ac1a72f",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 74.1,
+      "endTime": 89.6
+    },
+    {
+      "id": "9642c318-cae0-55ad-b3c6-125c39cd2d7a",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 92.6,
+      "endTime": 100.9
+    },
+    {
+      "id": "e3f0d074-7660-5cd8-a6ef-507c52b41f43",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 103.9,
+      "endTime": 110.9
+    }
+  ]
+}

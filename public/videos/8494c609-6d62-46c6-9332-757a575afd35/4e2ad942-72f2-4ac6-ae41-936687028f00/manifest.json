@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "8494c609-6d62-46c6-9332-757a575afd35",
+  "exampleId": "4e2ad942-72f2-4ac6-ae41-936687028f00",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "41e5f0f1-38df-55b8-9371-38c0ca83df7b",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "9697bb53-9233-5b34-bc96-9e114d8fefd5",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：用给定数字组四位数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "cda7afc3-4fe4-5900-9ee6-4a3a45a9b319",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "先确定千位上的数字",
+      "startTime": 27.2,
+      "endTime": 33.9
+    },
+    {
+      "id": "76862600-ea02-59ae-8121-d6ad9ca33a52",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "确定百位上的数字",
+      "startTime": 36.9,
+      "endTime": 43.8
+    },
+    {
+      "id": "d164c75a-89e6-5f03-a700-9e8b8cd65394",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "确定十位和个位",
+      "startTime": 46.8,
+      "endTime": 55.4
+    },
+    {
+      "id": "13351ecc-e869-56c2-b046-a6ef4817ff20",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "统计组数",
+      "startTime": 58.4,
+      "endTime": 64.8
+    },
+    {
+      "id": "a6df0ad2-c94a-5f33-ba06-cd92227c842f",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 67.8,
+      "endTime": 83.0
+    },
+    {
+      "id": "c58ab18e-0ef3-5da9-9808-ab4b4f2baf26",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.0,
+      "endTime": 94.4
+    },
+    {
+      "id": "37700b46-9b5a-5a6e-afe7-1a53aa066f50",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.4,
+      "endTime": 104.4
+    }
+  ]
+}

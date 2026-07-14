@@ -1,0 +1,98 @@
+{
+  "version": 2,
+  "problemId": "a10e764f-d36c-498d-a5d7-c7530308debc",
+  "exampleId": "faa1712b-d848-4159-9268-28d67ff6b45a",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "68f3123d-79f9-5c0c-a804-7958a9423f1e",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "089b31ab-0da3-54cf-945c-c810921dd15d",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：34人每船4人",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "34ac2158-8d8f-512b-b019-4cf2f4f09b22",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画线段表示34人",
+      "startTime": 27.2,
+      "endTime": 34.0
+    },
+    {
+      "id": "4ed031f7-31b6-5a8a-a534-f247d6292892",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "切8段每段4人",
+      "startTime": 37.0,
+      "endTime": 44.4
+    },
+    {
+      "id": "ff31617a-3a47-56d3-8474-159f2b801cec",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出余2人",
+      "startTime": 47.4,
+      "endTime": 53.6
+    },
+    {
+      "id": "7c5eb8c3-e552-5125-8699-af202aa849a1",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "标共34人与船数",
+      "startTime": 56.6,
+      "endTime": 63.3
+    },
+    {
+      "id": "41937812-675d-52e2-b457-233b61d95fe2",
+      "role": "draw-5",
+      "label": "5",
+      "file": "segments/07.mp4",
+      "hint": "余2人再租1条",
+      "startTime": 66.3,
+      "endTime": 73.4
+    },
+    {
+      "id": "bc0f160f-cc92-5dbf-bec5-607acb29c4d7",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/08.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 76.4,
+      "endTime": 91.2
+    },
+    {
+      "id": "92ea2411-553f-5616-89b7-e013417049fb",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 94.2,
+      "endTime": 102.5
+    },
+    {
+      "id": "2564868f-31d4-5098-93c8-4c197c3ec9de",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 105.5,
+      "endTime": 112.5
+    }
+  ]
+}
