@@ -229,19 +229,10 @@ class Problem2Scene(MathLessonScene):
         )
 
         # ── 书面答题 ──
-        left_x = self.layout["left_x"]
-        prob_bottom = self.layout["prob_bottom"]
-        written_diagram_scale = 0.55
+        left_x = self.written_left_x()
         with self.segment("written", "作答", "segments/07.mp4", "书面答题：分析、列式与规范作答"):
             self.add(prob_all, diagram_all)
-            diagram_all.generate_target()
-            diagram_all.target.scale(written_diagram_scale)
-            diagram_all.target.move_to(np.array([
-                (self.safe_left + self.safe_right) / 2 + 2.5,
-                self.content_bottom + 1.6, 0,
-            ]))
-            self.clamp_content(diagram_all.target)
-            self.play(MoveToTarget(diagram_all), run_time=1.0)
+            written_diagram_scale = self.place_diagram_for_written(diagram_all)
 
             ana1 = self.safe_text(f"{center_name}前面有 {front_count} 人", font_size=24, color=WHITE)
             ana2 = self.safe_text(f"{center_name}后面有 {back_count} 人", font_size=24, color=WHITE)
@@ -251,7 +242,7 @@ class Problem2Scene(MathLessonScene):
             ana_group = VGroup(ana1, ana2, ana3).arrange(DOWN, buff=0.35, aligned_edge=LEFT)
             ana_group.move_to(np.array([
                 left_x + ana_group.width / 2,
-                (prob_bottom + diagram_all.get_top()[1]) / 2, 0,
+                self.written_left_y(0.95), 0,
             ]))
             ana_group.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(ana_group)
@@ -268,7 +259,7 @@ class Problem2Scene(MathLessonScene):
             formula_unit = self.safe_text("（人）", font_size=26, color=YELLOW)
             formula_row = VGroup(formula_text, formula, formula_unit).arrange(RIGHT, buff=0.2)
             formula_row.move_to(np.array([
-                left_x + formula_row.width / 2, self.content_center[1] + 0.3, 0,
+                left_x + formula_row.width / 2, self.written_left_y(0.3), 0,
             ]))
             formula_row.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(formula_row)

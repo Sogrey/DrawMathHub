@@ -231,19 +231,10 @@ class Problem1Scene(MathLessonScene):
         )
 
         # ── 7：书面答题（分析 + 列式 + 作答）──
-        left_x = self.layout["left_x"]
-        prob_bottom = self.layout["prob_bottom"]
-        written_diagram_scale = 0.55
+        left_x = self.written_left_x()
         with self.segment("written", "作答", "segments/07.mp4", "书面答题：分析、列式与规范作答"):
             self.add(prob_all, diagram_all)
-            diagram_all.generate_target()
-            diagram_all.target.scale(written_diagram_scale)
-            diagram_all.target.move_to(np.array([
-                (self.safe_left + self.safe_right) / 2 + 2.5,
-                self.content_bottom + 1.6, 0,
-            ]))
-            self.clamp_content(diagram_all.target)
-            self.play(MoveToTarget(diagram_all), run_time=1.0)
+            written_diagram_scale = self.place_diagram_for_written(diagram_all)
             ana1 = self.safe_text("从左边第1个小朋友到玲玲，一共有6人", font_size=24, color=WHITE)
             ana2 = self.safe_text("丽丽排第16，她前面有几人呢？", font_size=24, color=WHITE)
             ana3 = self.safe_text("丽丽前面有 16 - 1 = 15（人）", font_size=24, color=TEAL_D)
@@ -251,7 +242,7 @@ class Problem1Scene(MathLessonScene):
             ana_group = VGroup(ana1, ana2, ana3, ana4).arrange(DOWN, buff=0.35, aligned_edge=LEFT)
             ana_group.move_to(np.array([
                 left_x + ana_group.width / 2,
-                (prob_bottom + diagram_all.get_top()[1]) / 2, 0,
+                self.written_left_y(0.95), 0,
             ]))
             ana_group.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(ana_group)
@@ -265,7 +256,7 @@ class Problem1Scene(MathLessonScene):
             step1_formula = self.safe_mathtex(r"16 - 1 = 15", font_size=36, color=WHITE)
             step1_unit = self.safe_text("（人）", font_size=22, color=GREY_B)
             step1_row = VGroup(step1_text, step1_formula, step1_unit).arrange(RIGHT, buff=0.15)
-            step1_row.move_to(np.array([left_x + step1_row.width / 2, self.content_center[1] + 1.2, 0]))
+            step1_row.move_to(np.array([left_x + step1_row.width / 2, self.written_left_y(0.85), 0]))
             step1_row.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(step1_row)
             self.play(FadeIn(step1_row), run_time=0.6)
@@ -274,7 +265,7 @@ class Problem1Scene(MathLessonScene):
             step2_formula = self.safe_mathtex(r"15 - 6 = 9", font_size=36, color=WHITE)
             step2_unit = self.safe_text("（人）", font_size=22, color=GREY_B)
             step2_row = VGroup(step2_text, step2_formula, step2_unit).arrange(RIGHT, buff=0.15)
-            step2_row.move_to(np.array([left_x + step2_row.width / 2, self.content_center[1] + 0.3, 0]))
+            step2_row.move_to(np.array([left_x + step2_row.width / 2, self.written_left_y(0.0), 0]))
             step2_row.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(step2_row)
             self.play(FadeIn(step2_row), run_time=0.6)
@@ -283,7 +274,7 @@ class Problem1Scene(MathLessonScene):
             combined_formula = self.safe_mathtex(r"16 - 1 - 6 = 9", font_size=42, color=YELLOW)
             combined_unit = self.safe_text("（人）", font_size=26, color=YELLOW)
             combined_row = VGroup(combined_text, combined_formula, combined_unit).arrange(RIGHT, buff=0.2)
-            combined_row.move_to(np.array([left_x + combined_row.width / 2, self.content_center[1] - 0.8, 0]))
+            combined_row.move_to(np.array([left_x + combined_row.width / 2, self.written_left_y(-0.85), 0]))
             combined_row.align_to(np.array([left_x, 0, 0]), LEFT)
             self.clamp_content(combined_row)
             highlight_box = SurroundingRectangle(

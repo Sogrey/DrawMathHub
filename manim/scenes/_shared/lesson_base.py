@@ -20,6 +20,31 @@ if str(_SHARED_DIR) not in sys.path:
 
 from safe_video import SafeScene  # noqa: E402
 from video_export import FULL_VIDEO_SEGMENT_GAP, PROJECT_ROOT, SegmentRecorder  # noqa: E402
+from diagrams.between import BetweenDiagramMixin  # noqa: E402
+from diagrams.common import DiagramCommonMixin  # noqa: E402
+from diagrams.line_compare import LineCompareDiagramMixin  # noqa: E402
+from diagrams.match_link import MatchLinkDiagramMixin  # noqa: E402
+from diagrams.period import PeriodDiagramMixin  # noqa: E402
+from diagrams.queue import QueueDiagramMixin  # noqa: E402
+from diagrams.rmb_list import RmbListDiagramMixin  # noqa: E402
+from diagrams.transfer import TransferDiagramMixin  # noqa: E402
+from diagrams.boat_rental import BoatRentalDiagramMixin  # noqa: E402
+from diagrams.interval import IntervalDiagramMixin  # noqa: E402
+from diagrams.well_climb import WellClimbDiagramMixin  # noqa: E402
+from diagrams.substitution import SubstitutionDiagramMixin  # noqa: E402
+from diagrams.time_vertical import TimeVerticalDiagramMixin  # noqa: E402
+from diagrams.tree_digit import TreeDigitDiagramMixin  # noqa: E402
+from diagrams.multiple_times import MultipleTimesDiagramMixin  # noqa: E402
+from diagrams.wrong_subtract import WrongSubtractDiagramMixin  # noqa: E402
+from diagrams.average import AverageDiagramMixin  # noqa: E402
+from diagrams.sum_times import SumTimesDiagramMixin  # noqa: E402
+from diagrams.diff_times import DiffTimesDiagramMixin  # noqa: E402
+from diagrams.sum_diff import SumDiffDiagramMixin  # noqa: E402
+from diagrams.overlap import OverlapDiagramMixin  # noqa: E402
+from diagrams.unitary import UnitaryDiagramMixin  # noqa: E402
+from diagrams.aggregate import AggregateDiagramMixin  # noqa: E402
+from diagrams.hollow_square import HollowSquareDiagramMixin  # noqa: E402
+from diagrams.restore_flow import RestoreFlowDiagramMixin  # noqa: E402
 
 from manim import *  # noqa: F403
 
@@ -32,7 +57,34 @@ def lesson_number_from_script(path: Path) -> int:
     return int(m.group(1))
 
 
-class MathLessonScene(SafeScene):
+class MathLessonScene(
+    SafeScene,
+    DiagramCommonMixin,
+    BetweenDiagramMixin,
+    QueueDiagramMixin,
+    TransferDiagramMixin,
+    PeriodDiagramMixin,
+    RmbListDiagramMixin,
+    LineCompareDiagramMixin,
+    MatchLinkDiagramMixin,
+    WellClimbDiagramMixin,
+    IntervalDiagramMixin,
+    BoatRentalDiagramMixin,
+    SubstitutionDiagramMixin,
+    TimeVerticalDiagramMixin,
+    TreeDigitDiagramMixin,
+    MultipleTimesDiagramMixin,
+    WrongSubtractDiagramMixin,
+    AverageDiagramMixin,
+    SumTimesDiagramMixin,
+    DiffTimesDiagramMixin,
+    SumDiffDiagramMixin,
+    OverlapDiagramMixin,
+    UnitaryDiagramMixin,
+    AggregateDiagramMixin,
+    HollowSquareDiagramMixin,
+    RestoreFlowDiagramMixin,
+):
     """小学数学画图解题法 — 可分段导出的讲题基类。"""
 
     LESSON_NUMBER: int = 0
@@ -127,263 +179,6 @@ class MathLessonScene(SafeScene):
         label.move_to(np.array([0, self.layout["step_y"], 0]))
         self.clamp_content(label)
         return label
-
-    def _person_circle(self, radius: float = 0.18, *, color=WHITE, stroke_width: int = 2) -> Circle:
-        return Circle(radius=radius, color=color, stroke_width=stroke_width)
-
-    def _horizontal_ellipsis(
-        self, *, color=GREY_B, dot_r: float = 0.08, count: int = 4, buff: float = 0.1,
-    ) -> VGroup:
-        """横向省略号，与圆圈同行垂直居中。"""
-        return VGroup(*[
-            Dot(radius=dot_r, color=color, fill_opacity=1) for _ in range(count)
-        ]).arrange(RIGHT, buff=buff)
-
-    def make_between_diagram(
-        self,
-        left_rank: int,
-        right_rank: int,
-        draw_y: float,
-        *,
-        circle_r: float = 0.18,
-        gap: float = 0.42,
-        prefix_show_max: int = 5,
-        prefix_tail: int = 2,
-        between_edge: int = 1,
-        suffix_extra: int = 2,
-    ) -> dict[str, Any]:
-        """
-        之间问题示意图：前缀圈/省略号 + 左关键人 + 之间(边圈+横省略号+边圈)
-        + 右关键人 + 后缀冗余圈。人数再大也不画满，仅示意起止。
-        """
-        parts: list[Mobject] = []
-        draw_order: list[Mobject] = []
-
-        prefix_circles = VGroup()
-        prefix_ellipsis = None
-        before_count = left_rank - 1
-        if before_count > 0:
-            if before_count <= prefix_show_max:
-                prefix_circles = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(before_count)
-                ]).arrange(RIGHT, buff=gap)
-                parts.append(prefix_circles)
-                draw_order.append(prefix_circles)
-            else:
-                prefix_ellipsis = self._horizontal_ellipsis()
-                prefix_circles = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(prefix_tail)
-                ]).arrange(RIGHT, buff=gap)
-                parts.extend([prefix_ellipsis, prefix_circles])
-                draw_order.extend([prefix_ellipsis, prefix_circles])
-
-        left_person = self._person_circle(circle_r)
-        parts.append(left_person)
-        draw_order.append(left_person)
-
-        between_count = right_rank - left_rank - 1
-        between_start = VGroup()
-        between_ellipsis = None
-        between_end = VGroup()
-        between_all = VGroup()
-
-        if between_count > 0:
-            if between_count <= between_edge * 2:
-                between_all = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(between_count)
-                ]).arrange(RIGHT, buff=gap)
-                parts.append(between_all)
-                draw_order.append(between_all)
-            else:
-                between_start = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(between_edge)
-                ]).arrange(RIGHT, buff=gap)
-                between_ellipsis = self._horizontal_ellipsis()
-                between_end = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(between_edge)
-                ]).arrange(RIGHT, buff=gap)
-                parts.extend([between_start, between_ellipsis, between_end])
-                draw_order.extend([between_start, between_ellipsis, between_end])
-
-        right_person = self._person_circle(circle_r)
-        parts.append(right_person)
-        draw_order.append(right_person)
-
-        suffix_circles = VGroup()
-        if suffix_extra > 0:
-            suffix_circles = VGroup(*[
-                self._person_circle(circle_r) for _ in range(suffix_extra)
-            ]).arrange(RIGHT, buff=gap)
-            parts.append(suffix_circles)
-            draw_order.append(suffix_circles)
-
-        row = VGroup(*parts).arrange(RIGHT, buff=gap)
-        row.move_to(np.array([0, draw_y, 0]))
-        self.clamp_content(row)
-
-        rank_left_anchor = (
-            prefix_circles[0] if len(prefix_circles) > 0 else left_person
-        )
-        if between_ellipsis is not None:
-            between_region = VGroup(between_start, between_ellipsis, between_end)
-            between_brace_start = between_start[0]
-            between_brace_end = between_end[-1]
-        elif len(between_all) > 0:
-            between_region = between_all
-            between_brace_start = between_all[0]
-            between_brace_end = between_all[-1]
-        else:
-            between_region = VGroup()
-            between_brace_start = left_person
-            between_brace_end = right_person
-
-        between_zone_circles = VGroup()
-        if between_ellipsis is not None:
-            if len(between_start) > 0:
-                between_zone_circles.add(*between_start)
-            if len(between_end) > 0:
-                between_zone_circles.add(*between_end)
-        elif len(between_all) > 0:
-            between_zone_circles.add(*between_all)
-
-        return {
-            "row": row,
-            "draw_order": draw_order,
-            "prefix_circles": prefix_circles,
-            "prefix_ellipsis": prefix_ellipsis,
-            "left_person": left_person,
-            "between_start": between_start,
-            "between_ellipsis": between_ellipsis,
-            "between_end": between_end,
-            "between_all": between_all,
-            "between_region": between_region,
-            "between_zone_circles": between_zone_circles,
-            "right_person": right_person,
-            "suffix_circles": suffix_circles,
-            "rank_left_anchor": rank_left_anchor,
-            "between_brace_start": between_brace_start,
-            "between_brace_end": between_brace_end,
-            "circle_r": circle_r,
-        }
-
-    def make_queue_total_diagram(
-        self,
-        front_count: int,
-        back_count: int,
-        draw_y: float,
-        *,
-        circle_r: float = 0.18,
-        gap: float = 0.42,
-        zone_show_max: int = 5,
-        zone_head: int = 2,
-        zone_tail: int = 2,
-    ) -> dict[str, Any]:
-        """
-        排队问题（求全队总人数）示意图：
-        前区圈/省略号 + 中间关键人 + 后区圈/省略号。人数再大也不画满。
-        front_count / back_count 均不含中间关键人。
-        """
-        parts: list[Mobject] = []
-        draw_order: list[Mobject] = []
-        front_ellipsis: VGroup | None = None
-        back_ellipsis: VGroup | None = None
-        front_zone_circles = VGroup()
-        back_zone_circles = VGroup()
-        front_brace_start: Mobject | None = None
-        front_brace_end: Mobject | None = None
-        back_brace_start: Mobject | None = None
-        back_brace_end: Mobject | None = None
-
-        if front_count > 0:
-            if front_count <= zone_show_max:
-                front_zone = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(front_count)
-                ]).arrange(RIGHT, buff=gap)
-                front_zone_circles = front_zone
-                parts.append(front_zone)
-                draw_order.append(front_zone)
-                front_brace_start = front_zone[0]
-                front_brace_end = front_zone[-1]
-            else:
-                front_head = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(zone_head)
-                ]).arrange(RIGHT, buff=gap)
-                front_ellipsis = self._horizontal_ellipsis()
-                front_tail = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(zone_tail)
-                ]).arrange(RIGHT, buff=gap)
-                front_zone = VGroup(front_head, front_ellipsis, front_tail)
-                front_zone_circles.add(*front_head, *front_tail)
-                parts.extend([front_head, front_ellipsis, front_tail])
-                draw_order.extend([front_head, front_ellipsis, front_tail])
-                front_brace_start = front_head[0]
-                front_brace_end = front_tail[-1]
-        else:
-            front_zone = VGroup()
-
-        center_person = self._person_circle(circle_r)
-        parts.append(center_person)
-        draw_order.append(center_person)
-
-        if back_count > 0:
-            if back_count <= zone_show_max:
-                back_zone = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(back_count)
-                ]).arrange(RIGHT, buff=gap)
-                back_zone_circles = back_zone
-                parts.append(back_zone)
-                draw_order.append(back_zone)
-                back_brace_start = back_zone[0]
-                back_brace_end = back_zone[-1]
-            else:
-                back_head = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(zone_head)
-                ]).arrange(RIGHT, buff=gap)
-                back_ellipsis = self._horizontal_ellipsis()
-                back_tail = VGroup(*[
-                    self._person_circle(circle_r) for _ in range(zone_tail)
-                ]).arrange(RIGHT, buff=gap)
-                back_zone = VGroup(back_head, back_ellipsis, back_tail)
-                back_zone_circles.add(*back_head, *back_tail)
-                parts.extend([back_head, back_ellipsis, back_tail])
-                draw_order.extend([back_head, back_ellipsis, back_tail])
-                back_brace_start = back_head[0]
-                back_brace_end = back_tail[-1]
-        else:
-            back_zone = VGroup()
-
-        row = VGroup(*parts).arrange(RIGHT, buff=gap)
-        row.move_to(np.array([0, draw_y, 0]))
-        self.clamp_content(row)
-
-        if front_brace_start is None:
-            front_brace_start = center_person
-            front_brace_end = center_person
-        if back_brace_start is None:
-            back_brace_start = center_person
-            back_brace_end = center_person
-
-        total_brace_start = front_brace_start
-        total_brace_end = back_brace_end
-
-        return {
-            "row": row,
-            "draw_order": draw_order,
-            "front_zone": front_zone,
-            "front_ellipsis": front_ellipsis,
-            "front_zone_circles": front_zone_circles,
-            "center_person": center_person,
-            "back_zone": back_zone,
-            "back_ellipsis": back_ellipsis,
-            "back_zone_circles": back_zone_circles,
-            "front_brace_start": front_brace_start,
-            "front_brace_end": front_brace_end,
-            "back_brace_start": back_brace_start,
-            "back_brace_end": back_brace_end,
-            "total_brace_start": total_brace_start,
-            "total_brace_end": total_brace_end,
-            "circle_r": circle_r,
-        }
 
     def make_numbered_feature_row(
         self,
@@ -486,21 +281,66 @@ class MathLessonScene(SafeScene):
         hint_title = self.place_section_title("关键点拨", font_size=32)
         self.play(FadeIn(hint_title), run_time=0.5)
 
-        draw_y = self.layout.get("draw_y", self.content_center[1])
+        title_bottom = hint_title.get_bottom()[1]
+        body_reserve = 1.55
+        zone_top = title_bottom - 0.28
+        zone_bottom = self.safe_bottom + body_reserve
+        zone_center_y = (zone_top + zone_bottom) / 2
+
         diagram.generate_target()
         diagram.target.scale(1 / from_scale)
-        diagram.target.move_to(np.array([0, draw_y + 0.2, 0]))
+        diagram.target.move_to(np.array([0, zone_center_y, 0]))
+        zone_h = zone_top - zone_bottom
+        if diagram.target.height > zone_h * 0.90:
+            diagram.target.scale(zone_h * 0.90 / diagram.target.height)
         self.clamp_content(diagram.target)
         self.play(MoveToTarget(diagram), run_time=1.0)
 
-        body = self.safe_wrapped_text(key_points, font_size=26, color=WHITE)
-        body.next_to(diagram, DOWN, buff=0.45)
+        body = self.safe_wrapped_text(key_points, font_size=24, color=WHITE)
+        body.next_to(diagram, DOWN, buff=0.28)
         body.move_to(np.array([0, body.get_center()[1], 0]))
         self.clamp_content(body)
 
         self.play(FadeIn(body, shift=UP * 0.15), run_time=0.5)
         self.wait(wait)
-        self.play(FadeOut(VGroup(hint_title, diagram, body)), run_time=0.3)
+        self.play(FadeOut(Group(hint_title, diagram, body)), run_time=0.3)
+
+    def written_left_x(self) -> float:
+        """作答段左侧列式区 x。"""
+        return self.layout.get("left_x", self.safe_left + 0.8)
+
+    def written_left_y(self, offset: float = 0.0) -> float:
+        """作答段左侧列式区基准 y（与图解 draw_y 对齐）。"""
+        base = self.layout.get("draw_y", self.content_center[1])
+        return base + offset
+
+    def place_diagram_for_written(
+        self,
+        diagram: Mobject,
+        *,
+        run_time: float = 1.0,
+        scale_run_time: float = 0.5,
+        right_fraction: float = 0.58,
+        right_margin: float = 0.35,
+        y: float | None = None,
+    ) -> float:
+        """
+        作答段：图解平移至右半区，仅在超出右半宽时缩小。
+        返回 written_diagram_scale（供 play_keypoints_only 使用）。
+        """
+        mid_x = (self.safe_left + self.safe_right) / 2
+        right_col_x = mid_x + (self.safe_right - mid_x) * right_fraction
+        draw_y = y if y is not None else self.layout.get("draw_y", self.content_center[1])
+        target = np.array([right_col_x, draw_y, 0])
+        self.play(diagram.animate.move_to(target), run_time=run_time)
+
+        right_half_width = self.safe_right - mid_x - right_margin
+        scale = 1.0
+        if diagram.width > right_half_width:
+            scale = right_half_width / diagram.width
+            self.play(diagram.animate.scale(scale), run_time=scale_run_time)
+        self.clamp_content(diagram)
+        return scale
 
     @contextmanager
     def segment(
