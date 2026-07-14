@@ -26,12 +26,16 @@ Windows 等价路径：`%USERPROFILE%\.cursor\skills\manim-video-safe\`
 
 **人类可读文档**：`doc/manim/`（环境、脚本、流程）；**经验踩坑**： [references/lessons-learned.md](references/lessons-learned.md)。
 
+**新开对话制作新讲**：先读 [references/new-lesson-workflow.md](references/new-lesson-workflow.md) + [references/lessons-catalog.md](references/lessons-catalog.md)。
+
 ## 领域规则（详细）
 
 | 文档 | 内容 |
 |------|------|
+| [references/new-lesson-workflow.md](references/new-lesson-workflow.md) | **新讲次制作流程**（规划→实现→渲染） |
+| [references/lessons-catalog.md](references/lessons-catalog.md) | 已做讲次 1～10 索引与 API 速查 |
 | [references/prompt.md](references/prompt.md) | 视频结构、四区域布局、18 种图解方法、列式作答 |
-| [references/lessons-learned.md](references/lessons-learned.md) | **实战踩坑与经验**（布局、之间图解、点拨段、前后端） |
+| [references/lessons-learned.md](references/lessons-learned.md) | **实战踩坑与经验**（布局、图解、点拨、前后端） |
 | [references/manifest.example.json](references/manifest.example.json) | manifest 示例 |
 
 ## 快速检查清单
@@ -44,7 +48,9 @@ Windows 等价路径：`%USERPROFILE%\.cursor\skills\manim-video-safe\`
 - [ ] 题目框从 `title_bottom` 动态定位，保留至片尾前（点拨段可复用缩小图）
 - [ ] 步骤在 `step_y`，画图在 `draw_y`，底部字幕不挡图解
 - [ ] **之间问题**：`make_between_diagram`，待求区（边圈+横省略号）第四步全标红
-- [ ] 作答段缩小图后**勿淡出**，点拨段 `play_keypoints_only(..., diagram=..., from_scale=0.55)`
+- [ ] 作答段：列式前加文字说明（适用时），缩小图勿淡出
+- [ ] 点拨段：`play_keypoints_only(..., diagram=..., from_scale=0.55~0.62)`
+- [ ] 复杂图解：布局后检查 y 刻度对齐，辅助图全程 `self.add` 保留
 - [ ] `keyPoints` 过长用 `\n` 或依赖 `safe_wrapped_text` 自动折行
 - [ ] 脚本 `manim/scenes/{methodType}/problem_{lessonNumber}.py`，类名 `Problem{N}Scene`
 - [ ] 成片在 `public/videos/{problemUuid}/{exampleUuid}/`，含 `full.mp4` + `manifest.json` + `segments/`

@@ -1,6 +1,8 @@
 # 制作经验与踩坑记录
 
-> 基于第 1 讲（之间问题 / 图示法）实战沉淀，后续每讲有新发现请追加本节。
+> 基于第 1～9 讲实战沉淀，后续每讲有新发现请追加本节。
+
+**新开对话快速上手**：先读 [new-lesson-workflow.md](new-lesson-workflow.md) 与 [lessons-catalog.md](lessons-catalog.md)。
 
 ## 一、布局与重叠
 
@@ -244,8 +246,153 @@ PR 仅跑 build 校验，不部署 artifact。
 | 文件 | 作用 |
 |------|------|
 | `manim/scenes/图示法/problem_1.py` | 完整 Scene 参考（intro 一屏上下布局） |
-| `manim/scenes/_shared/lesson_base.py` | `make_between_diagram`、`layout_numbered_features`、`play_keypoints_only` |
+| `manim/scenes/_shared/lesson_base.py` | Scene 基类、布局、分段导出（图解见 `diagrams/`） |
 | `manim/scenes/_shared/safe_video.py` | 安全区、折行、字幕偏移 |
 | `manim/scenes/_shared/video_export.py` | manifest 导出、`fullVideo` 相对路径 |
 | `src/data/videoAssets.ts` | `publicUrl` 拼接、manifest 路径解析 |
 | `public/data/problems/1.json` | 题目元数据与 keyPoints |
+
+---
+
+## 十、图解模块拆分（按题型，非按讲次）
+
+**原则**：`manim/scenes/_shared/diagrams/` **按题型归类**，不是按讲次编号。同一题型的多道题共用一套 `make_*_diagram`，各讲在 `problem_N.py` 里传入自己的数字、颜色、文案即可。
+
+| 题型 | 模块 | 入口方法 | 已用讲次 |
+|------|------|----------|----------|
+| 之间问题 | `diagrams/between.py` | `make_between_diagram` | 第1讲 |
+| 排队问题 | `diagrams/queue.py` | `make_queue_total_diagram` | 第2讲 |
+| 移多补少 | `diagrams/transfer.py` | `make_transfer_balance_diagram` | 第3讲 |
+| 人民币列表 | `diagrams/rmb_list.py` | `make_rmb_payment_table` | 第4讲 |
+| 画线比较 | `diagrams/line_compare.py` | `make_line_compare_diagram` | 第5讲 |
+| 搭配连线 | `diagrams/match_link.py` | `make_match_link_diagram` | 第6讲 |
+| 爬井问题 | `diagrams/well_climb.py` | `make_well_climb_diagram` | 第7讲 |
+| 锯木头间隔 | `diagrams/interval.py` | `make_saw_diagram` | 第8讲 |
+| 租船进一 | `diagrams/boat_rental.py` | `make_boat_rental_diagram` | 第9讲 |
+| 周期珠子 | `diagrams/period.py` | `make_period_bead_diagram` | 第21讲 |
+| 公共图元 | `diagrams/common.py` | `_person_circle`、`_horizontal_ellipsis` | 各题型 |
+| 图标 | `diagrams/icon_assets.py` | `load_icon_png` | 第6讲饮料/菜品、第7讲蜗牛 |
+
+**新讲次流程**：
+
+1. 查 JSON 里该讲的 **题型**（如「周期问题」）—— 已有模块则直接复用，只写 `problem_N.py`
+2. 全新题型才在 `diagrams/` 新建 `xxx.py` + `XxxDiagramMixin`，并在 `lesson_base` 继承
+3. 若必须改已有 `make_*_diagram`，同步改所有调用该题型的 `problem_*.py`，并 `-ql` 预览
+4. `lesson_base.py` 只组合 Mixin，不再内联图解逻辑
+
+**共用示例（周期问题）**：
+
+```python
+# problem_21.py — 珠子，周期5，求第32颗
+diag = self.make_period_bead_diagram(
+    [GREY_B, GREY_B, GREY_B, BLUE_D, BLUE_D],
+    ["灰", "灰", "灰", "蓝", "蓝"],
+    32, draw_y, ...
+)
+
+# 以后 problem_XX.py — 彩灯，周期6，求第100盏 → 同一函数，换 pattern 与 total_index
+```
+
+---
+
+## 十一、图解布局与坐标（第 7～9 讲）
+
+### 11.1 `arrange(aligned_edge=DOWN)` 会破坏竖向刻度对齐
+
+**现象**（第7讲爬井）：每日箭头列与井竖轴 0～7 米刻度错位；第5天图形尤其偏高。
+
+**原因**：
+
+- `well_block` 含 `bottom_label`，底边低于井底刻度
+- `days_block` 与 `final_graphics` 未在同一 Group，布局只移动了前4天
+- `align_to` / `arrange(DOWN)` 按外接矩形底边对齐，改变了 y 坐标
+
+**正确做法**：
+
+- 共用刻度元素纳入同一 `Group` 再水平排布
+- 用 `_sync_block_floor_to_well` 只调 y，`_place_right_of` 只调 x
+- 引导虚线从主轴线 `well_x` 连到各天箭头，勿中途断开
+
+### 11.2 辅助说明图要全程保留
+
+**现象**（第7讲）：图解3 绘制每日箭头时左侧「一天」循环图消失。
+
+**做法**：下一段用 `self.add(..., cycle_block, ...)` 显式保留；**勿** `FadeOut` 教学用辅助图。
+
+### 11.3 多层 Brace 防重叠
+
+**现象**（第9讲租船）：上方总船数大括号与下方各段「4人」小括号文字重叠。
+
+**做法**：
+
+- **上下大括号文案分工**：上=总人数，下=船数（与教材一致）
+- 上方大括号锚到**高于小标注**的虚拟横线（`people_span_y = base_y + tick_h + 0.50`），勿直接 `Brace(main_line, UP, buff=0.62)`
+
+### 11.4 满员段较多时分批动画
+
+8 段「4人」若逐个 `FadeIn` 过慢，可每 2 段一批（第9讲 `batch_size=2`），保持节奏。
+
+---
+
+## 十二、数据与母题（第 8 讲教训）
+
+### 12.1 一题一型，母题勿混
+
+第 8 讲 JSON 曾把「锯木头」与「爬楼梯」写在同一 `mainProblem`，与教材母题精讲不符。
+
+**处理**：
+
+- 同步改 `public/data/problems/8.json` 与 `datas/draw_math_all_lessons.json`
+- 拓展题/练习册中异型题可保留，但**视频只演示母题那一型**
+- 爬楼梯间隔问题若单独成讲，另建 lesson 数据
+
+---
+
+## 十三、作答段文字说明（第 8～9 讲）
+
+列式前加 1～2 行 **GREY_B 说明**（`font_size=24`），分步 `FadeIn`，学生更易跟上：
+
+```python
+# 第8讲示例
+explain = self.safe_text("锯断后总共4段，每段4米，那么原木长度为：", ...)
+
+# 第9讲示例
+explain = self.safe_text(f"先租满{quotient}条船，还剩{remainder}人，", ...)
+explain2 = self.safe_text("所有人都要有船坐，还要再租1条：", ...)
+```
+
+再显示 `3+1=4` 或 `8+1=9` 等算式。
+
+---
+
+## 十四、methodType 子目录（多画法并存）
+
+脚本路径 **必须** 与 JSON `methodType` 一致，不能全堆在 `图示法/`：
+
+| methodType | 示例讲次 |
+|------------|----------|
+| 图示法 | 1, 2, 3, 7, 8, 21 |
+| 列表法 | 4 |
+| 画线法 | 5 |
+| 连线法 | 6 |
+| 线段图法 | 9 |
+
+`render_all_videos.py` 扫描 `manim/scenes/{methodType}/problem_*.py`，新画法首次使用时**新建中文子目录**。
+
+---
+
+## 十五、第 1～9 讲参考文件索引
+
+| 讲次 | Scene | 图解 | 可借鉴点 |
+|------|-------|------|----------|
+| 1 | `图示法/problem_1.py` | between | intro 模板、待求标红 |
+| 2 | `图示法/problem_2.py` | queue | BraceBetweenPoints |
+| 3 | `图示法/problem_3.py` | transfer | 移多补少、FadeOut 后从树摘除 |
+| 4 | `列表法/problem_4.py` | rmb_list | 表格枚举 |
+| 5 | `画线法/problem_5.py` | line_compare | 左对齐线段 |
+| 6 | `连线法/problem_6.py` | match_link | PNG 图标、上下连线 |
+| 7 | `图示法/problem_7.py` | well_climb | 多区布局、引导虚线、单轴单图标 |
+| 8 | `图示法/problem_8.py` | interval | 实线+虚线+作答说明 |
+| 9 | `线段图法/problem_9.py` | boat_rental | 线段图法首讲、进一法、5 步图解 |
+
+完整表见 [lessons-catalog.md](lessons-catalog.md)。

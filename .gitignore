@@ -1,7 +1,7 @@
 # 依赖与构建
 node_modules/
 dist/
-dist-ssr/
+dist-*/
 
 # 环境变量本地覆盖
 *.local
@@ -34,3 +34,4 @@ Thumbs.db
 # datas：仅保留汇总数据
 /datas/**
 !/datas/draw_math_all_lessons.json
+/tasks
