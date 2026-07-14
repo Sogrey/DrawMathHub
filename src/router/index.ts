@@ -28,13 +28,17 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, _from, next) => {
-  if (to.meta.requiresAuth) {
-    const { useUserStore } = await import('@/stores/userStore')
-    const userStore = useUserStore()
-    if (!userStore.isAuthenticated) {
-      next('/login')
-      return
-    }
+  const { useUserStore } = await import('@/stores/userStore')
+  const userStore = useUserStore()
+
+  if (to.meta.requiresAuth && !userStore.isAuthenticated) {
+    next({ path: '/login', query: { redirect: to.fullPath } })
+    return
+  }
+  if (to.path === '/login' && userStore.isAuthenticated) {
+    const redirect = typeof to.query.redirect === 'string' ? to.query.redirect : '/'
+    next(redirect.startsWith('/') ? redirect : '/')
+    return
   }
   next()
 })

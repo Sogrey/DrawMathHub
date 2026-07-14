@@ -121,12 +121,21 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/userStore'
 import type { User } from '@/db/indexedDB'
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
+
+function resolveRedirect(): string {
+  const redirect = route.query.redirect
+  if (typeof redirect === 'string' && redirect.startsWith('/')) {
+    return redirect
+  }
+  return '/'
+}
 
 const showCreateForm = ref(false)
 const newNickname = ref('')
@@ -166,7 +175,7 @@ async function doLogin(nickname: string, password?: string) {
     const success = await userStore.login(nickname, password)
     if (success) {
       await userStore.migrateFromLocalStorage()
-      router.push('/')
+      router.replace(resolveRedirect())
     } else {
       passwordError.value = '登录失败，请检查昵称或密码'
     }
@@ -202,7 +211,7 @@ async function submitCreate() {
     )
     if (user) {
       await userStore.migrateFromLocalStorage()
-      router.push('/')
+      router.replace(resolveRedirect())
     } else {
       alert('该昵称已存在，请选择其他昵称')
     }
@@ -212,13 +221,12 @@ async function submitCreate() {
 }
 
 watch(() => userStore.isAuthenticated, (authenticated) => {
-  if (authenticated) {
-    router.push('/')
+  if (authenticated && route.name === 'Login') {
+    router.replace(resolveRedirect())
   }
 })
 
 onMounted(() => {
-  userStore.restoreSession()
   userStore.loadUsers()
 })
 </script>
