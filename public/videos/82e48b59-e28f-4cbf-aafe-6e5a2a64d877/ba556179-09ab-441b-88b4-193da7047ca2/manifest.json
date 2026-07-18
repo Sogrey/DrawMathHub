@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "82e48b59-e28f-4cbf-aafe-6e5a2a64d877",
+  "exampleId": "ba556179-09ab-441b-88b4-193da7047ca2",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "735409a9-50fd-5997-8182-3ba5d304a2ed",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "974531a4-94b6-5c49-afe2-0d7adfedeb03",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：GCD与LCM",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "71d58fd3-d6de-5786-9982-dd0e3d34a272",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出短除",
+      "startTime": 27.2,
+      "endTime": 33.8
+    },
+    {
+      "id": "e88832a0-07eb-5a5d-8a3a-719631257253",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "互质与关系",
+      "startTime": 36.8,
+      "endTime": 43.5
+    },
+    {
+      "id": "1e40bc06-3799-5ef9-aeab-38436468b055",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "分解互质对",
+      "startTime": 46.5,
+      "endTime": 53.6
+    },
+    {
+      "id": "730dcb5a-db68-5712-89f5-abf6ba8219e2",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "还原两数",
+      "startTime": 56.6,
+      "endTime": 65.3
+    },
+    {
+      "id": "b991866d-e699-5cf0-8eb4-4c6160cc33c8",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.3,
+      "endTime": 83.6
+    },
+    {
+      "id": "dd58e0b7-a6f1-5e31-a764-3f30c22bc435",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.6,
+      "endTime": 94.9
+    },
+    {
+      "id": "487b5942-10b6-5cd5-a1b7-1b7331e3bd50",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.9,
+      "endTime": 104.9
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "e758745b-75f8-4288-9cf7-33a990002d23",
+  "exampleId": "d6600f8f-3910-4562-a1b2-8d40f34aacd2",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "e5d2d264-2f5f-525e-ae86-de44fca7f5eb",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "9849d183-7794-5ea1-ae05-0677743fa89c",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：盈与亏",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "523778a9-d584-5e2b-ba9a-3e8c8aec492d",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出第一种分法",
+      "startTime": 27.2,
+      "endTime": 34.5
+    },
+    {
+      "id": "91b32e9a-2b83-5b44-bf70-37eaa1ae27f6",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "画出第二种分法",
+      "startTime": 37.5,
+      "endTime": 44.3
+    },
+    {
+      "id": "07865e8c-694b-55fc-8e8c-114fb152314a",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出人数",
+      "startTime": 47.3,
+      "endTime": 55.2
+    },
+    {
+      "id": "7f18a534-700e-5793-9d3d-812b750a65b9",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出苹果数",
+      "startTime": 58.2,
+      "endTime": 66.6
+    },
+    {
+      "id": "25d5b94c-1982-5f2c-b8b8-3a6daebb403f",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.6,
+      "endTime": 83.8
+    },
+    {
+      "id": "5f9df229-7f02-56d1-ac5c-8ba032eece1f",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.8,
+      "endTime": 96.1
+    },
+    {
+      "id": "7635642e-82d8-52ab-9a06-4750a1aa30f9",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 99.1,
+      "endTime": 106.1
+    }
+  ]
+}

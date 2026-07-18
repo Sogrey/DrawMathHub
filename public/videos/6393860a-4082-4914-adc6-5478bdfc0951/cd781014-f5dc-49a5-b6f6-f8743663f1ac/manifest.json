@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "6393860a-4082-4914-adc6-5478bdfc0951",
+  "exampleId": "cd781014-f5dc-49a5-b6f6-f8743663f1ac",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "ad4e5d56-59e2-5f4c-8ba9-f3e21212b862",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "15c25c53-a54a-552b-b446-d326ce627032",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求个税",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "44186a0b-b4ae-54ed-a795-48db81c73d51",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出工资线段",
+      "startTime": 27.2,
+      "endTime": 34.6
+    },
+    {
+      "id": "d8eb24fa-1e0a-5a67-a2ae-74b0277cbed1",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出应纳税所得额",
+      "startTime": 37.6,
+      "endTime": 45.6
+    },
+    {
+      "id": "6e55bbf0-f63d-5775-bc46-26d0e3b86dec",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出税率",
+      "startTime": 48.6,
+      "endTime": 54.8
+    },
+    {
+      "id": "16d0be76-5c25-5729-9cc9-519c6a860fc8",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出应纳税额",
+      "startTime": 57.8,
+      "endTime": 67.0
+    },
+    {
+      "id": "e8827f4b-8e3a-5e6f-919c-97cd810499ff",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 70.0,
+      "endTime": 82.4
+    },
+    {
+      "id": "c964f678-a97c-5207-9ee7-e9200aef0fcd",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.4,
+      "endTime": 93.7
+    },
+    {
+      "id": "34f8c0c6-37f7-519a-8768-6c6330f48f98",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 96.7,
+      "endTime": 103.7
+    }
+  ]
+}

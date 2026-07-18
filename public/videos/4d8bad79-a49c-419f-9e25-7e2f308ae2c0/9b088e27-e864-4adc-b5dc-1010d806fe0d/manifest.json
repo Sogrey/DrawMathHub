@@ -65,7 +65,7 @@
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
       "startTime": 67.5,
-      "endTime": 82.5
+      "endTime": 82.6
     },
     {
       "id": "1c61f512-b7bc-569d-bf33-6e1513e3a35f",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 85.5,
-      "endTime": 93.8
+      "startTime": 85.6,
+      "endTime": 93.9
     },
     {
       "id": "64969aa9-883d-5cb5-ba85-0792615aaf7f",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 96.8,
-      "endTime": 103.8
+      "startTime": 96.9,
+      "endTime": 103.9
     }
   ]
 }

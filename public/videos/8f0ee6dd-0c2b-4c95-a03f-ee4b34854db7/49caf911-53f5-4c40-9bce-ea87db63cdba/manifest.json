@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "4f22af65-b8f6-5420-9bd0-215a29ca0416",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：今年年龄与将来倍数",
-      "startTime": 19.5,
-      "endTime": 24.3
+      "startTime": 19.4,
+      "endTime": 24.2
     },
     {
       "id": "69e03603-d092-5019-92e1-139c1b588251",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "先求年龄差",
-      "startTime": 27.3,
-      "endTime": 36.6
+      "startTime": 27.2,
+      "endTime": 36.4
     },
     {
       "id": "27cdac63-6ec3-50f3-814f-a2f2fcbe5505",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "画1倍量",
-      "startTime": 39.6,
-      "endTime": 46.7
+      "startTime": 39.4,
+      "endTime": 46.3
     },
     {
       "id": "e6e173ca-5a5c-5297-b0e3-94170a898057",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "画多倍量",
-      "startTime": 49.7,
-      "endTime": 57.3
+      "startTime": 49.3,
+      "endTime": 56.7
     },
     {
       "id": "2e9a0b4e-8314-594f-9cf3-f57bf9709991",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "标年龄差",
-      "startTime": 60.3,
-      "endTime": 69.5
+      "startTime": 59.7,
+      "endTime": 68.8
     },
     {
       "id": "310d7223-fafd-588a-bc05-3b27a631d8a3",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式求年数",
-      "startTime": 72.5,
-      "endTime": 88.5
+      "startTime": 71.8,
+      "endTime": 87.7
     },
     {
       "id": "db42185c-6f2b-51d1-8b76-d300818fa805",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 91.5,
-      "endTime": 99.9
+      "startTime": 90.7,
+      "endTime": 99.0
     },
     {
       "id": "7f6db197-7127-53ce-be20-ca3f2401663a",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 102.9,
-      "endTime": 109.9
+      "startTime": 102.0,
+      "endTime": 109.0
     }
   ]
 }

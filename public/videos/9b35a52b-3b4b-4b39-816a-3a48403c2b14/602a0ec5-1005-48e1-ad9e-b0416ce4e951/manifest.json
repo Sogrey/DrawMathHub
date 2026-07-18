@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "277f5aa8-853d-53db-a7d9-aece52bcb438",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：多步运算还原",
-      "startTime": 19.5,
-      "endTime": 24.3
+      "startTime": 19.4,
+      "endTime": 24.2
     },
     {
       "id": "f7418bc8-853f-52a4-b153-6537baeeea2b",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "画出正向流程图",
-      "startTime": 27.3,
-      "endTime": 37.0
+      "startTime": 27.2,
+      "endTime": 36.6
     },
     {
       "id": "a50118ef-f8da-5fee-be1b-320748ddb33c",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "标出逆运算",
-      "startTime": 40.0,
-      "endTime": 47.4
+      "startTime": 39.6,
+      "endTime": 46.9
     },
     {
       "id": "38cb7907-03ef-5a86-bf4c-85084c974af0",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "逐步逆推填数",
-      "startTime": 50.4,
-      "endTime": 72.1
+      "startTime": 49.9,
+      "endTime": 71.1
     },
     {
       "id": "64c977bb-50f2-593b-8f3c-97f76b0b6f74",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "得出起始数",
-      "startTime": 75.1,
-      "endTime": 83.1
+      "startTime": 74.1,
+      "endTime": 81.9
     },
     {
       "id": "1388a76f-54c8-50c2-8f1f-9ecf92df9a1f",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
-      "startTime": 86.1,
-      "endTime": 103.1
+      "startTime": 84.9,
+      "endTime": 101.7
     },
     {
       "id": "6834ffa0-6913-5d49-b908-21d60791c097",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 106.1,
-      "endTime": 114.5
+      "startTime": 104.7,
+      "endTime": 113.0
     },
     {
       "id": "49f19868-17ab-5ab5-bcd7-73e3a439dee3",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 117.5,
-      "endTime": 124.5
+      "startTime": 116.0,
+      "endTime": 123.0
     }
   ]
 }

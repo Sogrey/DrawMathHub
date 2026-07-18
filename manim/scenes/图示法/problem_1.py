@@ -46,7 +46,7 @@ class Problem1Scene(MathLessonScene):
             zone_top = title_bottom - 0.45
 
             # ── 上板块：概念定义 ──
-            concept_title = self.safe_text("什么是之间问题？", font_size=36, color=YELLOW)
+            concept_title = self.safe_text("题型识别", font_size=36, color=YELLOW)
             concept_title.move_to(np.array([0, zone_top - 0.35, 0]))
             self.clamp_content(concept_title)
 

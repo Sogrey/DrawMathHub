@@ -66,7 +66,7 @@ class Problem3Scene(MathLessonScene):
             title_bottom = self._title_group.get_bottom()[1]
             zone_top = title_bottom - 0.45
 
-            concept_title = self.safe_text("什么是移多补少问题？", font_size=36, color=YELLOW)
+            concept_title = self.safe_text("题型识别", font_size=36, color=YELLOW)
             concept_title.move_to(np.array([0, zone_top - 0.35, 0]))
             self.clamp_content(concept_title)
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -37,6 +38,21 @@ def main() -> None:
     recorder = resolve_recorder(args)
     dest_full = recorder.copy_full_video_to_public(args.rendered.resolve())
     print(f"完整版 → {dest_full}")
+
+    # 渲染产物旁若有 cover.png，拷到与 full.mp4 同目录
+    rendered = args.rendered.resolve()
+    sibling_cover = rendered.parent / "cover.png"
+    if sibling_cover.is_file():
+        dest_v = recorder.output_dir / "cover.png"
+        dest_v.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(sibling_cover, dest_v)
+        print(f"大厅封面（media 旁路）→ {dest_v}")
+
+    cover = recorder.archive_hall_cover()
+    if cover is not None:
+        print(f"大厅封面 → {cover}")
+    else:
+        print("提示: 未找到封面（需 Scene 在 keypoints 段导出 cover.png）")
 
     manifest_file = recorder.output_dir / "manifest.json"
     if not manifest_file.is_file():

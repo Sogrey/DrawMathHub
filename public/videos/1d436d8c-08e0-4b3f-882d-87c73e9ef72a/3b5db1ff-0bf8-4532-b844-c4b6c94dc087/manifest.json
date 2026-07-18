@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "1d436d8c-08e0-4b3f-882d-87c73e9ef72a",
+  "exampleId": "3b5db1ff-0bf8-4532-b844-c4b6c94dc087",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "0b017535-04da-529b-a21f-211f92489c9b",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "a84fda85-9df5-55fd-bf4f-411786a6e784",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：分段售出求利润",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "b57ad165-3e95-5bc3-9f54-c8f8a248f233",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出销量分段",
+      "startTime": 27.2,
+      "endTime": 34.4
+    },
+    {
+      "id": "b609a12b-c650-5c9a-bf61-60bb19f4d3c0",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "求出定价",
+      "startTime": 37.4,
+      "endTime": 44.0
+    },
+    {
+      "id": "395dd0fd-7403-5632-bdcf-c9436902b2d6",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出促销单价",
+      "startTime": 47.0,
+      "endTime": 53.1
+    },
+    {
+      "id": "57296576-a52d-547e-a97b-4958a189ec6f",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出总利润",
+      "startTime": 56.1,
+      "endTime": 65.5
+    },
+    {
+      "id": "7ba9b622-02b6-5538-bcf4-8181401503c7",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.5,
+      "endTime": 81.5
+    },
+    {
+      "id": "15564e80-1258-5b7a-8102-213745149db2",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 84.5,
+      "endTime": 92.8
+    },
+    {
+      "id": "83caf2a9-3dd2-5454-97d6-98ebd8d83666",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 95.8,
+      "endTime": 102.8
+    }
+  ]
+}

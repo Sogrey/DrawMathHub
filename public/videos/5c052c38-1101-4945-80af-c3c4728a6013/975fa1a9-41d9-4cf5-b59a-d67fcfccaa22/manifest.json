@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "5c052c38-1101-4945-80af-c3c4728a6013",
+  "exampleId": "975fa1a9-41d9-4cf5-b59a-d67fcfccaa22",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "1c308c27-7da2-5915-9e5a-b6143983e43f",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "b75b5e83-d3bb-54e3-a8a3-8597c07d5335",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：甲乙同向同程",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "717b93e4-b289-5758-9ad6-48a1e02d1c09",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出甲乙线段图",
+      "startTime": 27.2,
+      "endTime": 34.8
+    },
+    {
+      "id": "33e77072-374f-5982-83db-f971b8ba5f89",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出时间分段",
+      "startTime": 37.8,
+      "endTime": 45.8
+    },
+    {
+      "id": "a25eccda-d5df-50e0-b9c2-3bcec0377458",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出剩余路程",
+      "startTime": 48.8,
+      "endTime": 57.6
+    },
+    {
+      "id": "0d4ef9c9-08ae-5e06-8879-67ff7e0183fe",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出全程距离",
+      "startTime": 60.6,
+      "endTime": 70.0
+    },
+    {
+      "id": "77ff8fa3-4186-5b22-8670-56f58673f2c2",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 73.0,
+      "endTime": 86.6
+    },
+    {
+      "id": "4d66b2aa-4437-5c6a-b2aa-046e580fba93",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 89.6,
+      "endTime": 97.9
+    },
+    {
+      "id": "08cc0f7c-caf7-5c1b-8850-1764e678ecbc",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 100.9,
+      "endTime": 107.9
+    }
+  ]
+}

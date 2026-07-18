@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "41715213-de05-49b1-b091-4121a20dcf44",
+  "exampleId": "f6fc5a47-79b0-49b8-8e88-7b934b26b0ed",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "b7e16cb3-8c10-5740-b084-57368187a96a",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "b4049832-d3a8-5ec6-ae99-76f647ec6b15",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：至少几只",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "67a91c0b-a539-5c29-93ea-9b99081cae3c",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "每巢先飞进1只",
+      "startTime": 27.2,
+      "endTime": 34.3
+    },
+    {
+      "id": "88be3114-bd85-57b7-9004-6d9814c5339f",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出剩下的鸽子",
+      "startTime": 37.3,
+      "endTime": 43.8
+    },
+    {
+      "id": "4faa0a7d-0f13-511e-acf2-488dd14fe6e2",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出至少几只",
+      "startTime": 46.8,
+      "endTime": 56.6
+    },
+    {
+      "id": "5f373205-f802-5a53-92ff-e749ee67beaa",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 59.6,
+      "endTime": 72.4
+    },
+    {
+      "id": "f60b05bf-1114-56b3-a218-8a5e8b62813f",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 75.4,
+      "endTime": 84.7
+    },
+    {
+      "id": "26231f0e-b1d9-5e57-9415-a08bdbe1db97",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 87.7,
+      "endTime": 94.7
+    }
+  ]
+}

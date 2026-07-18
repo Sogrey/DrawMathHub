@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "db084e4b-e61a-48ab-ac74-867a0dc6b6ae",
+  "exampleId": "06c1bb57-6ce1-4b2a-866a-e70f66407373",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "ec0f5973-faf1-58a1-91f5-72ec879e1c30",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "c563ade9-be1b-59e8-82bf-91729c4eb484",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求两次相遇点距离",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "1f2119f4-0cc7-5248-9bfd-dece144dc430",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出AB与往返路线",
+      "startTime": 27.2,
+      "endTime": 35.1
+    },
+    {
+      "id": "1360731a-d528-5303-a6cb-21bdc16d52ac",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出第一次相遇点",
+      "startTime": 38.1,
+      "endTime": 45.0
+    },
+    {
+      "id": "bd5bdbea-7909-5b0f-bda5-dedf603873ce",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出两次相遇点距离",
+      "startTime": 48.0,
+      "endTime": 57.9
+    },
+    {
+      "id": "bbe5e545-7c66-5e4a-b79d-a44fc5c6f28d",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 60.9,
+      "endTime": 74.0
+    },
+    {
+      "id": "f51fa279-0730-5b73-ae2f-31d7d791743e",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 77.0,
+      "endTime": 85.3
+    },
+    {
+      "id": "949f9c42-f5a0-588b-8679-f8f1ab1ba155",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 88.3,
+      "endTime": 95.3
+    }
+  ]
+}

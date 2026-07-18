@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "538a354f-071a-47f4-a7ce-5f5d7dce94a2",
+  "exampleId": "7b7bf0f0-5130-4427-a209-9df941d72535",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "22eef98b-aa7a-54d8-bd5c-6cd66b1b6cb7",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "189bbb7a-9791-5e96-a368-bba55f7ff88a",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：一半多几",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "9e6994fe-50bb-5821-8e03-3f8f7a55bf33",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出线段图",
+      "startTime": 27.2,
+      "endTime": 35.4
+    },
+    {
+      "id": "199821e6-4784-53ae-9493-ad976cdf7369",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标还剩与多几",
+      "startTime": 38.4,
+      "endTime": 45.0
+    },
+    {
+      "id": "db2d28b5-5bbb-5055-bc95-5770bb4b0a08",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出一半",
+      "startTime": 48.0,
+      "endTime": 55.6
+    },
+    {
+      "id": "c148cc02-c150-5220-b018-a188f34ce889",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "还原原来数量",
+      "startTime": 58.6,
+      "endTime": 68.0
+    },
+    {
+      "id": "45b01182-ce2c-5563-9167-91abec6f27db",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 71.0,
+      "endTime": 86.2
+    },
+    {
+      "id": "d033c96d-569c-5f81-a651-05de2790450b",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 89.2,
+      "endTime": 97.5
+    },
+    {
+      "id": "c3fa011b-f876-56f7-903c-5a9267c3fedc",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 100.5,
+      "endTime": 107.5
+    }
+  ]
+}

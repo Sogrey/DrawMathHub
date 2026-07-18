@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "e065d623-64b1-4d6d-a8e6-ef56ea642388",
+  "exampleId": "0ed93386-c561-43a6-b85f-cad32d9551b3",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "1ec1f541-cc1a-5cd0-b981-3c06cb9ae922",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "09e066e9-f543-551d-8f5e-cf437acc4d12",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：阶梯水费",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "19c16ddb-690a-5517-a653-ed2eccd843b9",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出三段用量",
+      "startTime": 27.2,
+      "endTime": 34.6
+    },
+    {
+      "id": "c8483c19-d307-55c5-8642-a87ceb07bd47",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "前两阶费用比较",
+      "startTime": 37.6,
+      "endTime": 44.6
+    },
+    {
+      "id": "ec94ff96-c064-5113-99a2-d21223f05fb3",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "判断所在阶梯",
+      "startTime": 47.6,
+      "endTime": 53.7
+    },
+    {
+      "id": "8cca7882-757d-5dc6-bbb6-e04c5fcff6bd",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出用水量",
+      "startTime": 56.7,
+      "endTime": 65.0
+    },
+    {
+      "id": "36a1659d-3142-5f20-b3ff-cd0458f41462",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.0,
+      "endTime": 82.5
+    },
+    {
+      "id": "b801badf-aaf5-5271-ae1a-f63d7b40f30d",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.5,
+      "endTime": 94.8
+    },
+    {
+      "id": "b22a4bb2-2426-50ae-bc56-62d037d23ad3",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.8,
+      "endTime": 104.8
+    }
+  ]
+}

@@ -29,7 +29,7 @@
       "file": "segments/03.mp4",
       "hint": "用图形表示苹果和橘子",
       "startTime": 27.2,
-      "endTime": 33.8
+      "endTime": 33.9
     },
     {
       "id": "1a2cd864-30df-5916-9dc5-85a343231b92",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "1个苹果连2个橘子",
-      "startTime": 36.8,
-      "endTime": 44.1
+      "startTime": 36.9,
+      "endTime": 44.2
     },
     {
       "id": "c4e2708c-2609-53fc-b626-3971d36d5a93",
@@ -46,7 +46,7 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "画3组表示3个苹果",
-      "startTime": 47.1,
+      "startTime": 47.2,
       "endTime": 56.0
     },
     {

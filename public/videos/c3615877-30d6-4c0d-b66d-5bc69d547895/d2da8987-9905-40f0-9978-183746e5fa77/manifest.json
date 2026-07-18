@@ -29,7 +29,7 @@
       "file": "segments/03.mp4",
       "hint": "列正确算式",
       "startTime": 27.2,
-      "endTime": 34.4
+      "endTime": 34.3
     },
     {
       "id": "44ebc2c3-9238-5164-b39c-076abf388ca6",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "列错误算式",
-      "startTime": 37.4,
-      "endTime": 43.8
+      "startTime": 37.3,
+      "endTime": 43.6
     },
     {
       "id": "6c5f2f31-ecc6-5d17-bdb0-86eb3ad6cd31",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "标数位变化",
-      "startTime": 46.8,
-      "endTime": 53.6
+      "startTime": 46.6,
+      "endTime": 53.3
     },
     {
       "id": "7bf1b6cb-7483-5467-92cb-a15fcd2c7d82",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "从错误结果倒推",
-      "startTime": 56.6,
-      "endTime": 65.4
+      "startTime": 56.3,
+      "endTime": 64.8
     },
     {
       "id": "c2d9dc7f-f1bc-5915-8149-c7255fd08e2f",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式倒推",
-      "startTime": 68.4,
-      "endTime": 86.4
+      "startTime": 67.8,
+      "endTime": 85.6
     },
     {
       "id": "5d535cea-ad6c-5ef4-95ce-3437a28c5643",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 89.4,
-      "endTime": 97.8
+      "startTime": 88.6,
+      "endTime": 96.9
     },
     {
       "id": "db2f1e9f-f5c1-59e9-b762-709284148e61",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 100.8,
-      "endTime": 107.8
+      "startTime": 99.9,
+      "endTime": 106.9
     }
   ]
 }

@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "813d4aac-df5e-4451-b11e-503a7a0d365c",
+  "exampleId": "11a6b151-487b-4bb9-9a3d-6d4135c85ec1",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "561e8c54-7950-5b4a-9baf-971efa80fe5d",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "8035540b-ad2a-5958-ad44-e62b417dc81a",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：多出0.8分",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "156b171b-546f-5c9d-9466-d0c129f848b3",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出四人平均",
+      "startTime": 27.2,
+      "endTime": 34.8
+    },
+    {
+      "id": "3d62e038-e36c-5363-b938-643c56c2df2c",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "移多补少",
+      "startTime": 37.8,
+      "endTime": 45.1
+    },
+    {
+      "id": "b1181abb-98f4-5cf7-8b4d-e69a90d57c7a",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出五人平均",
+      "startTime": 48.1,
+      "endTime": 55.6
+    },
+    {
+      "id": "c1d8bd0b-c444-5cb3-8fe9-76a6434876a6",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出小艺分数",
+      "startTime": 58.6,
+      "endTime": 66.0
+    },
+    {
+      "id": "8c086b66-a187-51df-8338-b48e218054cd",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.0,
+      "endTime": 82.7
+    },
+    {
+      "id": "54229d22-f20d-5cf4-b3c0-912b143aaee9",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.7,
+      "endTime": 94.0
+    },
+    {
+      "id": "b482f5ee-fb96-5212-845c-3bd32837aa60",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.0,
+      "endTime": 104.0
+    }
+  ]
+}

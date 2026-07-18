@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "f0a9c447-09a9-43b3-a3e2-a33eec788b8c",
+  "exampleId": "7854c3fc-a055-4355-ba3e-4e26755a9562",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "41e0cb6f-96b0-5be5-b56c-72c274ca941c",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "99914988-40c5-5b5b-afcd-bee2365d76d9",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求到期利息",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "01075564-1ed3-5cb7-b125-6dfe7f67b66e",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出本金线段",
+      "startTime": 27.2,
+      "endTime": 34.2
+    },
+    {
+      "id": "af87d025-9da8-5483-8549-eb4b4ddbce9c",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "画出利息并分年",
+      "startTime": 37.2,
+      "endTime": 44.2
+    },
+    {
+      "id": "d54bf8bf-3b35-501c-9139-59065964b6fe",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出年利率",
+      "startTime": 47.2,
+      "endTime": 53.8
+    },
+    {
+      "id": "b24dc9da-6538-5c28-8599-19697e8d76f6",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出到期利息",
+      "startTime": 56.8,
+      "endTime": 66.0
+    },
+    {
+      "id": "9240a7bf-2927-5313-bf64-e853895029ef",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.0,
+      "endTime": 81.4
+    },
+    {
+      "id": "0ded47e8-1588-5aea-b209-4515ed221371",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 84.4,
+      "endTime": 92.7
+    },
+    {
+      "id": "f407d583-a1aa-5031-b5f4-ed35d5cf6d97",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 95.7,
+      "endTime": 102.7
+    }
+  ]
+}

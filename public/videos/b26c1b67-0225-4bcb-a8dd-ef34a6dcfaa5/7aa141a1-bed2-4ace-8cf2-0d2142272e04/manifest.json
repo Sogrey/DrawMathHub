@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "b26c1b67-0225-4bcb-a8dd-ef34a6dcfaa5",
+  "exampleId": "7aa141a1-bed2-4ace-8cf2-0d2142272e04",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "9336a985-433f-5215-9263-b2da137a2444",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "8468362c-67c1-58a7-9ba5-7f098d5f57d3",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求船速和水速",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "7c80d6ab-f524-50a4-ab2c-6e20fe7ec1d9",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出顺水与逆水路程",
+      "startTime": 27.2,
+      "endTime": 35.5
+    },
+    {
+      "id": "9be1fda3-6629-5014-b328-0c1bc0907fdb",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出顺水逆水用时",
+      "startTime": 38.5,
+      "endTime": 44.6
+    },
+    {
+      "id": "dd0ad6d7-ec4c-5be1-8a05-ea9fd778618f",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出顺水与逆水速度",
+      "startTime": 47.6,
+      "endTime": 54.6
+    },
+    {
+      "id": "323bfbc9-2490-5fc0-bc80-1e83cb63beb4",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出船速与水速",
+      "startTime": 57.6,
+      "endTime": 66.8
+    },
+    {
+      "id": "ce5a1c47-33f5-54e7-b5be-9019e0e9ecb3",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.8,
+      "endTime": 83.1
+    },
+    {
+      "id": "4b02786c-93c4-5a2c-90d8-e188f73f2d73",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.1,
+      "endTime": 94.4
+    },
+    {
+      "id": "a3e4ab35-0517-53fd-920b-92bad2315b77",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.4,
+      "endTime": 104.4
+    }
+  ]
+}

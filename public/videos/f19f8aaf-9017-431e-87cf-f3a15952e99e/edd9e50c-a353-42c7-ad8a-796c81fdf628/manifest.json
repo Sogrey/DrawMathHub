@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "3f972552-2fdf-54c7-b8dd-52495cedb927",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：找「和」与「差」",
-      "startTime": 19.5,
-      "endTime": 25.3
+      "startTime": 19.4,
+      "endTime": 25.2
     },
     {
       "id": "1a99ed2c-0907-5ec6-9573-8e8671e9b955",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "方法一：画长短线段",
-      "startTime": 28.3,
-      "endTime": 37.5
+      "startTime": 28.2,
+      "endTime": 37.2
     },
     {
       "id": "c6c00c2b-e32e-5965-96e6-cfba6e4d9074",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "方法一：标和与差",
-      "startTime": 40.5,
-      "endTime": 48.9
+      "startTime": 40.2,
+      "endTime": 48.6
     },
     {
       "id": "3dab05fe-4e27-5d21-84d0-8b06846d7672",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "方法一：补差凑平",
-      "startTime": 51.9,
-      "endTime": 63.9
+      "startTime": 51.6,
+      "endTime": 63.4
     },
     {
       "id": "8ec93304-ab98-5d45-a768-f67b4a620eb4",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "方法二：另画一幅底图",
-      "startTime": 66.9,
-      "endTime": 78.7
+      "startTime": 66.4,
+      "endTime": 77.9
     },
     {
       "id": "bfa5e656-9a7b-53cd-ba9a-213561f0dbce",
@@ -64,8 +64,8 @@
       "label": "5",
       "file": "segments/07.mp4",
       "hint": "方法二：去差凑平",
-      "startTime": 81.7,
-      "endTime": 93.4
+      "startTime": 80.9,
+      "endTime": 92.5
     },
     {
       "id": "6b617abb-cbbc-5a2f-a57f-a20bb34272ff",
@@ -73,8 +73,8 @@
       "label": "作答",
       "file": "segments/08.mp4",
       "hint": "书面答题：两种方法",
-      "startTime": 96.4,
-      "endTime": 116.4
+      "startTime": 95.5,
+      "endTime": 115.4
     },
     {
       "id": "82cd10f1-bafd-5f71-8b54-1ba01e80421f",
@@ -82,8 +82,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 119.4,
-      "endTime": 127.8
+      "startTime": 118.4,
+      "endTime": 126.7
     },
     {
       "id": "fed9a9b8-2b1b-5a6b-bf03-006ff9afdf43",
@@ -91,8 +91,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 130.8,
-      "endTime": 137.8
+      "startTime": 129.7,
+      "endTime": 136.7
     }
   ]
 }

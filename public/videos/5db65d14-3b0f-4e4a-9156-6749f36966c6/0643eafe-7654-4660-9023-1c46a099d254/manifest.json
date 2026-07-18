@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "5db65d14-3b0f-4e4a-9156-6749f36966c6",
+  "exampleId": "0643eafe-7654-4660-9023-1c46a099d254",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "fc158233-9a2e-54ce-bd0a-46e7392b5e30",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "0d75f531-c8b9-54c9-9ac5-9136db9b4c8a",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：帽子颜色",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "743f419d-813f-5b6f-8e68-c6bf2855825d",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "建表并排除",
+      "startTime": 27.2,
+      "endTime": 34.2
+    },
+    {
+      "id": "6fe91452-6e81-555b-8831-5ea84c79b892",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "丽丽确定红色",
+      "startTime": 37.2,
+      "endTime": 44.7
+    },
+    {
+      "id": "90c39fb5-6158-5bb1-8578-7aefaa82eae2",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "红红确定蓝色",
+      "startTime": 47.7,
+      "endTime": 54.7
+    },
+    {
+      "id": "f74a1f65-44e5-5161-a009-dd89cd45eae4",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "莹莹确定黄色",
+      "startTime": 57.7,
+      "endTime": 65.5
+    },
+    {
+      "id": "11e5a889-9102-521d-a3ef-ca4cb6d22755",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题",
+      "startTime": 68.5,
+      "endTime": 83.0
+    },
+    {
+      "id": "0f7ab2fb-0d27-5729-bdf8-60c133eea7cb",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.0,
+      "endTime": 94.3
+    },
+    {
+      "id": "a87b2581-2b55-52b3-a9f3-c3ba7712024b",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.3,
+      "endTime": 104.3
+    }
+  ]
+}

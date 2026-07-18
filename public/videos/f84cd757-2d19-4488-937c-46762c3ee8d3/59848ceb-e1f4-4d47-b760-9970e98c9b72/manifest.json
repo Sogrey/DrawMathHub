@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "f84cd757-2d19-4488-937c-46762c3ee8d3",
+  "exampleId": "59848ceb-e1f4-4d47-b760-9970e98c9b72",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "dfe5db38-8320-5c3e-82d2-84f439320e03",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "51398a61-5d5f-5863-a434-d957b8f8bcc5",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求两种盐水用量",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "1385cb1a-db55-57ef-938e-292be405b08b",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "标出三种浓度",
+      "startTime": 27.2,
+      "endTime": 33.7
+    },
+    {
+      "id": "842307b5-3220-5935-8f7f-7fb1c7689a34",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "画出十字交叉",
+      "startTime": 36.7,
+      "endTime": 43.6
+    },
+    {
+      "id": "79303edc-51b7-530b-97e9-a1c0947b8855",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "写出质量比",
+      "startTime": 46.6,
+      "endTime": 53.7
+    },
+    {
+      "id": "41683ca6-98c7-58dc-95cb-6ec02756ee41",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "按比分配总量",
+      "startTime": 56.7,
+      "endTime": 65.7
+    },
+    {
+      "id": "1637e0b1-6639-5268-85cb-5ee069ef4f7e",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.7,
+      "endTime": 82.1
+    },
+    {
+      "id": "25fff241-fa9f-5217-b3c5-c39e228336e9",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.1,
+      "endTime": 93.4
+    },
+    {
+      "id": "6db08c0d-de5e-571d-ac25-ea0828d08064",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 96.4,
+      "endTime": 103.4
+    }
+  ]
+}

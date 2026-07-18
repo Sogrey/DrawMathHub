@@ -27,6 +27,8 @@ python ../_shared/post_render.py --lesson 1 \
   --rendered media/videos/problem_1/480p15/Problem1Scene.mp4
 ```
 
-产出：`public/videos/{problemUuid}/{exampleUuid}/`（含 `full.mp4`、`manifest.json`、`segments/`）
+产出：`public/videos/{problemUuid}/{exampleUuid}/`（含 `full.mp4`、`cover.png`、`manifest.json`、`segments/`）。
+
+批量渲染默认自动出封面，见 [批量渲染.md](../doc/manim/批量渲染.md)。
 
 详见 [scenes/_shared/README.md](scenes/_shared/README.md)。

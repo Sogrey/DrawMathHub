@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "6bacc6aa-c293-4614-8009-807c2d29460e",
+  "exampleId": "3281bc27-fc26-472a-b79a-9c1b71d137db",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "bc02f6d8-69f9-5780-a826-3a3314c87195",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "9360d255-51c1-5484-9246-887b7ade7188",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：三猜只对一句",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "6729806c-4c6d-5c76-a66c-f77336956187",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "假设①对，出现矛盾",
+      "startTime": 27.2,
+      "endTime": 35.2
+    },
+    {
+      "id": "57538682-1d5e-561c-a851-0253320d8b19",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "假设②对，出现矛盾",
+      "startTime": 38.2,
+      "endTime": 45.8
+    },
+    {
+      "id": "b123035f-7465-5218-af2b-ad0b3d603761",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "假设③对，成立",
+      "startTime": 48.8,
+      "endTime": 57.0
+    },
+    {
+      "id": "83893e64-2b51-5062-93ad-0bbc7a4ca0bb",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：写出答案",
+      "startTime": 60.0,
+      "endTime": 72.5
+    },
+    {
+      "id": "b4993e90-c480-5b9f-b314-8c79be1fcd3d",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 75.5,
+      "endTime": 83.8
+    },
+    {
+      "id": "9beaa0ee-708b-5ee5-85e9-5307b2f12107",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 86.8,
+      "endTime": 93.8
+    }
+  ]
+}

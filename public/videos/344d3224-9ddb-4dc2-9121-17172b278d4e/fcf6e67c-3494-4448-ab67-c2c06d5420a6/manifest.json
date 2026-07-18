@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "344d3224-9ddb-4dc2-9121-17172b278d4e",
+  "exampleId": "fcf6e67c-3494-4448-ab67-c2c06d5420a6",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "7d5e9b3c-75f9-57c5-aae4-2295042c3c32",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "73219448-c7cb-5ced-bf70-83a0213b786a",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：年龄与倍数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "8157ba7f-84d1-5e74-b0a9-77e5612d9c6d",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出年龄轴",
+      "startTime": 27.2,
+      "endTime": 34.5
+    },
+    {
+      "id": "5efaa26c-b268-5b30-a0e8-98f42f4da44b",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "推出份数",
+      "startTime": 37.5,
+      "endTime": 45.7
+    },
+    {
+      "id": "41dbb358-4eb4-53b0-ac53-c04feb19410e",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "年龄和与差",
+      "startTime": 48.7,
+      "endTime": 54.8
+    },
+    {
+      "id": "33cb84b1-8b1a-520e-b39f-6020d1e57c2e",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出爷爷年龄",
+      "startTime": 57.8,
+      "endTime": 66.9
+    },
+    {
+      "id": "2926dd60-712e-5d57-bd02-86e31d27f511",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.9,
+      "endTime": 83.8
+    },
+    {
+      "id": "3f4a2e74-6fb4-5b39-adc5-ba400ad5c3e7",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.8,
+      "endTime": 95.1
+    },
+    {
+      "id": "d41e5bd4-7256-568b-b8c6-d1e82ee4c18f",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 98.1,
+      "endTime": 105.1
+    }
+  ]
+}

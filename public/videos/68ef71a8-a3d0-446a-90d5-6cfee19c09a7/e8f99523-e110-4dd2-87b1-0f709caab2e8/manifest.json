@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "68ef71a8-a3d0-446a-90d5-6cfee19c09a7",
+  "exampleId": "e8f99523-e110-4dd2-87b1-0f709caab2e8",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "63c8556b-7f22-51a0-912c-0d07726df732",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "0da6d060-b0ed-5594-bad1-a23f3291e83c",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：两组比求部分",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "93befc75-bb8d-5a47-ac07-e3cc91c434cf",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "列出两组比",
+      "startTime": 27.2,
+      "endTime": 34.7
+    },
+    {
+      "id": "93cebd67-dd1b-5679-807c-dbc9117890fe",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "对齐公共项份数",
+      "startTime": 37.7,
+      "endTime": 45.7
+    },
+    {
+      "id": "dd33cb38-e4da-5614-ad9f-017650666bb9",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "写出三人连比",
+      "startTime": 48.7,
+      "endTime": 55.4
+    },
+    {
+      "id": "56d9f261-ef14-5514-aa3d-31925aee14cd",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "按份数求小明",
+      "startTime": 58.4,
+      "endTime": 67.8
+    },
+    {
+      "id": "dff1a0c9-6c02-5a95-9f88-71338c19f6c1",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 70.8,
+      "endTime": 83.9
+    },
+    {
+      "id": "60ee1730-d92b-5fe0-b213-b61fb30f7f6f",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.9,
+      "endTime": 95.2
+    },
+    {
+      "id": "40709e12-3c67-5d63-8d3f-ddc50a4e4f05",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 98.2,
+      "endTime": 105.2
+    }
+  ]
+}

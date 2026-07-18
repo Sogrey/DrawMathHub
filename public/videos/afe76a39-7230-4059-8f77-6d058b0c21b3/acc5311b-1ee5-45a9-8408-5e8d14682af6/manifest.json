@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "afe76a39-7230-4059-8f77-6d058b0c21b3",
+  "exampleId": "acc5311b-1ee5-45a9-8408-5e8d14682af6",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "2b17208e-e4da-5154-abeb-8eca2f066d9f",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "90f67472-3dff-59e5-aa92-09016315731f",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：家务时间",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "da906eb7-0fa3-5f16-a924-c03b5a79ce06",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "洗衣后再晾衣",
+      "startTime": 27.2,
+      "endTime": 34.1
+    },
+    {
+      "id": "20a22420-3b44-51a2-b02a-b1ede2148bcf",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "并行家务",
+      "startTime": 37.1,
+      "endTime": 43.9
+    },
+    {
+      "id": "2848498a-7009-55f1-92c0-5f6140e8b9ea",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "比较并行时间",
+      "startTime": 46.9,
+      "endTime": 53.5
+    },
+    {
+      "id": "a6dd667f-b8dd-5c6a-bfce-e8250d87ad1b",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出最少时间",
+      "startTime": 56.5,
+      "endTime": 64.9
+    },
+    {
+      "id": "08344436-1be2-5916-9c7d-ab22536eca61",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 67.9,
+      "endTime": 80.4
+    },
+    {
+      "id": "699c7997-c3be-5345-82d8-632030ffcf86",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 83.4,
+      "endTime": 92.7
+    },
+    {
+      "id": "8f5acfa5-13cb-5408-85bb-d0663875396c",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 95.7,
+      "endTime": 102.7
+    }
+  ]
+}

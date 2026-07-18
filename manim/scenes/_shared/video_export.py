@@ -164,6 +164,11 @@ class SegmentRecorder:
         shutil.copy2(rendered_mp4, dest)
         return dest
 
+    def archive_hall_cover(self) -> Path | None:
+        """若视频目录已有 cover.png 则返回路径，否则 None。"""
+        video_cover = self.output_dir / "cover.png"
+        return video_cover if video_cover.is_file() else None
+
 
 def load_example_uuids(lesson_number: int, example_index: int = 0) -> tuple[str, str, str]:
     """从 public/data/problems/{lessonNumber}.json 读取 problem/example uuid。"""

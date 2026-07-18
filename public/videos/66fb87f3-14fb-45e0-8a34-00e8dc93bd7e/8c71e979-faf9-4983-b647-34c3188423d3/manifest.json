@@ -29,7 +29,7 @@
       "file": "segments/03.mp4",
       "hint": "画苹果线段表示1倍量",
       "startTime": 27.2,
-      "endTime": 34.6
+      "endTime": 34.5
     },
     {
       "id": "123fbbae-0be2-5f60-8b4a-c84644099e78",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "画梨的5倍线段",
-      "startTime": 37.6,
-      "endTime": 45.5
+      "startTime": 37.5,
+      "endTime": 45.2
     },
     {
       "id": "48745f39-815a-50b8-9b14-2ed33a885a14",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "标出少4个",
-      "startTime": 48.5,
-      "endTime": 55.4
+      "startTime": 48.2,
+      "endTime": 54.9
     },
     {
       "id": "0466bfbe-d95e-5d1f-9bd3-cdf3396c5d32",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "标梨的数量",
-      "startTime": 58.4,
-      "endTime": 66.0
+      "startTime": 57.9,
+      "endTime": 65.4
     },
     {
       "id": "3e4a3904-566a-53f8-9a2b-082ac1543ca2",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
-      "startTime": 69.0,
-      "endTime": 84.6
+      "startTime": 68.4,
+      "endTime": 83.9
     },
     {
       "id": "2abb1c43-4a47-5ef8-9641-adfcbf2eb930",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 87.6,
-      "endTime": 96.0
+      "startTime": 86.9,
+      "endTime": 95.2
     },
     {
       "id": "ab58a54f-a630-5ea8-b983-2282c5bb5dec",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 99.0,
-      "endTime": 106.0
+      "startTime": 98.2,
+      "endTime": 105.2
     }
   ]
 }

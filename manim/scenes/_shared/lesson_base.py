@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import inspect
 import json
+import os
 import re
 import sys
 from contextlib import contextmanager
@@ -20,6 +21,10 @@ if str(_SHARED_DIR) not in sys.path:
 
 from safe_video import SafeScene  # noqa: E402
 from video_export import FULL_VIDEO_SEGMENT_GAP, PROJECT_ROOT, SegmentRecorder  # noqa: E402
+
+# 题型大厅封面：keypoints 图解放大后导出（EXPORT_HALL_COVER=0 可关）
+HALL_COVER_PADDING_PX = 32
+HALL_COVER_MAX_WIDTH = 960
 from diagrams.between import BetweenDiagramMixin  # noqa: E402
 from diagrams.common import DiagramCommonMixin  # noqa: E402
 from diagrams.line_compare import LineCompareDiagramMixin  # noqa: E402
@@ -45,6 +50,41 @@ from diagrams.unitary import UnitaryDiagramMixin  # noqa: E402
 from diagrams.aggregate import AggregateDiagramMixin  # noqa: E402
 from diagrams.hollow_square import HollowSquareDiagramMixin  # noqa: E402
 from diagrams.restore_flow import RestoreFlowDiagramMixin  # noqa: E402
+from diagrams.half_plus_restore import HalfPlusRestoreDiagramMixin  # noqa: E402
+from diagrams.meeting import MeetingDiagramMixin  # noqa: E402
+from diagrams.catchup import CatchupDiagramMixin  # noqa: E402
+from diagrams.train_bridge import TrainBridgeDiagramMixin  # noqa: E402
+from diagrams.age_axis import AgeAxisDiagramMixin  # noqa: E402
+from diagrams.plant_trees import PlantTreesDiagramMixin  # noqa: E402
+from diagrams.chicken_rabbit import ChickenRabbitDiagramMixin  # noqa: E402
+from diagrams.chicken_rabbit_pack import ChickenRabbitPackDiagramMixin  # noqa: E402
+from diagrams.chores_flow import ChoresFlowDiagramMixin  # noqa: E402
+from diagrams.race_strategy import RaceStrategyDiagramMixin  # noqa: E402
+from diagrams.surplus_deficit import SurplusDeficitDiagramMixin  # noqa: E402
+from diagrams.logic_hat_table import LogicHatTableDiagramMixin  # noqa: E402
+from diagrams.average_shift import AverageShiftDiagramMixin  # noqa: E402
+from diagrams.equation_catchup import EquationCatchupDiagramMixin  # noqa: E402
+from diagrams.gcd_lcm_short import GcdLcmShortDiagramMixin  # noqa: E402
+from diagrams.tiered_billing import TieredBillingDiagramMixin  # noqa: E402
+from diagrams.balance_defect import BalanceDefectDiagramMixin  # noqa: E402
+from diagrams.cow_grass import CowGrassDiagramMixin  # noqa: E402
+from diagrams.venn_sets import VennSetsDiagramMixin  # noqa: E402
+from diagrams.medal_logic import MedalLogicDiagramMixin  # noqa: E402
+from diagrams.travel_early import TravelEarlyDiagramMixin  # noqa: E402
+from diagrams.continuous_ratio import ContinuousRatioDiagramMixin  # noqa: E402
+from diagrams.equal_fraction_ratio import EqualFractionRatioDiagramMixin  # noqa: E402
+from diagrams.profit_sale import ProfitSaleDiagramMixin  # noqa: E402
+from diagrams.tax_income import TaxIncomeDiagramMixin  # noqa: E402
+from diagrams.savings_interest import SavingsInterestDiagramMixin  # noqa: E402
+from diagrams.concentration_cross import ConcentrationCrossDiagramMixin  # noqa: E402
+from diagrams.probability_tree import ProbabilityTreeDiagramMixin  # noqa: E402
+from diagrams.boat_current import BoatCurrentDiagramMixin  # noqa: E402
+from diagrams.bus_dispatch import BusDispatchDiagramMixin  # noqa: E402
+from diagrams.work_project import WorkProjectDiagramMixin  # noqa: E402
+from diagrams.work_leave import WorkLeaveDiagramMixin  # noqa: E402
+from diagrams.pigeonhole import PigeonholeDiagramMixin  # noqa: E402
+from diagrams.escalator import EscalatorDiagramMixin  # noqa: E402
+from diagrams.multi_meet import MultiMeetDiagramMixin  # noqa: E402
 
 from manim import *  # noqa: F403
 
@@ -84,6 +124,41 @@ class MathLessonScene(
     AggregateDiagramMixin,
     HollowSquareDiagramMixin,
     RestoreFlowDiagramMixin,
+    HalfPlusRestoreDiagramMixin,
+    MeetingDiagramMixin,
+    CatchupDiagramMixin,
+    TrainBridgeDiagramMixin,
+    AgeAxisDiagramMixin,
+    PlantTreesDiagramMixin,
+    ChickenRabbitDiagramMixin,
+    ChickenRabbitPackDiagramMixin,
+    ChoresFlowDiagramMixin,
+    RaceStrategyDiagramMixin,
+    SurplusDeficitDiagramMixin,
+    LogicHatTableDiagramMixin,
+    AverageShiftDiagramMixin,
+    EquationCatchupDiagramMixin,
+    GcdLcmShortDiagramMixin,
+    TieredBillingDiagramMixin,
+    BalanceDefectDiagramMixin,
+    CowGrassDiagramMixin,
+    VennSetsDiagramMixin,
+    MedalLogicDiagramMixin,
+    TravelEarlyDiagramMixin,
+    ContinuousRatioDiagramMixin,
+    EqualFractionRatioDiagramMixin,
+    ProfitSaleDiagramMixin,
+    TaxIncomeDiagramMixin,
+    SavingsInterestDiagramMixin,
+    ConcentrationCrossDiagramMixin,
+    ProbabilityTreeDiagramMixin,
+    BoatCurrentDiagramMixin,
+    BusDispatchDiagramMixin,
+    WorkProjectDiagramMixin,
+    WorkLeaveDiagramMixin,
+    PigeonholeDiagramMixin,
+    EscalatorDiagramMixin,
+    MultiMeetDiagramMixin,
 ):
     """小学数学画图解题法 — 可分段导出的讲题基类。"""
 
@@ -296,6 +371,9 @@ class MathLessonScene(
         self.clamp_content(diagram.target)
         self.play(MoveToTarget(diagram), run_time=1.0)
 
+        # 图解居中后、点拨正文出现前：导出宫格封面（仅图解区域）
+        self.export_hall_cover(diagram)
+
         body = self.safe_wrapped_text(key_points, font_size=24, color=WHITE)
         body.next_to(diagram, DOWN, buff=0.28)
         body.move_to(np.array([0, body.get_center()[1], 0]))
@@ -304,6 +382,82 @@ class MathLessonScene(
         self.play(FadeIn(body, shift=UP * 0.15), run_time=0.5)
         self.wait(wait)
         self.play(FadeOut(Group(hint_title, diagram, body)), run_time=0.3)
+
+    def export_hall_cover(self, diagram: Mobject) -> Path | None:
+        """
+        将当前帧按 diagram 包围盒裁切，写出到与 full.mp4 同目录：
+        public/videos/{problemUuid}/{exampleUuid}/cover.png
+        """
+        if os.environ.get("EXPORT_HALL_COVER", "1").strip() in ("0", "false", "False", "no"):
+            return None
+        if self.LESSON_NUMBER <= 0:
+            return None
+
+        try:
+            from PIL import Image
+        except ImportError:
+            print("警告: 未安装 Pillow，跳过大厅封面导出")
+            return None
+
+        # 确保当前构图已写入像素缓冲
+        self.renderer.update_frame(self)
+        frame = np.asarray(self.renderer.get_frame())
+        if frame.ndim != 3 or frame.shape[0] < 2:
+            print("警告: 无法获取渲染帧，跳过大厅封面导出")
+            return None
+
+        ph, pw = frame.shape[0], frame.shape[1]
+        frame_w = float(config.frame_width)
+        frame_h = float(config.frame_height)
+
+        left = float(diagram.get_left()[0])
+        right = float(diagram.get_right()[0])
+        bottom = float(diagram.get_bottom()[1])
+        top = float(diagram.get_top()[1])
+
+        def to_px(x: float, y: float) -> tuple[int, int]:
+            px = int(round((x + frame_w / 2) / frame_w * pw))
+            py = int(round((-y + frame_h / 2) / frame_h * ph))
+            return px, py
+
+        x0, y_top = to_px(left, top)
+        x1, y_bot = to_px(right, bottom)
+        pad = HALL_COVER_PADDING_PX
+        x0 = max(0, min(x0, x1) - pad)
+        x1 = min(pw, max(x0, x1) + pad)
+        y0 = max(0, min(y_top, y_bot) - pad)
+        y1 = min(ph, max(y_top, y_bot) + pad)
+        if x1 <= x0 + 4 or y1 <= y0 + 4:
+            print("警告: 封面裁切区域无效，跳过导出")
+            return None
+
+        crop = frame[y0:y1, x0:x1]
+        if crop.shape[2] == 4:
+            img = Image.fromarray(crop, mode="RGBA")
+            # 宫格叠在深色底上：合成不透明底，避免透明棋盘
+            bg = Image.new("RGBA", img.size, (41, 44, 48, 255))  # #292C30
+            img = Image.alpha_composite(bg, img).convert("RGB")
+        else:
+            img = Image.fromarray(crop[:, :, :3], mode="RGB")
+
+        if img.width > HALL_COVER_MAX_WIDTH:
+            ratio = HALL_COVER_MAX_WIDTH / img.width
+            resample = getattr(Image, "Resampling", Image).LANCZOS
+            img = img.resize(
+                (HALL_COVER_MAX_WIDTH, max(1, int(img.height * ratio))),
+                resample,
+            )
+
+        if self.segment_recorder is None:
+            print("警告: segment_recorder 未初始化，跳过大厅封面导出")
+            return None
+
+        out_dir = self.segment_recorder.output_dir
+        out_dir.mkdir(parents=True, exist_ok=True)
+        video_cover = out_dir / "cover.png"
+        img.save(video_cover, format="PNG", optimize=True)
+        print(f"大厅封面 → {video_cover}")
+        return video_cover
 
     def written_left_x(self) -> float:
         """作答段左侧列式区 x。"""

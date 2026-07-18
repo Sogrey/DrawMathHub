@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "76502b31-ba73-49bc-954c-c05825ec4544",
+  "exampleId": "c3053712-3302-48fd-ad5b-7cfeefdd17d2",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "d7e1339a-1325-5fff-b898-7679976034c1",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "caafa9a1-a025-5f3d-890d-581e84529662",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：两次吃完",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "c9e0f84d-4584-564e-b450-9714b7bb7e27",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出两次总量",
+      "startTime": 27.2,
+      "endTime": 35.0
+    },
+    {
+      "id": "2bfc1e3f-cab7-50de-ae1c-a4ad763b1c18",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "求每天生长",
+      "startTime": 38.0,
+      "endTime": 44.7
+    },
+    {
+      "id": "ebf0edf6-09eb-5729-ae87-5eb5b9bdea64",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求原有草",
+      "startTime": 47.7,
+      "endTime": 53.8
+    },
+    {
+      "id": "20e26a1b-cc83-5067-8d4c-956cc245130f",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求可吃天数",
+      "startTime": 56.8,
+      "endTime": 65.1
+    },
+    {
+      "id": "8720394c-fd94-5754-ba57-667da3e387bc",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.1,
+      "endTime": 83.2
+    },
+    {
+      "id": "047088d0-6441-5dfa-ab96-c3fb4cab115b",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.2,
+      "endTime": 95.5
+    },
+    {
+      "id": "8c8870e7-e4b2-5b81-b45d-61a62ef4e571",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 98.5,
+      "endTime": 105.5
+    }
+  ]
+}

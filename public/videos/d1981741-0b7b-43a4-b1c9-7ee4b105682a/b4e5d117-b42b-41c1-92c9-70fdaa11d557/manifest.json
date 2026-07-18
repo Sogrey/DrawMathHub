@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "d1981741-0b7b-43a4-b1c9-7ee4b105682a",
+  "exampleId": "b4e5d117-b42b-41c1-92c9-70fdaa11d557",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "0ca6087b-9015-5c1a-b0fa-c09655c9536a",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "5717be05-2402-53ac-b6c9-e602ab8f92e8",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：两端都栽",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "790af61b-a44d-5506-a7d4-480fee429842",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出公路与两端",
+      "startTime": 27.2,
+      "endTime": 35.0
+    },
+    {
+      "id": "8188744c-e9cb-5b1f-af93-966c1ebd65e5",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "按间隔画树",
+      "startTime": 38.0,
+      "endTime": 44.6
+    },
+    {
+      "id": "b439b1e1-f9be-5355-987c-6f08b160f898",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出间隔数",
+      "startTime": 47.6,
+      "endTime": 53.7
+    },
+    {
+      "id": "5e46e001-ebe7-59d1-b6b4-6ef346135bda",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出棵数",
+      "startTime": 56.7,
+      "endTime": 65.4
+    },
+    {
+      "id": "ddfa0e2c-55dd-5aae-8077-fee5800a2477",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.4,
+      "endTime": 81.4
+    },
+    {
+      "id": "417271fa-50e4-5f9c-b4f2-747bbe9035ce",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 84.4,
+      "endTime": 92.7
+    },
+    {
+      "id": "4d9978d9-feda-55b2-a917-a7f5faa50ce0",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 95.7,
+      "endTime": 102.7
+    }
+  ]
+}

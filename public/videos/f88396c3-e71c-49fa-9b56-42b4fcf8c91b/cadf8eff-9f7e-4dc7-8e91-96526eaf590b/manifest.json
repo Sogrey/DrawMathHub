@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "f88396c3-e71c-49fa-9b56-42b4fcf8c91b",
+  "exampleId": "cadf8eff-9f7e-4dc7-8e91-96526eaf590b",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "ad371d94-9d01-5e5b-8f4d-bfff5f0df2f9",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "e44d1bb8-6c9b-5d15-b534-115025b42326",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求人车相遇间隔",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "43d634fb-0f9a-5f8b-8505-ac12e8e68227",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出等距公交车",
+      "startTime": 27.2,
+      "endTime": 34.3
+    },
+    {
+      "id": "f8156c71-026f-567b-8130-2b9fcbea00e4",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "转化为相遇模型",
+      "startTime": 37.3,
+      "endTime": 44.8
+    },
+    {
+      "id": "36a716f9-88f1-5780-b2bb-afc90ab8a04c",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出相邻车距",
+      "startTime": 47.8,
+      "endTime": 54.7
+    },
+    {
+      "id": "b2601bdf-d158-5570-8242-56d1e3fd3f59",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出相遇时间间隔",
+      "startTime": 57.7,
+      "endTime": 65.9
+    },
+    {
+      "id": "f3b3f45f-4c69-57a7-9a4b-c891be505fb4",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.9,
+      "endTime": 82.7
+    },
+    {
+      "id": "b6850216-6a3e-5170-a29a-418a336b2a6e",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 85.7,
+      "endTime": 94.0
+    },
+    {
+      "id": "b306b3c8-676a-501c-960e-4fa377875b43",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.0,
+      "endTime": 104.0
+    }
+  ]
+}

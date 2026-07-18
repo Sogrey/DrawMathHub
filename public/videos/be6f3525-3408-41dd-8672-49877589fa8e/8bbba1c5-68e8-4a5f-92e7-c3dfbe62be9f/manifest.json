@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "be6f3525-3408-41dd-8672-49877589fa8e",
+  "exampleId": "8bbba1c5-68e8-4a5f-92e7-c3dfbe62be9f",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "5873086d-be98-5edc-b5aa-c311eda0e23a",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "366ba3f3-1333-5136-a022-cbbfe32e6103",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：对抗赛策略",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "cba20263-567a-5ae7-8ff1-7a1fdd7d05d6",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "列出对阵表",
+      "startTime": 27.2,
+      "endTime": 33.9
+    },
+    {
+      "id": "0bf99611-7315-5002-8169-73db54dc08e9",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "最弱对最强",
+      "startTime": 36.9,
+      "endTime": 43.8
+    },
+    {
+      "id": "5317f009-8743-50a1-8786-9f55ae2499f5",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "强手依次应对",
+      "startTime": 46.8,
+      "endTime": 56.9
+    },
+    {
+      "id": "805e2408-e3d0-5a00-95fe-a9db77daa8ad",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "总结比分",
+      "startTime": 59.9,
+      "endTime": 68.2
+    },
+    {
+      "id": "70739397-bf1c-5969-8595-11a0cdffd685",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：补充完整",
+      "startTime": 71.2,
+      "endTime": 85.7
+    },
+    {
+      "id": "ab4f9fd9-a3ad-521a-a715-a163075c319c",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 88.7,
+      "endTime": 97.0
+    },
+    {
+      "id": "1e44a0c1-66af-5a13-a4e4-3371e2a68083",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 100.0,
+      "endTime": 107.0
+    }
+  ]
+}

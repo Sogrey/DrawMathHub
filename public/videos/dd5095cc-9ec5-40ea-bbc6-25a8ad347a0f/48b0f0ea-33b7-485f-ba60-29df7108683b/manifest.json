@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "55bb9c3a-0a0a-5b6a-b6bc-182030e55920",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：单层空心方阵",
-      "startTime": 19.5,
-      "endTime": 24.3
+      "startTime": 19.4,
+      "endTime": 24.2
     },
     {
       "id": "53e3d6ca-e828-5166-a046-43811ef8b1b1",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "画出空心方阵",
-      "startTime": 27.3,
-      "endTime": 36.2
+      "startTime": 27.2,
+      "endTime": 35.7
     },
     {
       "id": "904bff7c-d53c-5bd7-aee0-8a7d2c009cfc",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "方法一：四角减重复",
-      "startTime": 39.2,
-      "endTime": 47.7
+      "startTime": 38.7,
+      "endTime": 47.1
     },
     {
       "id": "b05edac4-1c40-50ff-8208-c30063620853",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "方法二：每边少算1人",
-      "startTime": 50.7,
-      "endTime": 60.1
+      "startTime": 50.1,
+      "endTime": 59.3
     },
     {
       "id": "90ab1d04-ca93-546f-8c56-5df308bf126e",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "两种算法得同解",
-      "startTime": 63.1,
-      "endTime": 71.7
+      "startTime": 62.3,
+      "endTime": 70.8
     },
     {
       "id": "0c76638f-738d-53ad-a83e-683207ced618",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
-      "startTime": 74.7,
-      "endTime": 88.9
+      "startTime": 73.8,
+      "endTime": 87.9
     },
     {
       "id": "d353b857-2fa5-50de-8ca2-de67c9a0a306",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 91.9,
-      "endTime": 100.3
+      "startTime": 90.9,
+      "endTime": 99.2
     },
     {
       "id": "7fd598b9-65a7-5ffd-a7e5-4e1ee1e2ebb2",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 103.3,
-      "endTime": 110.3
+      "startTime": 102.2,
+      "endTime": 109.2
     }
   ]
 }

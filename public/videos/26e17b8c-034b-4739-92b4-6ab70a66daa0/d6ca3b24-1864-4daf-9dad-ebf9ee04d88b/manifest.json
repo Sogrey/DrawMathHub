@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "26e17b8c-034b-4739-92b4-6ab70a66daa0",
+  "exampleId": "d6ca3b24-1864-4daf-9dad-ebf9ee04d88b",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "b4b4fd53-14d9-5743-b699-ea503aa64a5b",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "197b3442-d96a-5477-b9f0-53d762b965b7",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：等量分数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "1860c151-f292-5962-8a43-28c615af6f9f",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出男女线段",
+      "startTime": 27.2,
+      "endTime": 34.1
+    },
+    {
+      "id": "e2eadc54-0039-5033-9381-dd0926e184a9",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "对齐相等分数段",
+      "startTime": 37.1,
+      "endTime": 45.1
+    },
+    {
+      "id": "4052afcb-8808-5be9-8128-d3a212cfe262",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "等量关系化成比",
+      "startTime": 48.1,
+      "endTime": 56.8
+    },
+    {
+      "id": "19d99a90-3f7a-5114-ab4b-8a2f616b2450",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "按比求出人数",
+      "startTime": 59.8,
+      "endTime": 68.4
+    },
+    {
+      "id": "29064c63-4941-5d5a-a7b7-6397d0c827cf",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 71.4,
+      "endTime": 84.9
+    },
+    {
+      "id": "461bbec4-4aeb-55a3-87db-de722eb64fb6",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 87.9,
+      "endTime": 96.2
+    },
+    {
+      "id": "ac8e7ae0-450a-532e-9bc2-54d19086ce9f",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 99.2,
+      "endTime": 106.2
+    }
+  ]
+}

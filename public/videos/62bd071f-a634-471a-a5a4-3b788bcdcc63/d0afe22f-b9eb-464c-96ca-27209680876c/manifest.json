@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "62bd071f-a634-471a-a5a4-3b788bcdcc63",
+  "exampleId": "d0afe22f-b9eb-464c-96ca-27209680876c",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "acc47e77-e37d-5130-a895-c80149ad4efb",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "a9036904-39c4-5a71-b9e0-fcdaaaba9568",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求甲单独天数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "19bc6cfb-6542-58bd-8892-618b360cb3d3",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出工作总量1",
+      "startTime": 27.2,
+      "endTime": 33.8
+    },
+    {
+      "id": "0e88d449-70d3-5459-b183-6d2ed5ce4a90",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出甲乙合作段",
+      "startTime": 36.8,
+      "endTime": 43.8
+    },
+    {
+      "id": "ae3c09f2-adfe-567b-90ca-abcf339c755e",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "标出乙单独段求乙效",
+      "startTime": 46.8,
+      "endTime": 53.8
+    },
+    {
+      "id": "881cc725-6e9e-5bfc-98b7-62045ea3be0a",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "求出甲单独天数",
+      "startTime": 56.8,
+      "endTime": 65.0
+    },
+    {
+      "id": "bba90dd2-a6a8-563c-bbce-b6fdf2022f01",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 68.0,
+      "endTime": 81.2
+    },
+    {
+      "id": "03056b10-0cc0-5250-a458-535917974575",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 84.2,
+      "endTime": 92.5
+    },
+    {
+      "id": "43a370b9-077b-56e2-ac9d-14f2a3634561",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 95.5,
+      "endTime": 102.5
+    }
+  ]
+}

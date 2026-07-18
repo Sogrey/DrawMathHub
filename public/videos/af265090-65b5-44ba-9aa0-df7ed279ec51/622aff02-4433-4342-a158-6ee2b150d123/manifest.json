@@ -65,7 +65,7 @@
       "file": "segments/07.mp4",
       "hint": "书面答题：分析、列式与规范作答",
       "startTime": 70.2,
-      "endTime": 96.4
+      "endTime": 96.9
     },
     {
       "id": "35125203-b2db-588a-ac0b-053d21f9bd25",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 99.4,
-      "endTime": 107.7
+      "startTime": 99.9,
+      "endTime": 108.2
     },
     {
       "id": "dbade660-7deb-56a9-a312-fe446acd0bf9",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 110.7,
-      "endTime": 117.7
+      "startTime": 111.2,
+      "endTime": 118.2
     }
   ]
 }

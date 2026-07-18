@@ -29,7 +29,7 @@
       "file": "segments/03.mp4",
       "hint": "画等分线段",
       "startTime": 27.2,
-      "endTime": 34.4
+      "endTime": 34.2
     },
     {
       "id": "9350e845-bea3-5c8b-913c-4ad406b98bbd",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "标已知份数",
-      "startTime": 37.4,
-      "endTime": 44.1
+      "startTime": 37.2,
+      "endTime": 43.8
     },
     {
       "id": "5e8c713d-70ab-5556-9b5c-5d52298028df",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "标新的总量",
-      "startTime": 47.1,
-      "endTime": 53.4
+      "startTime": 46.8,
+      "endTime": 52.9
     },
     {
       "id": "e989d13c-e888-54ad-8737-4dde4083915d",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "先求单一量",
-      "startTime": 56.4,
-      "endTime": 65.6
+      "startTime": 55.9,
+      "endTime": 64.9
     },
     {
       "id": "a339dcd8-dc8b-50b1-bcc2-25c750644079",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
-      "startTime": 68.6,
-      "endTime": 83.4
+      "startTime": 67.9,
+      "endTime": 82.6
     },
     {
       "id": "d1b151d7-bae9-5152-9a14-ca42e788ae8e",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 86.4,
-      "endTime": 94.8
+      "startTime": 85.6,
+      "endTime": 93.9
     },
     {
       "id": "4ea0957a-3d8a-568d-a060-d1e56824ab13",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 97.8,
-      "endTime": 104.8
+      "startTime": 96.9,
+      "endTime": 103.9
     }
   ]
 }

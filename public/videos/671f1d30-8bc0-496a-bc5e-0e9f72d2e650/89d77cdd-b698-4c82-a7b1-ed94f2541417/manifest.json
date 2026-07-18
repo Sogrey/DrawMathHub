@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "problemId": "671f1d30-8bc0-496a-bc5e-0e9f72d2e650",
+  "exampleId": "89d77cdd-b698-4c82-a7b1-ed94f2541417",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "b68e4b10-08ba-5fd4-b7fd-c79f9cdc3e20",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "b607fccb-2dd5-5442-a8de-0ea63cd8b403",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：头数与腿数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "855b5e4c-8c6a-5991-967e-ece6e1db2a90",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "假设全部是鸡",
+      "startTime": 27.2,
+      "endTime": 34.9
+    },
+    {
+      "id": "7520437c-3809-5f70-9a16-1e82f275b490",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "算出少的腿数",
+      "startTime": 37.9,
+      "endTime": 44.1
+    },
+    {
+      "id": "da2df696-1c54-5b75-9411-94731a090597",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "求出兔的只数",
+      "startTime": 47.1,
+      "endTime": 55.6
+    },
+    {
+      "id": "e7014ff0-2e22-54bf-9ded-0f1827460df4",
+      "role": "draw-4",
+      "label": "4",
+      "file": "segments/06.mp4",
+      "hint": "标出鸡和兔",
+      "startTime": 58.6,
+      "endTime": 66.9
+    },
+    {
+      "id": "cad9bdc0-d6f1-50f5-9522-296fa86b932b",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/07.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 69.9,
+      "endTime": 83.6
+    },
+    {
+      "id": "256002a9-fd40-5c4e-abfe-7095cbcfc498",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 86.6,
+      "endTime": 94.9
+    },
+    {
+      "id": "180fbecb-cf20-5690-98e1-34390931fb29",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 97.9,
+      "endTime": 104.9
+    }
+  ]
+}

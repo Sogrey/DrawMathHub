@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "problemId": "d8b1bdaf-ac88-4cb0-8461-04202e6b73ee",
+  "exampleId": "9b0af905-3d47-45e2-9cd5-d57505101b05",
+  "fullVideo": "full.mp4",
+  "segments": [
+    {
+      "id": "4b6a8b93-e902-5cd6-9b17-91f466f22ccc",
+      "role": "intro",
+      "label": "题型讲解",
+      "file": "segments/01.mp4",
+      "hint": "片头标题与题型讲解",
+      "startTime": 0.0,
+      "endTime": 16.4
+    },
+    {
+      "id": "929736dd-ba8e-5859-944b-6490e5c32d53",
+      "role": "question",
+      "label": "题目",
+      "file": "segments/02.mp4",
+      "hint": "读题：求可见台阶数",
+      "startTime": 19.4,
+      "endTime": 24.2
+    },
+    {
+      "id": "a47a14fa-61d9-5b30-8d53-2bc4542c28eb",
+      "role": "draw-1",
+      "label": "1",
+      "file": "segments/03.mp4",
+      "hint": "画出兄妹上行速度",
+      "startTime": 27.2,
+      "endTime": 34.4
+    },
+    {
+      "id": "45c0de84-5696-5c58-8218-b5ed3f191493",
+      "role": "draw-2",
+      "label": "2",
+      "file": "segments/04.mp4",
+      "hint": "标出行走与上行速度",
+      "startTime": 37.4,
+      "endTime": 44.0
+    },
+    {
+      "id": "e6176d22-9dbb-54d5-8147-69b1ca2f4cb6",
+      "role": "draw-3",
+      "label": "3",
+      "file": "segments/05.mp4",
+      "hint": "同程列方程求台阶数",
+      "startTime": 47.0,
+      "endTime": 56.0
+    },
+    {
+      "id": "c79268da-c767-54a2-aa0b-f56b9e7b73fb",
+      "role": "written",
+      "label": "作答",
+      "file": "segments/06.mp4",
+      "hint": "书面答题：列式作答",
+      "startTime": 59.0,
+      "endTime": 72.3
+    },
+    {
+      "id": "48413bf9-c714-572f-a4d6-9bde289059bb",
+      "role": "keypoints",
+      "label": "点拨",
+      "file": "segments/keypoints.mp4",
+      "hint": "该题型的解题关键",
+      "startTime": 75.3,
+      "endTime": 84.6
+    },
+    {
+      "id": "97585840-1924-5dea-98b5-1be8bd3a13f7",
+      "role": "end",
+      "label": "结尾",
+      "file": "segments/end.mp4",
+      "hint": "片尾",
+      "startTime": 87.6,
+      "endTime": 94.6
+    }
+  ]
+}

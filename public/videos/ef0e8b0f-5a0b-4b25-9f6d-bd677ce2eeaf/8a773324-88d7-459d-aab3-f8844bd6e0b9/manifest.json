@@ -11,7 +11,7 @@
       "file": "segments/01.mp4",
       "hint": "片头标题与题型讲解",
       "startTime": 0.0,
-      "endTime": 16.5
+      "endTime": 16.4
     },
     {
       "id": "f160e1cd-c4c5-5509-bd7b-cab26ceb2428",
@@ -19,8 +19,8 @@
       "label": "题目",
       "file": "segments/02.mp4",
       "hint": "读题：找「差」与倍数",
-      "startTime": 19.5,
-      "endTime": 24.3
+      "startTime": 19.4,
+      "endTime": 24.2
     },
     {
       "id": "d2cf6be7-bf19-530e-a962-5fc6b804851c",
@@ -28,8 +28,8 @@
       "label": "1",
       "file": "segments/03.mp4",
       "hint": "画1倍量",
-      "startTime": 27.3,
-      "endTime": 34.9
+      "startTime": 27.2,
+      "endTime": 34.5
     },
     {
       "id": "121421a5-b2bd-5bea-90db-f480bdbac0b5",
@@ -37,8 +37,8 @@
       "label": "2",
       "file": "segments/04.mp4",
       "hint": "画多倍量",
-      "startTime": 37.9,
-      "endTime": 45.4
+      "startTime": 37.5,
+      "endTime": 44.9
     },
     {
       "id": "aa0645dd-b121-5742-9e8e-823638c32f40",
@@ -46,8 +46,8 @@
       "label": "3",
       "file": "segments/05.mp4",
       "hint": "标出差额",
-      "startTime": 48.4,
-      "endTime": 54.7
+      "startTime": 47.9,
+      "endTime": 54.1
     },
     {
       "id": "f60de804-fd27-5386-8b06-a7f7528cd175",
@@ -55,8 +55,8 @@
       "label": "4",
       "file": "segments/06.mp4",
       "hint": "看成若干个1倍",
-      "startTime": 57.7,
-      "endTime": 66.3
+      "startTime": 57.1,
+      "endTime": 65.5
     },
     {
       "id": "d5f6c527-ea3f-5689-b67b-602fc94b7155",
@@ -64,8 +64,8 @@
       "label": "作答",
       "file": "segments/07.mp4",
       "hint": "书面答题：列式作答",
-      "startTime": 69.3,
-      "endTime": 86.4
+      "startTime": 68.5,
+      "endTime": 85.5
     },
     {
       "id": "b5329d34-3bdf-58c8-8812-7ed2f72930c9",
@@ -73,8 +73,8 @@
       "label": "点拨",
       "file": "segments/keypoints.mp4",
       "hint": "该题型的解题关键",
-      "startTime": 89.4,
-      "endTime": 97.8
+      "startTime": 88.5,
+      "endTime": 96.8
     },
     {
       "id": "c7a5aa21-8d6c-504b-8437-f96536d20e9e",
@@ -82,8 +82,8 @@
       "label": "结尾",
       "file": "segments/end.mp4",
       "hint": "片尾",
-      "startTime": 100.8,
-      "endTime": 107.8
+      "startTime": 99.8,
+      "endTime": 106.8
     }
   ]
 }
