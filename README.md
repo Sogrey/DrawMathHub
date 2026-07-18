@@ -35,7 +35,7 @@
 DrawMathHub/
 ├── src/
 │   ├── components/          # 通用组件
-│   │   ├── GridCard.vue       # 宫格卡片组件（显示学习标记和正确率）
+│   │   ├── GridCard.vue       # 题型大厅卡片（Manim 封面背景 + 学习标记）
 │   │   ├── Navigation.vue     # 导航组件
 │   │   ├── SolutionVideoPlayer.vue # 解题演示视频（完整播放 + 分步交互）
 │   │   └── PracticeCanvas.vue # 练习区域画布（原生 Canvas）
@@ -62,6 +62,7 @@ DrawMathHub/
 │   └── videos/              # Manim 渲染产出（UUID 目录，见 doc/manim）
 │       └── {problemUuid}/{exampleUuid}/
 │           ├── full.mp4
+│           ├── cover.png    # 大厅封面（与完整视频同目录）
 │           ├── manifest.json
 │           └── segments/
 ├── manim/                   # Manim 脚本 → 见 doc/manim/
@@ -74,11 +75,13 @@ DrawMathHub/
 ├── doc/                     # 文档
 │   ├── 需求.md
 │   ├── 项目规划.md
-│   └── manim/               # Manim 专题：环境、脚本、制作流程
+│   └── manim/               # Manim 专题：环境、脚本、制作流程、技巧与踩坑
 │       ├── README.md
 │       ├── 环境搭建.md
 │       ├── 脚本编写.md
-│       └── 制作流程.md
+│       ├── 制作流程.md
+│       ├── 批量渲染.md
+│       └── 技巧与踩坑.md
 ├── datas/                   # 原始题目数据（中文 JSON，供 convertData 脚本使用）
 │   └── draw_math_all_lessons.json
 ├── scripts/
@@ -156,14 +159,25 @@ npm run preview
 |------|------|------|
 | Python 脚本 | `manim/scenes/{methodType}/problem_{n}.py` | 按图解方法分子目录 |
 | 题目数据 | `public/data/problems/{n}.json` | 含 `id`、`mainProblem.id` 等 uuid |
-| 渲染产物 | `public/videos/{problemUuid}/{exampleUuid}/` | `full.mp4` + `manifest.json` + `segments/` |
+| 渲染产物 | `public/videos/{problemUuid}/{exampleUuid}/` | `full.mp4` + `cover.png` + `manifest.json` + `segments/` |
+| 大厅封面 | 同上目录 `cover.png` | keypoints 图解裁切；`GridCard` 背景 |
 
 **分步学习**：`SolutionVideoPlayer` 读取 manifest 的 `label` 与 `segments/*.mp4`。
 
+**批量渲染**（默认自动出封面）：
+
+```powershell
+python scripts/render_all_videos.py                  # 全量 qh 成片 + 封面
+python scripts/render_all_videos.py --quality ql --lessons 1-60   # 预览/补封面
+```
+
+详见 [doc/manim/批量渲染.md](doc/manim/批量渲染.md)。关闭封面：`EXPORT_HALL_COVER=0`。
+
 **文档入口**：
 
-- [doc/manim/README.md](doc/manim/README.md) — 环境搭建、脚本编写、制作流程
-- [.cursor/skills/math-drawing-video/references/lessons-learned.md](.cursor/skills/math-drawing-video/references/lessons-learned.md) — 实战踩坑
+- [doc/manim/README.md](doc/manim/README.md) — 环境、脚本、制作流程、批量渲染
+- [doc/manim/技巧与踩坑.md](doc/manim/技巧与踩坑.md) — 画图解题技巧摘要、三份 Skill 文档如何分工
+- [.cursor/skills/math-drawing-video/](.cursor/skills/math-drawing-video/SKILL.md) — Agent 规范（workflow / catalog / learned）
 - [manim/README.md](manim/README.md) — 快速命令
 
 **example 序号**：母题 `EXAMPLE_INDEX=0`；举一反三为 `extensionProblems` 对应序号。
@@ -175,7 +189,7 @@ npm run preview
 | 模块 | 完成内容 |
 |------|----------|
 | 项目基础 | Vite + Vue 3 + TypeScript + TailwindCSS + Vue Router + Pinia |
-| 首页 | 60种题型宫格展示、方法类型筛选、学习进度标记、正确率显示 |
+| 首页 | 60种题型宫格展示（Manim 图解封面）、方法类型筛选、学习进度标记、正确率显示 |
 | 解题页面 | 规律分析展示、母题精讲展示、三Tab布局（学习例题/举一反三/练习） |
 | 举一反三 | 扩展题目展示、箭头切换、序号显示 |
 | 练习区域 | 题目展示、答案输入、提交判定、正确/错误提示 |
@@ -183,14 +197,15 @@ npm run preview
 | 用户系统 | 匿名登录、昵称选择、新建昵称、密码保护（SHA-256哈希） |
 | 学习进度 | IndexedDB存储、已学习标记、练习次数、正确率统计 |
 | 数据处理 | 60个题型JSON文件拆分、中文字段转英文、异步加载 |
+| Manim 演示视频 | **第 1～60 讲** Scene / 图解 Mixin / `ql` 渲染管线齐备；规范见 `doc/manim/` 与 skill |
+| 前端视频播放 | `SolutionVideoPlayer` 完整播放 + 分步学习（manifest） |
 
 ### 🔄 进行中
 
 | 模块 | 状态 |
 |------|------|
-| Manim 演示视频 | 第 1 讲已产出；规范见 `doc/manim/` 与 skill `lessons-learned.md` |
-| 前端视频播放 | `SolutionVideoPlayer` 完整播放 + 分步学习（manifest） |
 | 动态生成 | 待实现（当前使用静态题目） |
+| 成片质量 | 按讲次 `qh` 精渲与目视返修（按需） |
 
 ### 📋 待开发（二期）
 
