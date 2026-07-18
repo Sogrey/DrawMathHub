@@ -2,10 +2,14 @@
   <div
     class="grid-card group rounded-card shadow-elevation cursor-pointer transform transition-all duration-300 hover:scale-[1.03] hover:shadow-elevation-hover border border-border overflow-hidden relative backdrop-blur-md"
     :style="{ backgroundColor: cardBgColor }"
-    @click="$router.push(`/problem/${problem.lessonNumber}`)"
+    @click="onCardClick"
     @mouseenter="onTipEnter"
     @mousemove="onTipMove"
     @mouseleave="onTipLeave"
+    @pointerdown="onPointerDown"
+    @pointerup="onPointerUp"
+    @pointercancel="onPointerUp"
+    @pointerleave="onPointerLeaveCard"
   >
     <img
       v-if="coverOk && coverSrc"
@@ -84,7 +88,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import type { Problem, LearningProgress } from '@/data/problems'
 import { getCoverUrl } from '@/data/videoAssets'
 
@@ -93,10 +98,24 @@ const props = defineProps<{
   progress?: LearningProgress | null
 }>()
 
+const router = useRouter()
+
 const tipVisible = ref(false)
 const tipX = ref(0)
 const tipY = ref(0)
 const tipOnLeft = ref(false)
+
+const TOUCH_HOLD_MS = 400
+let touchHoldTimer: ReturnType<typeof setTimeout> | null = null
+let touchTipShown = false
+let suppressNextClick = false
+
+function clearTouchHold() {
+  if (touchHoldTimer) {
+    clearTimeout(touchHoldTimer)
+    touchHoldTimer = null
+  }
+}
 
 function onTipEnter(e: MouseEvent) {
   tipVisible.value = true
@@ -112,6 +131,52 @@ function onTipMove(e: MouseEvent) {
 function onTipLeave() {
   tipVisible.value = false
 }
+
+function onPointerDown(e: PointerEvent) {
+  if (e.pointerType !== 'touch') return
+  clearTouchHold()
+  touchTipShown = false
+  const x = e.clientX
+  const y = e.clientY
+  touchHoldTimer = setTimeout(() => {
+    tipX.value = x
+    tipY.value = y
+    tipOnLeft.value = x > window.innerWidth * 0.55
+    tipVisible.value = true
+    touchTipShown = true
+    suppressNextClick = true
+  }, TOUCH_HOLD_MS)
+}
+
+function onPointerUp() {
+  clearTouchHold()
+  if (touchTipShown) {
+    tipVisible.value = false
+    touchTipShown = false
+  }
+}
+
+function onPointerLeaveCard(e: PointerEvent) {
+  if (e.pointerType === 'touch') {
+    clearTouchHold()
+    if (touchTipShown) {
+      tipVisible.value = false
+      touchTipShown = false
+    }
+  } else {
+    onTipLeave()
+  }
+}
+
+function onCardClick() {
+  if (suppressNextClick) {
+    suppressNextClick = false
+    return
+  }
+  router.push(`/problem/${props.problem.lessonNumber}`)
+}
+
+onUnmounted(() => clearTouchHold())
 
 const tipStyle = computed(() => {
   const gap = 10

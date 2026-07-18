@@ -15,10 +15,12 @@
             <input
               v-model="newNickname"
               type="text"
-              placeholder="请输入昵称"
+              placeholder="中文、字母、数字或下划线"
               class="w-full px-4 py-3 rounded-button border-2 border-border focus:border-primary focus:outline-none transition-colors glass-card-secondary text-text"
               maxlength="20"
+              @input="nicknameError = ''"
             />
+            <p v-if="nicknameError" class="text-dangerText text-sm mt-1.5">{{ nicknameError }}</p>
           </div>
           <div>
             <label class="block text-sm font-medium text-textTertiary mb-1">密码（可选）</label>
@@ -137,12 +139,25 @@ function resolveRedirect(): string {
 const showCreateForm = ref(false)
 const newNickname = ref('')
 const newPassword = ref('')
+const nicknameError = ref('')
 const showPasswordModal = ref(false)
 const passwordModalNickname = ref('')
 const passwordInput = ref('')
 const passwordError = ref('')
 
 const isLoading = ref(false)
+
+/** 1–20 字：中文、字母、数字、下划线 */
+const NICKNAME_RE = /^[\u4e00-\u9fffA-Za-z0-9_]{1,20}$/
+
+function validateNickname(raw: string): string | null {
+  const name = raw.trim()
+  if (!name) return '请输入昵称'
+  if (name.length > 20) return '昵称最多 20 个字符'
+  if (/\s/.test(name)) return '昵称不能包含空格'
+  if (!NICKNAME_RE.test(name)) return '仅支持中文、字母、数字和下划线'
+  return null
+}
 
 const avatars = ['🐶', '🐱', '🐼', '🐨', '🦊', '🦁', '🐯', '🐮', '🐷', '🐸', '🐵', '🐰']
 
@@ -195,22 +210,28 @@ function cancelCreate() {
   showCreateForm.value = false
   newNickname.value = ''
   newPassword.value = ''
+  nicknameError.value = ''
 }
 
 async function submitCreate() {
-  if (!newNickname.value.trim()) return
-  
+  const err = validateNickname(newNickname.value)
+  if (err) {
+    nicknameError.value = err
+    return
+  }
+  nicknameError.value = ''
+
   isLoading.value = true
   try {
     const user = await userStore.createUserWithNickname(
       newNickname.value.trim(),
-      newPassword.value || undefined
+      newPassword.value || undefined,
     )
     if (user) {
       await userStore.migrateFromLocalStorage()
       router.replace(resolveRedirect())
     } else {
-      alert('该昵称已存在，请选择其他昵称')
+      nicknameError.value = '该昵称已存在，请选择其他昵称'
     }
   } finally {
     isLoading.value = false

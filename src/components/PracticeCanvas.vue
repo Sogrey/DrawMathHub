@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full flex flex-col">
+  <div class="w-full h-full flex flex-col" tabindex="0" @keydown="onKeyDown">
     <div class="flex gap-2 mb-4">
       <button
         v-for="tool in tools"
@@ -35,6 +35,24 @@
           >6px</button>
         </div>
         <button
+          type="button"
+          class="p-2 rounded-lg glass-card text-textSecondary hover:bg-primary/10 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          title="撤销 (Ctrl+Z)"
+          :disabled="actions.length === 0"
+          @click="undo"
+        >
+          <Undo2 :size="20" />
+        </button>
+        <button
+          type="button"
+          class="p-2 rounded-lg glass-card text-textSecondary hover:bg-primary/10 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          title="重做 (Ctrl+Shift+Z)"
+          :disabled="redoStack.length === 0"
+          @click="redo"
+        >
+          <Redo2 :size="20" />
+        </button>
+        <button
           class="p-2 rounded-lg bg-danger/10 text-danger hover:bg-danger/20 transition-colors"
           @click="clearCanvas"
         >
@@ -58,7 +76,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Pencil, Eraser, Circle as CircleIcon, Square, Trash2 } from '@lucide/vue'
+import { Pencil, Eraser, Circle as CircleIcon, Square, Trash2, Undo2, Redo2 } from '@lucide/vue'
 
 const tools = [
   { id: 'pencil', icon: Pencil },
@@ -87,6 +105,42 @@ interface DrawAction {
 }
 
 const actions = ref<DrawAction[]>([])
+const redoStack = ref<DrawAction[]>([])
+
+function pushAction(action: DrawAction) {
+  actions.value.push(action)
+  redoStack.value = []
+}
+
+function undo() {
+  const last = actions.value.pop()
+  if (!last) return
+  redoStack.value.push(last)
+  redrawCanvas()
+}
+
+function redo() {
+  const next = redoStack.value.pop()
+  if (!next) return
+  actions.value.push(next)
+  redrawCanvas()
+}
+
+function onKeyDown(e: KeyboardEvent) {
+  const mod = e.ctrlKey || e.metaKey
+  if (!mod) return
+  const key = e.key.toLowerCase()
+  if (key === 'z' && e.shiftKey) {
+    e.preventDefault()
+    redo()
+  } else if (key === 'z') {
+    e.preventDefault()
+    undo()
+  } else if (key === 'y') {
+    e.preventDefault()
+    redo()
+  }
+}
 
 function updateCanvasSize() {
   if (!canvas.value || !canvasContainer.value) return
@@ -197,21 +251,21 @@ function handlePointerUp(e: PointerEvent) {
     const size = currentTool.value === 'eraser' ? currentSize.value * 3 : currentSize.value
 
     if (currentTool.value === 'pencil' || currentTool.value === 'eraser') {
-      actions.value.push({
+      pushAction({
         type: 'line',
         color,
         size,
         points: [...currentPath.value],
       })
     } else if (currentTool.value === 'circle' && startPoint.value) {
-      actions.value.push({
+      pushAction({
         type: 'circle',
         color: currentColor.value,
         size: currentSize.value,
         points: [startPoint.value, currentPath.value[currentPath.value.length - 1]],
       })
     } else if (currentTool.value === 'rect' && startPoint.value) {
-      actions.value.push({
+      pushAction({
         type: 'rect',
         color: currentColor.value,
         size: currentSize.value,
@@ -227,6 +281,7 @@ function handlePointerUp(e: PointerEvent) {
 
 function clearCanvas() {
   actions.value = []
+  redoStack.value = []
   redrawCanvas()
 }
 

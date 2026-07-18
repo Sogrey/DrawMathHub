@@ -1,6 +1,9 @@
 export const VIDEO_PENDING_TITLE = '讲解视频正在加急制作，敬请期待'
 export const VIDEO_PENDING_MESSAGE = '可以先阅读下方的规律分析与文字讲解。'
 
+export const VIDEO_ERROR_TITLE = '讲解视频暂时无法加载'
+export const VIDEO_ERROR_MESSAGE = '请检查网络后重试；若仍失败，可先阅读下方的规律分析与文字讲解。'
+
 export interface VideoSegment {
   /** 分段视频 uuid */
   id: string
@@ -24,7 +27,7 @@ export interface InteractiveVideoManifest {
 
 export type VideoPlayMode = 'full' | 'interactive'
 
-export type VideoAvailabilityStatus = 'loading' | 'ready' | 'pending'
+export type VideoAvailabilityStatus = 'loading' | 'ready' | 'pending' | 'error'
 
 export interface VideoAvailability {
   status: VideoAvailabilityStatus

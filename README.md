@@ -82,10 +82,9 @@ DrawMathHub/
 │       ├── 制作流程.md
 │       ├── 批量渲染.md
 │       └── 技巧与踩坑.md
-├── datas/                   # 原始题目数据（中文 JSON，供 convertData 脚本使用）
-│   └── draw_math_all_lessons.json
+├── public/data/problems/    # 运行时题目 JSON（含 index.json）
 ├── scripts/
-│   └── convertData.js       # 中文原始数据 → public/data/problems/
+│   └── convertData.js       # 可选：本地 datas 汇总 → public/data/problems/
 ├── index.html
 ├── package.json
 ├── vite.config.ts
@@ -95,18 +94,20 @@ DrawMathHub/
 └── README.md
 ```
 
+> `datas/` 为本地可选原始汇总，已 gitignore；线上与开发均以 `public/data/problems/` 为准。
+
 ## 快速开始
 
 ### 安装依赖
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 开发模式
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 访问 http://localhost:5173/ 即可开始学习。
@@ -114,13 +115,19 @@ npm run dev
 ### 构建生产版本
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ### 预览生产版本
 
 ```bash
-npm run preview
+pnpm preview
+```
+
+### 运行单元测试
+
+```bash
+pnpm test
 ```
 
 ## 主题配色（中国风 Chinoiserie）

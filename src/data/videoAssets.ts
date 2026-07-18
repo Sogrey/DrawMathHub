@@ -54,18 +54,36 @@ function isVideoResponse(contentType: string): boolean {
   return ct.includes('video/') || ct.includes('octet-stream') || ct.includes('mp4')
 }
 
-/** 探测 mp4 是否存在；排除 SPA 404 回退返回的 index.html */
-async function resourceExists(url: string): Promise<boolean> {
+type ProbeResult = 'found' | 'missing' | 'error'
+
+/** 探测 mp4 是否存在；区分 404/未制作 vs 网络/5xx 错误 */
+async function probeResource(url: string): Promise<ProbeResult> {
+  if (!url) return 'missing'
   try {
     const res = await fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } })
-    if (!res.ok) return false
+    if (res.status === 404 || res.status === 410) return 'missing'
+    if (res.status >= 500) return 'error'
+    if (!res.ok) {
+      // 其它 4xx（含 Range 不支持等）按缺失处理，避免误报 error
+      if (res.status >= 400 && res.status < 500) return 'missing'
+      return 'error'
+    }
     const contentType = res.headers.get('content-type') ?? ''
-    if (isVideoResponse(contentType)) return true
+    if (isVideoResponse(contentType)) return 'found'
+    // SPA 404 回退 HTML
+    if (contentType.includes('text/html') || contentType.includes('json')) return 'missing'
     // 部分环境 HEAD/Range 不返回准确 type，用 content-range 辅助判断
-    return res.status === 206 && res.headers.get('content-range') !== null
+    if (res.status === 206 && res.headers.get('content-range') !== null) return 'found'
+    return 'missing'
   } catch {
-    return false
+    return 'error'
   }
+}
+
+function mergeProbe(...results: ProbeResult[]): ProbeResult {
+  if (results.some((r) => r === 'found')) return 'found'
+  if (results.some((r) => r === 'error')) return 'error'
+  return 'missing'
 }
 
 export async function loadVideoManifest(
@@ -86,31 +104,57 @@ export async function probeVideoAvailability(
 ): Promise<VideoAvailability> {
   const basePath = getExampleBasePath(problemUuid, exampleUuid)
   const fullVideoUrl = getFullVideoUrl(problemUuid, exampleUuid)
-  const manifest = await loadVideoManifest(problemUuid, exampleUuid)
+
+  let manifest: InteractiveVideoManifest | null = null
+  let manifestLoadError = false
+  try {
+    manifest = await loadVideoManifest(problemUuid, exampleUuid)
+  } catch {
+    manifestLoadError = true
+  }
 
   const manifestFullUrl = manifest
     ? resolveFullVideoUrl(basePath, manifest)
     : fullVideoUrl
 
-  const hasFullVideo =
-    (await resourceExists(fullVideoUrl)) ||
-    (manifestFullUrl !== fullVideoUrl && (await resourceExists(manifestFullUrl)))
+  const fullProbe = await probeResource(fullVideoUrl)
+  const altProbe =
+    manifestFullUrl !== fullVideoUrl
+      ? await probeResource(manifestFullUrl)
+      : ('missing' as ProbeResult)
+  const fullMerged = mergeProbe(fullProbe, altProbe)
+  const hasFullVideo = fullMerged === 'found'
 
   let hasInteractive = false
+  let segmentProbe: ProbeResult = 'missing'
   if (manifest && manifest.segments.length > 0) {
     const checks = await Promise.all(
-      manifest.segments.map(seg => resourceExists(resolveSegmentUrl(basePath, seg))),
+      manifest.segments.map((seg) => probeResource(resolveSegmentUrl(basePath, seg))),
     )
-    hasInteractive = checks.some(Boolean)
+    segmentProbe = mergeProbe(...checks)
+    hasInteractive = segmentProbe === 'found'
   }
 
-  const ready = hasFullVideo || hasInteractive
+  if (hasFullVideo || hasInteractive) {
+    return {
+      status: 'ready',
+      manifest,
+      hasFullVideo,
+      hasInteractive,
+      fullVideoUrl: manifestFullUrl,
+    }
+  }
+
+  const anyError =
+    manifestLoadError
+    || fullMerged === 'error'
+    || segmentProbe === 'error'
 
   return {
-    status: ready ? 'ready' : 'pending',
-    manifest: ready ? manifest : null,
-    hasFullVideo,
-    hasInteractive,
+    status: anyError ? 'error' : 'pending',
+    manifest: null,
+    hasFullVideo: false,
+    hasInteractive: false,
     fullVideoUrl: manifestFullUrl,
   }
 }

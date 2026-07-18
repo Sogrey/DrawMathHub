@@ -34,7 +34,7 @@ Thumbs.db
 .idea/
 .vscode/
 
-# datas：仅保留汇总数据
-/datas/**
-!/datas/draw_math_all_lessons.json
+# 原始汇总 JSON（运行时用 public/data/problems/；本地 convertData 可自备）
+/datas/
 /tasks
+.workbuddy

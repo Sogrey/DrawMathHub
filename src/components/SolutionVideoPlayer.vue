@@ -9,6 +9,27 @@
       <p class="text-textTertiary text-body-sm">正在加载讲解视频…</p>
     </div>
 
+    <!-- 加载失败（网络/5xx），与「未制作」区分 -->
+    <div
+      v-else-if="availability.status === 'error'"
+      class="w-full aspect-video bg-gradient-to-br from-cardSecondary to-card rounded-card border border-border flex flex-col items-center justify-center p-8 text-center"
+    >
+      <div class="w-16 h-16 rounded-full glass-card-secondary flex items-center justify-center mb-4">
+        <WifiOff class="text-dangerText" :size="32" />
+      </div>
+      <p class="text-lg font-bold text-text mb-2">{{ VIDEO_ERROR_TITLE }}</p>
+      <p class="text-body-sm text-textSecondary max-w-sm leading-relaxed mb-4">
+        {{ VIDEO_ERROR_MESSAGE }}
+      </p>
+      <button
+        type="button"
+        class="px-5 py-2.5 rounded-button bg-primary text-white font-medium hover:bg-primaryDark transition-colors"
+        @click="probeAndInit"
+      >
+        重试
+      </button>
+    </div>
+
     <!-- 视频尚未制作 -->
     <div
       v-else-if="!isVideoReady"
@@ -199,9 +220,14 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import { Play, StepForward, Loader2, ChevronRight, Clapperboard } from '@lucide/vue'
+import { Play, StepForward, Loader2, ChevronRight, Clapperboard, WifiOff } from '@lucide/vue'
 import type { VideoPlayMode, InteractiveVideoManifest, VideoAvailability } from '@/types/video'
-import { VIDEO_PENDING_TITLE, VIDEO_PENDING_MESSAGE } from '@/types/video'
+import {
+  VIDEO_PENDING_TITLE,
+  VIDEO_PENDING_MESSAGE,
+  VIDEO_ERROR_TITLE,
+  VIDEO_ERROR_MESSAGE,
+} from '@/types/video'
 import { getExampleBasePath, probeVideoAvailability } from '@/data/videoAssets'
 import { useSegmentedVideoPlayer } from '@/composables/useSegmentedVideoPlayer'
 

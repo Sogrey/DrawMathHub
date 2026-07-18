@@ -10,8 +10,8 @@ export function normalizeAnswerText(raw: string): string {
   s = s.replace(/[：]/g, ':')
   s = s.replace(/[％]/g, '%')
   s = s.replace(/[／]/g, '/')
-  // 余数点号统一
-  s = s.replace(/[·•⋅･・.…]+/g, '…')
+  // 余数点号统一（不含 ASCII `.`，避免破坏小数）
+  s = s.replace(/[·•⋅･・…]+/g, '…')
   s = s.replace(/余/g, '…')
   return s.trim()
 }
