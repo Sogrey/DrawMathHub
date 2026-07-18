@@ -22,5 +22,8 @@ export default defineConfig(({ mode }) => {
         '@': resolve(__dirname, 'src'),
       },
     },
+    build: {
+      sourcemap: false,
+    },
   }
 })

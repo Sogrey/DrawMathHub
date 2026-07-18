@@ -6,14 +6,21 @@ import type { Plugin } from 'vite'
 /** 带扩展名的 public 静态资源；不存在时返回 404，避免 SPA 回退为 index.html */
 const STATIC_ASSET = /\.(json|mp4|webm|svg|png|jpe?g|gif|ico|woff2?|ttf|txt|xml)$/i
 
-function resolvePublicFile(url: string, base: string, root: string): string {
+function resolvePublicFile(url: string, base: string, root: string): string | null {
   let pathname = url.split('?')[0]
   const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
   if (normalizedBase !== '/' && pathname.startsWith(normalizedBase)) {
     pathname = pathname.slice(normalizedBase.length) || '/'
   }
-  const relative = pathname.replace(/^\//, '')
-  return path.join(root, 'public', decodeURIComponent(relative))
+  const relative = decodeURIComponent(pathname.replace(/^\//, ''))
+  if (relative.includes('..') || path.isAbsolute(relative)) return null
+
+  const publicRoot = path.resolve(root, 'public')
+  const filePath = path.resolve(publicRoot, relative)
+  if (!filePath.startsWith(publicRoot + path.sep) && filePath !== publicRoot) {
+    return null
+  }
+  return filePath
 }
 
 function asset404Middleware(
@@ -30,7 +37,7 @@ function asset404Middleware(
   }
 
   const filePath = resolvePublicFile(url, base, root)
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+  if (filePath && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     next()
     return
   }

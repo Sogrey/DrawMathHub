@@ -124,17 +124,14 @@ import { ref, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/userStore'
 import type { User } from '@/db/indexedDB'
+import { safeInternalPath } from '@/utils/safeRedirect'
 
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
 
 function resolveRedirect(): string {
-  const redirect = route.query.redirect
-  if (typeof redirect === 'string' && redirect.startsWith('/')) {
-    return redirect
-  }
-  return '/'
+  return safeInternalPath(route.query.redirect, '/')
 }
 
 const showCreateForm = ref(false)
