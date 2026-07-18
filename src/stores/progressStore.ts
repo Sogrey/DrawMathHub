@@ -4,8 +4,9 @@ import type { LearningProgress } from '@/data/problems'
 import { useUserStore } from './userStore'
 import {
   getAllProgress,
+  getProgress as getProgressDB,
   getOrCreateProgress,
-  saveProgress as saveProgressDB
+  saveProgress as saveProgressDB,
 } from '@/db/indexedDB'
 
 export const useProgressStore = defineStore('progress', () => {
@@ -29,18 +30,25 @@ export const useProgressStore = defineStore('progress', () => {
       return
     }
 
-    const records = await getAllProgress(userStore.currentUser.nickname)
-    problems.value = records.map(record => ({
-      problemId: record.problemId,
-      learned: record.learned,
-      practiceCount: record.practiceCount,
-      correctCount: record.correctCount,
-      lastPracticeTime: record.lastPracticeTime
-    }))
+    try {
+      const records = await getAllProgress(userStore.currentUser.nickname)
+      problems.value = records.map((record) => ({
+        problemId: record.problemId,
+        learned: record.learned,
+        practiceCount: record.practiceCount,
+        correctCount: record.correctCount,
+        lastPracticeTime: record.lastPracticeTime,
+      }))
 
-    totalLearned.value = problems.value.filter(p => p.learned).length
-    totalPracticed.value = problems.value.reduce((sum, p) => sum + p.practiceCount, 0)
-    totalCorrect.value = problems.value.reduce((sum, p) => sum + p.correctCount, 0)
+      totalLearned.value = problems.value.filter((p) => p.learned).length
+      totalPracticed.value = problems.value.reduce((sum, p) => sum + p.practiceCount, 0)
+      totalCorrect.value = problems.value.reduce((sum, p) => sum + p.correctCount, 0)
+    } catch {
+      problems.value = []
+      totalLearned.value = 0
+      totalPracticed.value = 0
+      totalCorrect.value = 0
+    }
   }
 
   async function markAsLearned(problemId: number) {
@@ -67,18 +75,29 @@ export const useProgressStore = defineStore('progress', () => {
     await loadProgress()
   }
 
+  /** 只读：不存在则返回 null，不创建空记录 */
   async function getProgress(problemId: number): Promise<LearningProgress | null> {
     const userStore = useUserStore()
     if (!userStore.currentUser) return null
 
-    const record = await getOrCreateProgress(userStore.currentUser.nickname, problemId)
+    const record = await getProgressDB(userStore.currentUser.nickname, problemId)
+    if (!record) return null
     return {
       problemId: record.problemId,
       learned: record.learned,
       practiceCount: record.practiceCount,
       correctCount: record.correctCount,
-      lastPracticeTime: record.lastPracticeTime
+      lastPracticeTime: record.lastPracticeTime,
     }
+  }
+
+  /** 从已 load 的 problems 构建 Map，供首页一次性读取 */
+  function getProgressMap(): Record<number, LearningProgress | null> {
+    const map: Record<number, LearningProgress | null> = {}
+    for (const p of problems.value) {
+      map[p.problemId] = p
+    }
+    return map
   }
 
   function calculateAccuracy(practiceCount: number, correctCount: number): number {
@@ -90,7 +109,7 @@ export const useProgressStore = defineStore('progress', () => {
     () => useUserStore().currentUser,
     () => {
       loadProgress()
-    }
+    },
   )
 
   return {
@@ -102,7 +121,8 @@ export const useProgressStore = defineStore('progress', () => {
     markAsLearned,
     recordPractice,
     getProgress,
+    getProgressMap,
     overallAccuracy,
-    calculateAccuracy
+    calculateAccuracy,
   }
 })

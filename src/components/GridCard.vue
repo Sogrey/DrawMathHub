@@ -1,319 +1,143 @@
 <template>
   <div
-    class="grid-card rounded-card p-5 shadow-elevation cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-elevation-hover border border-border overflow-hidden relative backdrop-blur-md"
+    class="grid-card group rounded-card shadow-elevation cursor-pointer transform transition-all duration-300 hover:scale-[1.03] hover:shadow-elevation-hover border border-border overflow-hidden relative backdrop-blur-md"
     :style="{ backgroundColor: cardBgColor }"
     @click="$router.push(`/problem/${problem.lessonNumber}`)"
+    @mouseenter="onTipEnter"
+    @mousemove="onTipMove"
+    @mouseleave="onTipLeave"
   >
-    <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 100 100">
-      <g v-if="iconType === 'circles'">
-        <circle cx="25" cy="50" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="50" cy="50" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="75" cy="50" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="37" cy="50" r="4" :fill="iconColor" opacity="0.3" />
-        <circle cx="62" cy="50" r="4" :fill="iconColor" opacity="0.3" />
-      </g>
-
-      <g v-else-if="iconType === 'queue'">
-        <rect x="15" y="35" width="12" height="30" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <rect x="32" y="35" width="12" height="30" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <rect x="49" y="35" width="12" height="30" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <rect x="66" y="35" width="12" height="30" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <circle cx="21" cy="28" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="38" cy="28" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="55" cy="28" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="72" cy="28" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'balance'">
-        <rect x="30" y="60" width="40" height="6" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="50" y1="45" x2="50" y2="60" :stroke="iconColor" stroke-width="3" />
-        <rect x="15" y="40" width="18" height="10" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <rect x="67" y="40" width="18" height="10" :stroke="iconColor" stroke-width="3" fill="none" rx="2" />
-        <circle cx="24" cy="35" r="5" :fill="iconColor" opacity="0.3" />
-        <circle cx="76" cy="35" r="5" :fill="iconColor" opacity="0.3" />
-      </g>
-
-      <g v-else-if="iconType === 'list'">
-        <rect x="20" y="25" width="60" height="50" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="20" y1="40" x2="80" y2="40" :stroke="iconColor" stroke-width="2" />
-        <line x1="20" y1="50" x2="80" y2="50" :stroke="iconColor" stroke-width="2" />
-        <line x1="20" y1="60" x2="80" y2="60" :stroke="iconColor" stroke-width="2" />
-        <line x1="50" y1="25" x2="50" y2="75" :stroke="iconColor" stroke-width="2" />
-      </g>
-
-      <g v-else-if="iconType === 'line-link'">
-        <circle cx="25" cy="35" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="75" cy="35" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="25" cy="65" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="75" cy="65" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="33" y1="35" x2="67" y2="35" :stroke="iconColor" stroke-width="3" />
-        <line x1="33" y1="65" x2="67" y2="65" :stroke="iconColor" stroke-width="3" />
-        <line x1="25" y1="43" x2="25" y2="57" :stroke="iconColor" stroke-width="3" />
-        <line x1="75" y1="43" x2="75" y2="57" :stroke="iconColor" stroke-width="3" />
-      </g>
-
-      <g v-else-if="iconType === 'line-segment'">
-        <line x1="15" y1="50" x2="85" y2="50" :stroke="iconColor" stroke-width="4" stroke-linecap="round" />
-        <circle cx="15" cy="50" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="50" cy="50" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="85" cy="50" r="5" :fill="iconColor" opacity="0.6" />
-        <rect x="30" y="42" width="20" height="16" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="60" y="42" width="25" height="16" :stroke="iconColor" stroke-width="3" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'tree'">
-        <line x1="50" y1="85" x2="50" y2="45" :stroke="iconColor" stroke-width="3" />
-        <line x1="50" y1="45" x2="30" y2="25" :stroke="iconColor" stroke-width="3" />
-        <line x1="50" y1="45" x2="70" y2="25" :stroke="iconColor" stroke-width="3" />
-        <line x1="30" y1="25" x2="20" y2="10" :stroke="iconColor" stroke-width="2" />
-        <line x1="30" y1="25" x2="40" y2="10" :stroke="iconColor" stroke-width="2" />
-        <line x1="70" y1="25" x2="60" y2="10" :stroke="iconColor" stroke-width="2" />
-        <line x1="70" y1="25" x2="80" y2="10" :stroke="iconColor" stroke-width="2" />
-        <circle cx="50" cy="85" r="4" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'arrow-back'">
-        <line x1="70" y1="50" x2="30" y2="50" :stroke="iconColor" stroke-width="4" stroke-linecap="round" />
-        <polygon points="30,50 42,43 42,57" :fill="iconColor" />
-        <circle cx="70" cy="50" r="6" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="50" cy="50" r="6" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="30" cy="50" r="6" :fill="iconColor" opacity="0.3" />
-      </g>
-
-      <g v-else-if="iconType === 'time'">
-        <circle cx="50" cy="50" r="25" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="50" y1="30" x2="50" y2="70" :stroke="iconColor" stroke-width="2" />
-        <line x1="30" y1="50" x2="70" y2="50" :stroke="iconColor" stroke-width="2" />
-        <line x1="50" y1="50" x2="62" y2="38" :stroke="iconColor" stroke-width="3" stroke-linecap="round" />
-        <circle cx="50" cy="50" r="3" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'graph-bar'">
-        <line x1="20" y1="75" x2="80" y2="75" :stroke="iconColor" stroke-width="3" />
-        <line x1="20" y1="20" x2="20" y2="75" :stroke="iconColor" stroke-width="3" />
-        <rect x="30" y="50" width="10" height="25" :stroke="iconColor" stroke-width="2" fill="none" />
-        <rect x="45" y="40" width="10" height="35" :stroke="iconColor" stroke-width="2" fill="none" />
-        <rect x="60" y="55" width="10" height="20" :stroke="iconColor" stroke-width="2" fill="none" />
-        <rect x="75" y="30" width="10" height="45" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'number-line'">
-        <line x1="15" y1="50" x2="85" y2="50" :stroke="iconColor" stroke-width="4" stroke-linecap="round" />
-        <line x1="15" y1="45" x2="15" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="35" y1="45" x2="35" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="55" y1="45" x2="55" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="75" y1="45" x2="75" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="85" y1="45" x2="85" y2="55" :stroke="iconColor" stroke-width="2" />
-        <circle cx="55" cy="50" r="6" :fill="iconColor" opacity="0.5" />
-      </g>
-
-      <g v-else-if="iconType === 'coordinate'">
-        <line x1="20" y1="80" x2="80" y2="80" :stroke="iconColor" stroke-width="3" />
-        <line x1="20" y1="20" x2="20" y2="80" :stroke="iconColor" stroke-width="3" />
-        <line x1="80" y1="78" x2="80" y2="82" :stroke="iconColor" stroke-width="2" />
-        <line x1="18" y1="20" x2="22" y2="20" :stroke="iconColor" stroke-width="2" />
-        <circle cx="45" cy="55" r="5" :fill="iconColor" />
-        <circle cx="65" cy="35" r="5" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'venn'">
-        <circle cx="38" cy="50" r="22" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="62" cy="50" r="22" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="45" y="40" width="10" height="20" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'flow'">
-        <rect x="20" y="40" width="18" height="20" :stroke="iconColor" stroke-width="3" fill="none" rx="4" />
-        <rect x="41" y="40" width="18" height="20" :stroke="iconColor" stroke-width="3" fill="none" rx="4" />
-        <rect x="62" y="40" width="18" height="20" :stroke="iconColor" stroke-width="3" fill="none" rx="4" />
-        <path d="M38,50 L41,50" :stroke="iconColor" stroke-width="3" />
-        <path d="M59,50 L62,50" :stroke="iconColor" stroke-width="3" />
-        <polygon points="41,50 35,46 35,54" :fill="iconColor" />
-        <polygon points="62,50 56,46 56,54" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'assume'">
-        <circle cx="50" cy="50" r="20" :stroke="iconColor" stroke-width="3" fill="none" />
-        <path d="M42,45 Q50,55 58,45" :stroke="iconColor" stroke-width="3" fill="none" />
-        <path d="M50,55 L50,65" :stroke="iconColor" stroke-width="3" />
-      </g>
-
-      <g v-else-if="iconType === 'eliminate'">
-        <circle cx="35" cy="40" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="65" cy="40" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="50" cy="60" r="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="27" y1="32" x2="43" y2="48" :stroke="iconColor" stroke-width="3" />
-        <line x1="43" y1="32" x2="27" y2="48" :stroke="iconColor" stroke-width="3" />
-      </g>
-
-      <g v-else-if="iconType === 'enumerate'">
-        <circle cx="30" cy="30" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="70" cy="30" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="30" cy="50" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="70" cy="50" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="30" cy="70" r="5" :fill="iconColor" opacity="0.6" />
-        <circle cx="70" cy="70" r="5" :fill="iconColor" opacity="0.6" />
-        <line x1="35" y1="30" x2="65" y2="30" :stroke="iconColor" stroke-width="2" stroke-dasharray="4" />
-        <line x1="35" y1="50" x2="65" y2="50" :stroke="iconColor" stroke-width="2" stroke-dasharray="4" />
-        <line x1="35" y1="70" x2="65" y2="70" :stroke="iconColor" stroke-width="2" stroke-dasharray="4" />
-      </g>
-
-      <g v-else-if="iconType === 'convert'">
-        <rect x="20" y="40" width="18" height="20" :stroke="iconColor" stroke-width="3" fill="none" rx="3" />
-        <rect x="62" y="40" width="18" height="20" :stroke="iconColor" stroke-width="3" fill="none" rx="3" />
-        <path d="M38,50 L62,50" :stroke="iconColor" stroke-width="3" />
-        <polygon points="62,50 54,45 54,55" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'model'">
-        <rect x="30" y="30" width="40" height="40" :stroke="iconColor" stroke-width="3" fill="none" rx="4" />
-        <line x1="30" y1="50" x2="70" y2="50" :stroke="iconColor" stroke-width="2" />
-        <line x1="50" y1="30" x2="50" y2="70" :stroke="iconColor" stroke-width="2" />
-        <circle cx="50" cy="50" r="6" :fill="iconColor" opacity="0.4" />
-      </g>
-
-      <g v-else-if="iconType === 'flag'">
-        <line x1="15" y1="70" x2="15" y2="20" :stroke="iconColor" stroke-width="3" />
-        <polygon points="15,30 35,25 15,20" :stroke="iconColor" stroke-width="2" fill="none" />
-        <line x1="40" y1="70" x2="40" y2="25" :stroke="iconColor" stroke-width="3" />
-        <polygon points="40,35 60,30 40,25" :stroke="iconColor" stroke-width="2" fill="none" />
-        <line x1="65" y1="70" x2="65" y2="30" :stroke="iconColor" stroke-width="3" />
-        <polygon points="65,40 80,35 65,30" :stroke="iconColor" stroke-width="2" fill="none" />
-        <line x1="15" y1="70" x2="80" y2="70" :stroke="iconColor" stroke-width="2" />
-      </g>
-
-      <g v-else-if="iconType === 'age-axis'">
-        <line x1="15" y1="50" x2="85" y2="50" :stroke="iconColor" stroke-width="3" stroke-linecap="round" />
-        <line x1="30" y1="45" x2="30" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="50" y1="45" x2="50" y2="55" :stroke="iconColor" stroke-width="2" />
-        <line x1="70" y1="45" x2="70" y2="55" :stroke="iconColor" stroke-width="2" />
-        <circle cx="30" cy="50" r="4" :fill="iconColor" />
-        <circle cx="50" cy="50" r="4" :fill="iconColor" />
-        <circle cx="70" cy="50" r="4" :fill="iconColor" />
-        <path d="M25,60 L35,60" :stroke="iconColor" stroke-width="2" />
-        <path d="M45,60 L55,60" :stroke="iconColor" stroke-width="2" />
-        <path d="M65,60 L75,60" :stroke="iconColor" stroke-width="2" />
-      </g>
-
-      <g v-else-if="iconType === 'package'">
-        <rect x="30" y="35" width="40" height="30" :stroke="iconColor" stroke-width="3" fill="none" rx="4" />
-        <line x1="30" y1="50" x2="70" y2="50" :stroke="iconColor" stroke-width="2" />
-        <circle cx="42" cy="42" r="5" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="58" cy="58" r="5" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'balance-scale'">
-        <rect x="35" y="65" width="30" height="8" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="50" y1="35" x2="50" y2="65" :stroke="iconColor" stroke-width="3" />
-        <line x1="20" y1="45" x2="40" y2="45" :stroke="iconColor" stroke-width="3" />
-        <line x1="60" y1="45" x2="80" y2="45" :stroke="iconColor" stroke-width="3" />
-        <circle cx="30" cy="45" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="70" cy="45" r="6" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else-if="iconType === 'move-more-less'">
-        <rect x="20" y="35" width="15" height="30" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="42" y="35" width="15" height="30" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="64" y="35" width="15" height="30" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="20" y="45" width="15" height="20" :fill="iconColor" opacity="0.2" />
-        <rect x="64" y="35" width="15" height="10" :fill="iconColor" opacity="0.2" />
-        <path d="M35,50 L42,50" :stroke="iconColor" stroke-width="3" />
-        <polygon points="42,50 36,46 36,54" :fill="iconColor" />
-      </g>
-
-      <g v-else-if="iconType === 'matrix'">
-        <rect x="30" y="30" width="40" height="40" :stroke="iconColor" stroke-width="3" fill="none" />
-        <line x1="40" y1="30" x2="40" y2="70" :stroke="iconColor" stroke-width="2" />
-        <line x1="50" y1="30" x2="50" y2="70" :stroke="iconColor" stroke-width="2" />
-        <line x1="60" y1="30" x2="60" y2="70" :stroke="iconColor" stroke-width="2" />
-        <line x1="30" y1="40" x2="70" y2="40" :stroke="iconColor" stroke-width="2" />
-        <line x1="30" y1="50" x2="70" y2="50" :stroke="iconColor" stroke-width="2" />
-        <line x1="30" y1="60" x2="70" y2="60" :stroke="iconColor" stroke-width="2" />
-      </g>
-
-      <g v-else-if="iconType === 'train'">
-        <rect x="20" y="40" width="15" height="20" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="35" y="40" width="15" height="20" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="50" y="40" width="15" height="20" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="65" y="40" width="15" height="20" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="25" cy="62" r="4" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="42" cy="62" r="4" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="57" cy="62" r="4" :stroke="iconColor" stroke-width="2" fill="none" />
-        <circle cx="72" cy="62" r="4" :stroke="iconColor" stroke-width="2" fill="none" />
-        <line x1="15" y1="68" x2="85" y2="68" :stroke="iconColor" stroke-width="2" stroke-dasharray="4" />
-      </g>
-
-      <g v-else-if="iconType === 'cycle'">
-        <circle cx="50" cy="50" r="25" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="35" cy="45" r="4" :fill="iconColor" />
-        <circle cx="50" cy="30" r="4" :fill="iconColor" />
-        <circle cx="65" cy="45" r="4" :fill="iconColor" />
-        <circle cx="65" cy="60" r="4" :fill="iconColor" />
-        <circle cx="50" cy="70" r="4" :fill="iconColor" />
-        <circle cx="35" cy="60" r="4" :fill="iconColor" />
-        <path d="M50,50 L50,25" :stroke="iconColor" stroke-width="2" />
-      </g>
-
-      <g v-else-if="iconType === 'overlap'">
-        <rect x="25" y="30" width="30" height="40" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="45" y="30" width="30" height="40" :stroke="iconColor" stroke-width="3" fill="none" />
-        <rect x="45" y="30" width="10" height="40" :fill="iconColor" opacity="0.2" />
-      </g>
-
-      <g v-else-if="iconType === 'profit'">
-        <line x1="20" y1="70" x2="80" y2="70" :stroke="iconColor" stroke-width="3" />
-        <line x1="20" y1="30" x2="20" y2="70" :stroke="iconColor" stroke-width="3" />
-        <rect x="30" y="50" width="20" height="20" :stroke="iconColor" stroke-width="2" fill="none" />
-        <rect x="30" y="40" width="20" height="10" :fill="iconColor" opacity="0.3" />
-        <rect x="55" y="35" width="20" height="35" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
-
-      <g v-else>
-        <circle cx="50" cy="50" r="25" :stroke="iconColor" stroke-width="3" fill="none" />
-        <circle cx="50" cy="50" r="15" :stroke="iconColor" stroke-width="2" fill="none" />
-      </g>
+    <img
+      v-if="coverOk && coverSrc"
+      :src="coverSrc"
+      alt=""
+      class="card-cover absolute inset-0 w-full h-full object-cover pointer-events-none"
+      @error="coverOk = false"
+    />
+    <!-- 无封面时的统一占位 -->
+    <svg
+      v-else
+      class="absolute inset-x-0 bottom-0 h-[55%] w-full opacity-[0.18] pointer-events-none"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <circle cx="25" cy="50" r="8" stroke="#C9563A" stroke-width="3" fill="none" />
+      <circle cx="50" cy="50" r="8" stroke="#C9563A" stroke-width="3" fill="none" />
+      <circle cx="75" cy="50" r="8" stroke="#C9563A" stroke-width="3" fill="none" />
+      <circle cx="37" cy="50" r="4" fill="#C9563A" opacity="0.3" />
+      <circle cx="62" cy="50" r="4" fill="#C9563A" opacity="0.3" />
     </svg>
 
-    <div class="relative z-10">
-      <div class="flex items-center gap-3 mb-3">
-        <span 
-          class="size-9 shrink-0 rounded-xl flex items-center justify-center font-bold text-sm leading-none tabular-nums text-accentCream"
-          :style="{ backgroundColor: badgeBg }"
+    <div class="card-scrim absolute inset-0 pointer-events-none" aria-hidden="true" />
+
+    <div class="relative z-10 flex h-full min-h-[inherit] flex-col p-4 sm:p-5">
+      <div class="flex items-start justify-between gap-3 shrink-0">
+        <span
+          class="size-10 shrink-0 rounded-xl flex items-center justify-center font-bold text-base leading-none tabular-nums text-accentCream shadow-sm"
+          :style="{ backgroundColor: theme.badgeBg }"
         >
           {{ problem.lessonNumber }}
         </span>
-        <h3 class="text-text font-semibold text-lg line-clamp-1 tracking-body">{{ problem.title }}</h3>
+        <div
+          v-if="progress && progress.practiceCount > 0"
+          class="status-chip flex items-center gap-1 text-xs px-2.5 py-1 rounded-full"
+        >
+          <span class="text-textTertiary">{{ progress.practiceCount }}次</span>
+          <span class="text-textTertiary/60">·</span>
+          <span class="font-bold tabular-nums" :style="{ color: accuracyColor }">{{ accuracy }}%</span>
+        </div>
+        <div
+          v-else-if="progress?.learned"
+          class="status-chip text-xs text-successText font-medium px-2.5 py-1 rounded-full"
+        >
+          ✓ 已学
+        </div>
       </div>
 
-      <div class="flex items-center justify-between mt-4">
-        <span 
-          class="text-xs font-medium px-3 py-1.5 rounded-full"
-          :style="{ backgroundColor: pillBg, color: pillFg }"
+      <div class="flex-1 min-h-[2.5rem]" aria-hidden="true" />
+
+      <div class="flex items-end justify-between gap-3 mt-auto">
+        <h3 class="card-title text-text font-semibold text-lg sm:text-xl leading-snug tracking-body line-clamp-2 min-w-0">
+          {{ problem.title }}
+        </h3>
+        <span
+          class="shrink-0 inline-flex text-xs font-medium px-3 py-1.5 rounded-full"
+          :style="{ backgroundColor: theme.pillBg, color: theme.pillFg }"
         >
           {{ problem.methodType }}
         </span>
-        <div v-if="progress && progress.practiceCount > 0" class="flex items-center gap-1 text-xs">
-          <span class="text-textTertiary">{{ progress.practiceCount }}次</span>
-          <span class="text-textTertiary">/</span>
-          <span class="font-bold" :style="{ color: accuracyColor }">{{ accuracy }}%</span>
-        </div>
-        <div v-else-if="progress?.learned" class="text-xs text-successText font-medium">
-          ✓ 已学
-        </div>
-        <div v-else class="w-16"></div>
       </div>
     </div>
   </div>
+
+  <Teleport to="body">
+    <div
+      v-show="tipVisible"
+      class="card-tip"
+      :style="tipStyle"
+      role="tooltip"
+    >
+      <span class="tip-method">{{ problem.methodType }}</span>
+      <p class="tip-body">{{ problem.problemIdentification }}</p>
+    </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Problem, LearningProgress } from '@/data/problems'
+import { getCoverUrl } from '@/data/videoAssets'
 
 const props = defineProps<{
   problem: Problem
   progress?: LearningProgress | null
 }>()
+
+const tipVisible = ref(false)
+const tipX = ref(0)
+const tipY = ref(0)
+const tipOnLeft = ref(false)
+
+function onTipEnter(e: MouseEvent) {
+  tipVisible.value = true
+  onTipMove(e)
+}
+
+function onTipMove(e: MouseEvent) {
+  tipX.value = e.clientX
+  tipY.value = e.clientY
+  tipOnLeft.value = e.clientX > window.innerWidth * 0.55
+}
+
+function onTipLeave() {
+  tipVisible.value = false
+}
+
+const tipStyle = computed(() => {
+  const gap = 10
+  return {
+    left: `${tipX.value}px`,
+    top: `${tipY.value}px`,
+    transform: tipOnLeft.value
+      ? `translate(calc(-100% - ${gap}px), calc(-100% - ${gap}px))`
+      : `translate(${gap}px, calc(-100% - ${gap}px))`,
+  }
+})
+
+const coverSrc = computed(() => {
+  const exampleId = props.problem.mainProblem?.id
+  if (!props.problem.id || !exampleId) return ''
+  return getCoverUrl(props.problem.id, exampleId)
+})
+const coverOk = ref(true)
+
+watch(
+  () => [props.problem.lessonNumber, coverSrc.value] as const,
+  () => {
+    coverOk.value = Boolean(coverSrc.value)
+  },
+  { immediate: true },
+)
 
 const bgColors = [
   'rgba(26, 24, 22, 0.75)',
@@ -328,55 +152,55 @@ const bgColors = [
   'rgba(36, 32, 28, 0.72)',
 ]
 
-const methodIcons: Record<string, { type: string; color: string; badgeBg: string; pillBg: string; pillFg: string }> = {
-  '图示法': { type: 'circles', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '列表法': { type: 'list', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '画线法': { type: 'line-segment', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '连线法': { type: 'line-link', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '线段图法': { type: 'line-segment', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '树状图法': { type: 'tree', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '倒推法': { type: 'arrow-back', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '逆推法': { type: 'arrow-back', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '竖式法': { type: 'list', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '表格法': { type: 'list', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '统计图法': { type: 'graph-bar', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '数轴法': { type: 'number-line', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '坐标系法': { type: 'coordinate', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '韦恩图法': { type: 'venn', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '流程图法': { type: 'flow', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '假设法': { type: 'assume', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '排除法': { type: 'eliminate', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '枚举法': { type: 'enumerate', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '转化法': { type: 'convert', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '建模法': { type: 'model', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '归纳法': { type: 'enumerate', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '类比法': { type: 'convert', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '插旗法': { type: 'flag', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '年龄轴法': { type: 'age-axis', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '打包法': { type: 'package', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '移多补少法': { type: 'move-more-less', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '天平法': { type: 'balance-scale', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '方阵问题': { type: 'matrix', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '周期问题': { type: 'cycle', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
-  '重叠问题': { type: 'overlap', color: '#777A86', badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
-  '利润问题': { type: 'profit', color: '#684131', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
-  '火车过桥': { type: 'train', color: '#EAD6B8', badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+type MethodTheme = { badgeBg: string; pillBg: string; pillFg: string }
+
+const DEFAULT_THEME: MethodTheme = {
+  badgeBg: '#9A3D28',
+  pillBg: 'rgba(154, 61, 40, 0.75)',
+  pillFg: '#EAD6B8',
 }
 
-const cardBgColor = computed(() => {
-  const index = props.problem.lessonNumber % bgColors.length
-  return bgColors[index]
-})
+const methodThemes: Record<string, MethodTheme> = {
+  '图示法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '列表法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '画线法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '连线法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '线段图法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '树状图法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '倒推法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '逆推法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '竖式法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '表格法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '统计图法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '数轴法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '坐标系法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '韦恩图法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '流程图法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '假设法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '排除法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '枚举法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '转化法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '建模法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '归纳法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '类比法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '插旗法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '年龄轴法': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '打包法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '移多补少法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '天平法': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '方阵问题': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '周期问题': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+  '重叠问题': { badgeBg: '#454850', pillBg: 'rgba(69, 72, 80, 0.85)', pillFg: '#EAD6B8' },
+  '利润问题': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '火车过桥': { badgeBg: '#4A2E22', pillBg: 'rgba(74, 46, 34, 0.85)', pillFg: '#EAD6B8' },
+  '十字交叉法': { badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' },
+}
 
-const iconInfo = computed(() => {
-  return methodIcons[props.problem.methodType] || { type: 'circles', color: '#C9563A', badgeBg: '#9A3D28', pillBg: 'rgba(154, 61, 40, 0.75)', pillFg: '#EAD6B8' }
-})
+const cardBgColor = computed(() => bgColors[props.problem.lessonNumber % bgColors.length])
 
-const iconType = computed(() => iconInfo.value.type)
-const iconColor = computed(() => iconInfo.value.color)
-const badgeBg = computed(() => iconInfo.value.badgeBg)
-const pillBg = computed(() => iconInfo.value.pillBg)
-const pillFg = computed(() => iconInfo.value.pillFg)
+const theme = computed(
+  () => methodThemes[props.problem.methodType] ?? DEFAULT_THEME,
+)
 
 const accuracy = computed(() => {
   if (!props.progress || props.progress.practiceCount === 0) return 0
@@ -392,13 +216,70 @@ const accuracyColor = computed(() => {
 
 <style scoped>
 .grid-card {
-  min-height: 110px;
+  min-height: 168px;
+  aspect-ratio: 16 / 10;
 }
 
-.line-clamp-1 {
-  display: -webkit-box;  
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
+.card-cover {
+  opacity: 0.38;
+  transform: scale(1);
+  transform-origin: center 50%;
+  filter: saturate(0.9) brightness(0.92);
+}
+
+.card-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 11, 10, 0.72) 0%,
+      rgba(12, 11, 10, 0.18) 42%,
+      rgba(12, 11, 10, 0.55) 100%
+    );
+}
+
+.status-chip {
+  background: rgba(20, 18, 16, 0.55);
+  border: 1px solid rgba(234, 214, 184, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.card-title {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+.card-tip {
+  position: fixed;
+  z-index: 80;
+  max-width: 220px;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.5rem;
+  background: rgba(22, 20, 18, 0.92);
+  border: 1px solid rgba(234, 214, 184, 0.14);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.tip-method {
+  display: inline-block;
+  color: #c9563a;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.2rem;
+}
+
+.tip-body {
+  color: rgba(234, 214, 184, 0.88);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

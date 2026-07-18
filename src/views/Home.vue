@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-background">
     <Navigation />
-    <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-7xl mx-auto px-4 py-8">
       <div class="text-center mb-10">
         <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-4">
           <span class="text-4xl">📐</span>
@@ -50,7 +50,7 @@
         <p class="text-textTertiary mt-4">加载中...</p>
       </div>
 
-      <div v-else class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         <GridCard
           v-for="problem in filteredProblems"
           :key="problem.lessonNumber"
@@ -95,10 +95,8 @@ const accuracyColor = computed(() => {
 
 async function loadAllProgress() {
   await progressStore.loadProgress()
-  for (const problem of problems.value) {
-    const progress = await progressStore.getProgress(problem.lessonNumber)
-    progressMap.value[problem.lessonNumber] = progress
-  }
+  // 只读已有进度，不再按讲次 N+1 创建空记录
+  progressMap.value = progressStore.getProgressMap()
 }
 
 async function initData() {

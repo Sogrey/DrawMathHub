@@ -19,6 +19,7 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
   const waitingForContinue = ref(false)
   const loadError = ref<string | null>(null)
   const segmentReady = ref(false)
+  const prefetchTimers = new Set<ReturnType<typeof setTimeout>>()
 
   const segments = computed(() => options.manifest.value?.segments ?? [])
   const segmentCount = computed(() => segments.value.length)
@@ -75,6 +76,8 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
 
       const url = segmentUrl(index)
       if (!url) {
+        loadError.value = '视频片段路径无效'
+        isLoading.value = false
         reject(new Error('invalid segment'))
         return
       }
@@ -82,6 +85,7 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
       const inactive = inactiveVideo()
       const active = activeVideo()
       if (!inactive) {
+        loadError.value = '播放器未就绪'
         reject(new Error('no video element'))
         return
       }
@@ -100,6 +104,7 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
 
       inactive.onerror = () => {
         isLoading.value = false
+        loadError.value = '视频加载失败，请检查网络后重试'
         reject(new Error('segment load failed'))
       }
 
@@ -139,15 +144,26 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
   }
 
   function preloadAdjacent(index: number) {
-    const targets = [index + 1, index - 1].filter(i => i >= 0 && i < segmentCount.value)
+    const targets = [index + 1, index - 1].filter((i) => i >= 0 && i < segmentCount.value)
     for (const i of targets) {
+      const href = segmentUrl(i)
+      if (!href) continue
       const link = document.createElement('link')
       link.rel = 'prefetch'
       link.as = 'video'
-      link.href = segmentUrl(i)
+      link.href = href
       document.head.appendChild(link)
-      setTimeout(() => link.remove(), 30_000)
+      const timer = setTimeout(() => {
+        link.remove()
+        prefetchTimers.delete(timer)
+      }, 30_000)
+      prefetchTimers.add(timer)
     }
+  }
+
+  function retryCurrentSegment() {
+    loadError.value = null
+    return playSegment(currentSegmentIndex.value, true)
   }
 
   function playCurrentSegment() {
@@ -227,6 +243,8 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
   onUnmounted(() => {
     detachHandlers(videoA.value)
     detachHandlers(videoB.value)
+    for (const t of prefetchTimers) clearTimeout(t)
+    prefetchTimers.clear()
   })
 
   return {
@@ -253,6 +271,7 @@ export function useSegmentedVideoPlayer(options: UseSegmentedVideoPlayerOptions)
     goToSegment,
     continueToNext,
     resetInteractive,
+    retryCurrentSegment,
     activeVideo,
   }
 }

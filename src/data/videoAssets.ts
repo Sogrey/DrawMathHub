@@ -9,13 +9,31 @@ export function getFullVideoUrl(problemUuid: string, exampleUuid: string): strin
   return `${getExampleBasePath(problemUuid, exampleUuid)}/full.mp4`
 }
 
+/** 与 full.mp4 同目录的大厅封面 */
+export function getCoverUrl(problemUuid: string, exampleUuid: string): string {
+  return `${getExampleBasePath(problemUuid, exampleUuid)}/cover.png`
+}
+
 export function getManifestUrl(problemUuid: string, exampleUuid: string): string {
   return `${getExampleBasePath(problemUuid, exampleUuid)}/manifest.json`
 }
 
+/** 拒绝路径穿越；非法则返回空串 */
+function safeRelativeFile(file: string): string | null {
+  const f = file.replace(/\\/g, '/').trim()
+  if (!f || f.includes('..') || f.startsWith('/') || f.includes('://')) return null
+  return f
+}
+
 export function resolveSegmentUrl(basePath: string, segment: VideoSegment): string {
-  if (segment.file.startsWith('/')) return publicUrl(segment.file)
-  return `${basePath}/${segment.file}`
+  if (segment.file.startsWith('/')) {
+    const stripped = segment.file.replace(/^\/+/, '')
+    if (stripped.includes('..')) return ''
+    return publicUrl(stripped)
+  }
+  const safe = safeRelativeFile(segment.file)
+  if (!safe) return ''
+  return `${basePath}/${safe}`
 }
 
 export function resolveFullVideoUrl(

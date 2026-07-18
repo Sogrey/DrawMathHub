@@ -96,6 +96,20 @@
           </div>
 
           <div
+            v-else-if="loadError"
+            class="absolute inset-0 z-[3] flex flex-col items-center justify-center gap-3 bg-black/70 px-4 text-center"
+          >
+            <p class="text-white text-sm">{{ loadError }}</p>
+            <button
+              type="button"
+              class="px-5 py-2 rounded-button bg-primary text-white font-medium hover:bg-primaryDark"
+              @click="retrySegment"
+            >
+              重试
+            </button>
+          </div>
+
+          <div
             v-else-if="waitingForContinue && !isLastSegment"
             class="absolute inset-x-0 bottom-0 z-[3] p-4 bg-gradient-to-t from-black/75 to-transparent"
           >
@@ -219,6 +233,7 @@ const {
   isPlaying,
   isLoading,
   waitingForContinue,
+  loadError,
   segmentReady,
   segments,
   isFirstSegment,
@@ -228,11 +243,18 @@ const {
   goNextSegment,
   goToSegment,
   continueToNext,
+  retryCurrentSegment,
 } = useSegmentedVideoPlayer({
   manifest,
   basePath,
   mode,
 })
+
+function retrySegment() {
+  void retryCurrentSegment().catch(() => {
+    /* loadError 已在 composable 中设置 */
+  })
+}
 
 const currentSegment = computed(() => segments.value[currentSegmentIndex.value])
 

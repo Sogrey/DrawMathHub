@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { getAppBase } from '@/config/app'
+import { safeInternalPath } from '@/utils/safeRedirect'
 import Home from '@/views/Home.vue'
 import Problem from '@/views/Problem.vue'
 import Login from '@/views/Login.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(getAppBase()),
@@ -10,21 +12,26 @@ const router = createRouter({
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
     },
     {
       path: '/',
       name: 'Home',
       component: Home,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
     },
     {
       path: '/problem/:id',
       name: 'Problem',
       component: Problem,
-      meta: { requiresAuth: true }
-    }
-  ]
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound,
+    },
+  ],
 })
 
 router.beforeEach(async (to, _from, next) => {
@@ -36,10 +43,12 @@ router.beforeEach(async (to, _from, next) => {
     return
   }
   if (to.path === '/login' && userStore.isAuthenticated) {
-    const redirect = typeof to.query.redirect === 'string' ? to.query.redirect : '/'
-    next(redirect.startsWith('/') ? redirect : '/')
+    next(safeInternalPath(to.query.redirect, '/'))
     return
   }
+
+  window.scrollTo(0, 0)
+
   next()
 })
 
