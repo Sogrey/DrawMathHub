@@ -75,7 +75,19 @@ def discover_lessons() -> list[LessonJob]:
 def filter_lessons(jobs: list[LessonJob], lesson_filter: str | None) -> list[LessonJob]:
     if not lesson_filter:
         return jobs
-    wanted = {int(part.strip()) for part in lesson_filter.split(",") if part.strip()}
+    wanted: set[int] = set()
+    for part in lesson_filter.split(","):
+        token = part.strip()
+        if not token:
+            continue
+        if "-" in token:
+            start_s, end_s = token.split("-", 1)
+            start, end = int(start_s.strip()), int(end_s.strip())
+            if end < start:
+                start, end = end, start
+            wanted.update(range(start, end + 1))
+        else:
+            wanted.add(int(token))
     return [job for job in jobs if job.lesson in wanted]
 
 
@@ -153,7 +165,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--lessons",
-        help="仅渲染指定讲次，逗号分隔，如 1,3,21",
+        help="仅渲染指定讲次：逗号分隔或区间，如 1,3,21 或 1-60",
     )
     parser.add_argument(
         "--example-index",
