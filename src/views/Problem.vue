@@ -154,6 +154,33 @@
             <p class="text-textSecondary text-body-sm leading-relaxed">{{ currentExtension.hint }}</p>
           </div>
 
+          <div
+            v-if="currentExtension.answer"
+            class="glass-card-secondary rounded-card overflow-hidden"
+          >
+            <button
+              type="button"
+              class="w-full px-4 py-3 flex items-center justify-between gap-2 text-left hover:bg-white/5 transition-colors"
+              @click="showReferenceAnswer = !showReferenceAnswer"
+            >
+              <h3 class="font-bold text-primaryDark flex items-center gap-2">
+                <FileText class="text-primary" :size="18" />
+                参考答案
+              </h3>
+              <ChevronDown
+                class="text-textTertiary shrink-0 transition-transform"
+                :class="{ 'rotate-180': showReferenceAnswer }"
+                :size="18"
+              />
+            </button>
+            <div v-if="showReferenceAnswer" class="px-4 pb-4 pt-0">
+              <p class="text-textSecondary text-body-sm leading-relaxed whitespace-pre-line border-t border-border pt-3">
+                {{ currentExtension.answer }}
+              </p>
+              <p class="text-textTertiary text-xs mt-2">仅供对照，不做正误判定</p>
+            </div>
+          </div>
+
           <div class="bg-background rounded-card p-6 h-[400px] flex flex-col">
             <PracticeCanvas />
           </div>
@@ -203,20 +230,32 @@
             <p class="text-textSecondary font-medium text-body">{{ currentExercise.question }}</p>
           </div>
 
-          <div class="flex items-center gap-4">
-            <span class="text-textSecondary">答案：</span>
-            <input
-              v-model="answer"
-              type="text"
-              class="flex-1 px-4 py-2 rounded-button border-2 border-border focus:border-primary focus:outline-none bg-background"
-              placeholder="请输入答案"
-            />
-            <button
-              class="px-6 py-2 rounded-button font-medium bg-primary text-white hover:bg-primaryDark transition-colors"
-              @click="submitAnswer"
-            >
-              提交答案
-            </button>
+          <ExerciseAnswerPanel
+            :key="`${problem.lessonNumber}-${currentExerciseIndex}-${currentExercise.question}`"
+            :answer-key="currentExercise.answerKey"
+            @graded="onExerciseGraded"
+            @recorded="onExerciseRecorded"
+          />
+
+          <div
+            v-if="currentExercise.answer"
+            class="glass-card-secondary rounded-card overflow-hidden"
+          >
+            <div class="px-4 py-3 flex items-center justify-between gap-2">
+              <h3 class="font-bold text-primaryDark flex items-center gap-2">
+                <FileText class="text-primary" :size="18" />
+                参考答案
+              </h3>
+              <span v-if="!showReferenceAnswer" class="text-textTertiary text-xs">提交后显示</span>
+            </div>
+            <div v-if="showReferenceAnswer" class="px-4 pb-4 pt-0">
+              <p class="text-textSecondary text-body-sm leading-relaxed whitespace-pre-line border-t border-border pt-3">
+                {{ currentExercise.answer }}
+              </p>
+              <p class="text-textTertiary text-xs mt-2">
+                {{ currentExercise.answerKey ? '完整参考文案，判分以填空为准' : '本题暂不自动判分，请自行对照' }}
+              </p>
+            </div>
           </div>
 
           <div class="bg-background rounded-card p-4 h-[600px] flex flex-col">
@@ -226,13 +265,21 @@
           <div
             v-if="showResult"
             class="rounded-card p-4"
-            :class="isCorrect ? 'bg-success/20' : 'bg-danger/20'"
+            :class="lastGradeCorrect === null ? 'bg-primary/10' : lastGradeCorrect ? 'bg-success/20' : 'bg-danger/20'"
           >
             <div class="flex items-center gap-2">
-              <CheckCircle v-if="isCorrect" class="text-successText" :size="24" />
-              <XCircle v-else class="text-dangerText" :size="24" />
-              <span class="font-bold" :class="isCorrect ? 'text-successText' : 'text-dangerText'">
-                {{ isCorrect ? '回答正确！太棒了！' : '回答错误，继续加油！' }}
+              <CheckCircle
+                v-if="lastGradeCorrect !== false"
+                :class="lastGradeCorrect ? 'text-successText' : 'text-primary'"
+                :size="24"
+              />
+              <span
+                class="font-bold"
+                :class="lastGradeCorrect === null ? 'text-primaryDark' : lastGradeCorrect ? 'text-successText' : 'text-dangerText'"
+              >
+                <template v-if="lastGradeCorrect === true">回答正确！太棒了！</template>
+                <template v-else-if="lastGradeCorrect === false">回答错误，请对照下方参考答案</template>
+                <template v-else>已记录本次练习，参考答案已显示</template>
               </span>
             </div>
           </div>
@@ -243,16 +290,31 @@
     <div v-else-if="isLoading" class="min-h-screen flex items-center justify-center bg-background">
       <Loader2 class="animate-spin text-primary" :size="48" />
     </div>
+
+    <div
+      v-else
+      class="min-h-[60vh] flex flex-col items-center justify-center px-4"
+    >
+      <p class="text-xl font-bold text-text mb-2">题目未找到</p>
+      <p class="text-textTertiary mb-6 text-body-sm">请检查讲次编号，或从首页重新进入</p>
+      <RouterLink
+        to="/"
+        class="px-6 py-3 rounded-button bg-primaryDark text-accentCream font-medium hover:opacity-90"
+      >
+        返回首页
+      </RouterLink>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { CheckCircle, Circle, Search, BookOpen, Pencil, ArrowLeft, ArrowRight, Loader2, XCircle, Lightbulb, PenTool, FileText, Star } from '@lucide/vue'
+import { useRoute, RouterLink } from 'vue-router'
+import { CheckCircle, Circle, Search, BookOpen, Pencil, ArrowLeft, ArrowRight, Loader2, Lightbulb, PenTool, FileText, Star, ChevronDown } from '@lucide/vue'
 import Navigation from '@/components/Navigation.vue'
 import SolutionVideoPlayer from '@/components/SolutionVideoPlayer.vue'
 import PracticeCanvas from '@/components/PracticeCanvas.vue'
+import ExerciseAnswerPanel from '@/components/ExerciseAnswerPanel.vue'
 import { useProblemStore } from '@/stores/problemStore'
 import { useProgressStore } from '@/stores/progressStore'
 import type { LearningProgress } from '@/data/problems'
@@ -261,9 +323,10 @@ const route = useRoute()
 const problemStore = useProblemStore()
 const progressStore = useProgressStore()
 
-const answer = ref('')
 const showResult = ref(false)
-const isCorrect = ref(false)
+/** true/false=已判分；null=仅记录 */
+const lastGradeCorrect = ref<boolean | null>(null)
+const showReferenceAnswer = ref(false)
 const currentProgress = ref<LearningProgress | null>(null)
 const currentExerciseIndex = ref(0)
 const shuffledExerciseIndices = ref<number[]>([])
@@ -306,10 +369,12 @@ async function initPage(lessonId: number) {
 }
 
 function nextExtension() {
+  showReferenceAnswer.value = false
   problemStore.nextExtension()
 }
 
 function prevExtension() {
+  showReferenceAnswer.value = false
   problemStore.prevExtension()
 }
 
@@ -329,32 +394,35 @@ function initExerciseShuffle() {
   currentExerciseIndex.value = 0
 }
 
+function resetExerciseUi() {
+  showResult.value = false
+  lastGradeCorrect.value = null
+  showReferenceAnswer.value = false
+}
+
 function selectExercise(index: number) {
   currentExerciseIndex.value = index
-  answer.value = ''
-  showResult.value = false
+  resetExerciseUi()
 }
 
 function nextExercise() {
   if (!problem.value || currentExerciseIndex.value >= problem.value.exercises.length - 1) return
   currentExerciseIndex.value++
-  answer.value = ''
-  showResult.value = false
+  resetExerciseUi()
 }
 
 function prevExercise() {
   if (currentExerciseIndex.value <= 0) return
   currentExerciseIndex.value--
-  answer.value = ''
-  showResult.value = false
+  resetExerciseUi()
 }
 
 function switchTab(tab: 'learning' | 'extension' | 'practice') {
   problemStore.switchTab(tab)
+  showReferenceAnswer.value = false
   if (tab === 'practice') {
     initExerciseShuffle()
-    answer.value = ''
-    showResult.value = false
+    resetExerciseUi()
   }
 }
 
@@ -364,22 +432,24 @@ async function markAsLearned() {
   await loadProblemProgress()
 }
 
-function submitAnswer() {
-  if (!currentExercise.value || !answer.value.trim()) return
+async function recordPractice(correct: boolean) {
+  if (!problem.value) return
+  await progressStore.recordPractice(problem.value.lessonNumber, correct)
+  await loadProblemProgress()
+}
 
+async function onExerciseGraded(correct: boolean) {
+  lastGradeCorrect.value = correct
   showResult.value = true
-  isCorrect.value = true
+  showReferenceAnswer.value = true
+  await recordPractice(correct)
+}
 
-  if (problem.value) {
-    progressStore.recordPractice(problem.value.lessonNumber, isCorrect.value)
-    if (currentProgress.value) {
-      currentProgress.value.practiceCount++
-      if (isCorrect.value) {
-        currentProgress.value.correctCount++
-      }
-      currentProgress.value.lastPracticeTime = Date.now()
-    }
-  }
+async function onExerciseRecorded() {
+  lastGradeCorrect.value = null
+  showResult.value = true
+  showReferenceAnswer.value = true
+  await recordPractice(false)
 }
 
 watch(() => route.params.id, (id) => {
