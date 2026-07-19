@@ -1,60 +1,63 @@
 <template>
   <div class="space-y-4">
     <!-- 可自动判分 -->
-    <div v-if="answerKey" class="space-y-3">
-      <div class="flex flex-wrap items-center gap-2 text-textSecondary text-body-sm leading-relaxed">
-        <template v-if="answerKey.type === 'remainder'">
-          <input
-            v-model="inputs[0]"
-            type="text"
-            inputmode="decimal"
-            class="blank-input"
-            @keyup.enter="submit"
-          />
-          <span class="text-text font-medium tracking-widest">······</span>
-          <input
-            v-model="inputs[1]"
-            type="text"
-            inputmode="decimal"
-            class="blank-input"
-            @keyup.enter="submit"
-          />
-        </template>
-
-        <template v-else-if="answerKey.type === 'blanks'">
-          <template v-for="(seg, si) in blankSegments" :key="si">
-            <span v-if="seg.kind === 'text'">{{ seg.text }}</span>
+    <div v-if="answerKey" class="space-y-2">
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex flex-1 flex-wrap items-center gap-2 min-w-0 text-textSecondary text-body-sm leading-relaxed">
+          <template v-if="answerKey.type === 'remainder'">
             <input
-              v-else
-              v-model="inputs[seg.index]"
+              v-model="inputs[0]"
+              type="text"
+              inputmode="decimal"
+              class="blank-input"
+              @keyup.enter="submit"
+            />
+            <span class="text-text font-medium tracking-widest">······</span>
+            <input
+              v-model="inputs[1]"
               type="text"
               inputmode="decimal"
               class="blank-input"
               @keyup.enter="submit"
             />
           </template>
-        </template>
 
-        <template v-else>
-          <span class="text-textSecondary shrink-0">答案：</span>
-          <input
-            v-model="inputs[0]"
-            type="text"
-            class="flex-1 min-w-[12rem] px-4 py-2 rounded-button border-2 border-border focus:border-primary focus:outline-none bg-background"
-            :placeholder="answerKey.type === 'exact' ? '请输入答案' : '数字即可，单位可省略'"
-            @keyup.enter="submit"
-          />
-        </template>
-      </div>
+          <template v-else-if="answerKey.type === 'blanks'">
+            <template v-for="(seg, si) in blankSegments" :key="si">
+              <span v-if="seg.kind === 'text'">{{ seg.text }}</span>
+              <input
+                v-else
+                v-model="inputs[seg.index]"
+                type="text"
+                inputmode="decimal"
+                class="blank-input"
+                @keyup.enter="submit"
+              />
+            </template>
+          </template>
 
-      <div class="flex flex-wrap items-center gap-3">
+          <template v-else>
+            <span class="text-textSecondary shrink-0">答案：</span>
+            <input
+              v-model="inputs[0]"
+              type="text"
+              class="flex-1 min-w-[10rem] px-4 py-2 rounded-button border-2 border-border focus:border-primary focus:outline-none bg-background"
+              :placeholder="answerKey.type === 'exact' ? '请输入答案' : '数字即可，单位可省略'"
+              @keyup.enter="submit"
+            />
+          </template>
+        </div>
+
         <button
           type="button"
-          class="px-6 py-2 rounded-button font-medium bg-primary text-white hover:bg-primaryDark transition-colors"
+          class="shrink-0 px-6 py-2 rounded-button font-medium bg-primary text-white hover:bg-primaryDark transition-colors"
           @click="submit"
         >
-          提交判分
+          提交答案
         </button>
+      </div>
+
+      <div v-if="emptyHint || graded" class="flex flex-wrap items-center gap-3">
         <span v-if="emptyHint" class="text-sm text-dangerText">请先填写答案再提交</span>
         <span v-else-if="graded" class="text-sm" :class="correct ? 'text-successText' : 'text-dangerText'">
           {{ correct ? '回答正确！' : '还不对，可对照参考答案再试试' }}

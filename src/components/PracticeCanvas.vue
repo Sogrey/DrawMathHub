@@ -61,9 +61,10 @@
       </div>
     </div>
     <div ref="canvasContainer" class="flex-1 glass-card rounded-lg border-2 border-dashed border-primary/20 overflow-hidden relative">
+      <div class="canvas-watermark" aria-hidden="true">画图草稿区</div>
       <canvas
         ref="canvas"
-        class="absolute inset-0 w-full h-full cursor-crosshair touch-none"
+        class="absolute inset-0 z-[1] w-full h-full cursor-crosshair touch-none"
         @pointerdown="handlePointerDown"
         @pointermove="handlePointerMove"
         @pointerup="handlePointerUp"
@@ -298,3 +299,21 @@ watch(canvasContainer, () => {
   setTimeout(updateCanvasSize, 100)
 })
 </script>
+
+<style scoped>
+.canvas-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: rgba(234, 214, 184, 0.14);
+  transform: rotate(-12deg);
+}
+</style>
