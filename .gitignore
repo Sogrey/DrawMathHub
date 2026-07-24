@@ -13,6 +13,8 @@ dist-*/
 
 # 临时目录
 tmp/
+.tmp/
+.temp/
 
 # Python
 __pycache__/
